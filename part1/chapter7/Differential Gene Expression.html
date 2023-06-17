@@ -1,0 +1,1315 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Differential Gene Expression &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'part1/chapter7/Differential Gene Expression';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="../../part2/chapter1/Introduction.html" />
+    <link rel="prev" title="Clustering" href="../chapter6/Clustering.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Bioinfozone logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Bioinfozone logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinfo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part0/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single cell RNAseq Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter1/Set-Up.html">Set-Up System :</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../chapter2/Data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter3/Pre-processing.html">Pre-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter4/Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter5/Data%20Integration.html">Data Integration (Batch correction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter6/Clustering.html">Clustering</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Differential Gene Expression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Cell Multiomics Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part2/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter1/Introduction.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter2/SetupGCP.html">Creating New VM instance ( Like setting NEW linux machine) :</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter3/setupVNCserver.html">install VNC server</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter4/STARAlignment.html">RNAseq Alignment</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Differential Gene Expression</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">T-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test-overestimated-variance">T-test overestimated_variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon-rank-sum">Wilcoxon rank-sum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-logres">logistic regression (logres)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-genes">Compare Genes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-specific-clusters">Compare specific clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-expression-across-conditions">Differential expression across conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#between-cluster">between cluster</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="differential-gene-expression">
+<h1>Differential Gene Expression<a class="headerlink" href="#differential-gene-expression" title="Permalink to this heading">#</a></h1>
+<p>In single cell, differential expresison can have multiple functionalities such as of identifying marker genes for cell populations, as well as differentially regulated genes across conditions (healthy vs control). We will also exercise on how to account the batch information in your test.</p>
+<p>Differential expression is performed with the function rank_genes_group. The default method to compute differential expression is the t-test_overestim_var. Other implemented methods are: logreg, t-test and wilcoxon.</p>
+<p>By default, the .raw attribute of AnnData is used in case it has been initialized, it can be changed by setting use_raw=False.</p>
+<p>The clustering with resolution 0.6 seems to give a reasonable number of clusters, so we will use that clustering for all DE tests.</p>
+<p>For Differential Expression we need all genes and</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Load Filtered, Integrated clustered data</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s1">&#39;Objects/sc_QCNFSDM_scCorrected__clustered_covid.h5ad&#39;</span><span class="p">)</span>
+<span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 2000
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;leiden_1.0&#39;, &#39;leiden_0.6&#39;, &#39;leiden_0.4&#39;, &#39;leiden_1.4&#39;, &#39;louvain_1.0&#39;, &#39;louvain_0.6&#39;, &#39;louvain_0.4&#39;, &#39;louvain_1.4&#39;, &#39;kmeans5&#39;, &#39;kmeans10&#39;, &#39;kmeans15&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;n_cells&#39;, &#39;highly_variable&#39;, &#39;means&#39;, &#39;dispersions&#39;, &#39;dispersions_norm&#39;, &#39;highly_variable_nbatches&#39;, &#39;highly_variable_intersection&#39;
+    uns: &#39;dendrogram_leiden_0.6&#39;, &#39;dendrogram_louvain_0.4&#39;, &#39;dendrogram_louvain_0.6&#39;, &#39;dendrogram_louvain_1.0&#39;, &#39;hvg&#39;, &#39;kmeans10_colors&#39;, &#39;kmeans15_colors&#39;, &#39;kmeans5_colors&#39;, &#39;leiden&#39;, &#39;leiden_0.4_colors&#39;, &#39;leiden_0.6_colors&#39;, &#39;leiden_1.0_colors&#39;, &#39;leiden_1.4_colors&#39;, &#39;log1p&#39;, &#39;louvain&#39;, &#39;louvain_0.4_colors&#39;, &#39;louvain_0.6_colors&#39;, &#39;louvain_1.0_colors&#39;, &#39;louvain_1.4_colors&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;sample_colors&#39;, &#39;tsne&#39;, &#39;type_colors&#39;, &#39;umap&#39;
+    obsm: &#39;Scanorama&#39;, &#39;X_pca&#39;, &#39;X_tsne&#39;, &#39;X_umap&#39;
+    varm: &#39;PCs&#39;
+    layers: &#39;counts&#39;, &#39;logcounts&#39;
+    obsp: &#39;connectivities&#39;, &#39;distances&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title load Raw Data</span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">raw</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s1">&#39;/content/drive/MyDrive/scRNA_using_Python/Objects/adata_raw_covid.h5ad&#39;</span><span class="p">)</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">raw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;anndata._core.raw.Raw at 0x7fa992628e80&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">X</span><span class="p">[:</span><span class="mi">10</span><span class="p">,:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9000, 2000)
+(9000, 33538)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata_raw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 21830
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;n_counts&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;n_cells&#39;, &#39;highly_variable&#39;, &#39;means&#39;, &#39;dispersions&#39;, &#39;dispersions_norm&#39;, &#39;highly_variable_nbatches&#39;, &#39;highly_variable_intersection&#39;
+    uns: &#39;log1p&#39;, &#39;hvg&#39;, &#39;pca&#39;, &#39;neighbors&#39;, &#39;umap&#39;, &#39;sample_colors&#39;, &#39;type_colors&#39;
+    obsm: &#39;X_pca&#39;, &#39;X_umap&#39;
+    varm: &#39;PCs&#39;
+    layers: &#39;counts&#39;, &#39;logcounts&#39;
+    obsp: &#39;distances&#39;, &#39;connectivities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;leiden_1.0&#39;, &#39;leiden_0.6&#39;, &#39;leiden_0.4&#39;, &#39;leiden_1.4&#39;, &#39;louvain_1.0&#39;, &#39;louvain_0.6&#39;, &#39;louvain_0.4&#39;, &#39;louvain_1.4&#39;, &#39;kmeans5&#39;, &#39;kmeans10&#39;, &#39;kmeans15&#39;, &#39;n_counts&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+    uns: &#39;dendrogram_leiden_0.6&#39;, &#39;dendrogram_louvain_0.4&#39;, &#39;dendrogram_louvain_0.6&#39;, &#39;dendrogram_louvain_1.0&#39;, &#39;hvg&#39;, &#39;kmeans10_colors&#39;, &#39;kmeans15_colors&#39;, &#39;kmeans5_colors&#39;, &#39;leiden&#39;, &#39;leiden_0.4_colors&#39;, &#39;leiden_0.6_colors&#39;, &#39;leiden_1.0_colors&#39;, &#39;leiden_1.4_colors&#39;, &#39;log1p&#39;, &#39;louvain&#39;, &#39;louvain_0.4_colors&#39;, &#39;louvain_0.6_colors&#39;, &#39;louvain_1.0_colors&#39;, &#39;louvain_1.4_colors&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;sample_colors&#39;, &#39;tsne&#39;, &#39;type_colors&#39;, &#39;umap&#39;, &#39;t-test&#39;, &#39;t-test_ov&#39;, &#39;wilcoxon&#39;
+    obsm: &#39;Scanorama&#39;, &#39;X_pca&#39;, &#39;X_tsne&#39;, &#39;X_umap&#39;
+    obsp: &#39;connectivities&#39;, &#39;distances&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>For DGE analysis we would like to run with all genes, but on normalized values, so we will have to revert back to the raw matrix and renormalize.</p>
+<p>We can’t see Louvain_0.6 but it exist</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">raw</span><span class="o">.</span><span class="n">to_adata</span><span class="p">()</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">normalize_per_cell</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">counts_per_cell_after</span><span class="o">=</span><span class="mf">1e4</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>normalizing by total count per cell
+    finished (0:00:00): normalized adata.X and added    &#39;n_counts&#39;, counts per cell before normalization (adata.obs)
+WARNING: adata.X seems to be already log-transformed.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;leiden_1.0&#39;, &#39;leiden_0.6&#39;, &#39;leiden_0.4&#39;, &#39;leiden_1.4&#39;, &#39;louvain_1.0&#39;, &#39;louvain_0.6&#39;, &#39;louvain_0.4&#39;, &#39;louvain_1.4&#39;, &#39;kmeans5&#39;, &#39;kmeans10&#39;, &#39;kmeans15&#39;, &#39;n_counts&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+    uns: &#39;dendrogram_leiden_0.6&#39;, &#39;dendrogram_louvain_0.4&#39;, &#39;dendrogram_louvain_0.6&#39;, &#39;dendrogram_louvain_1.0&#39;, &#39;hvg&#39;, &#39;kmeans10_colors&#39;, &#39;kmeans15_colors&#39;, &#39;kmeans5_colors&#39;, &#39;leiden&#39;, &#39;leiden_0.4_colors&#39;, &#39;leiden_0.6_colors&#39;, &#39;leiden_1.0_colors&#39;, &#39;leiden_1.4_colors&#39;, &#39;log1p&#39;, &#39;louvain&#39;, &#39;louvain_0.4_colors&#39;, &#39;louvain_0.6_colors&#39;, &#39;louvain_1.0_colors&#39;, &#39;louvain_1.4_colors&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;sample_colors&#39;, &#39;tsne&#39;, &#39;type_colors&#39;, &#39;umap&#39;
+    obsm: &#39;Scanorama&#39;, &#39;X_pca&#39;, &#39;X_tsne&#39;, &#39;X_umap&#39;
+    obsp: &#39;connectivities&#39;, &#39;distances&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;louvain_0.6&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/07cbdf5df7844d85a729229d480a4297f1787e8826bea6a568a891cd0f57b6b1.png" src="../../_images/07cbdf5df7844d85a729229d480a4297f1787e8826bea6a568a891cd0f57b6b1.png" />
+</div>
+</div>
+<section id="tests">
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this heading">#</a></h2>
+<section id="t-test">
+<h3>T-test<a class="headerlink" href="#t-test" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;t-test&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;t-test&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;t-test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-1-7595d372b507&gt;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;t-test&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;t-test&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;t-test&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;sc&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># results are stored in the adata.uns[&quot;t-test&quot;] slot</span>
+<span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;leiden_1.0&#39;, &#39;leiden_0.6&#39;, &#39;leiden_0.4&#39;, &#39;leiden_1.4&#39;, &#39;louvain_1.0&#39;, &#39;louvain_0.6&#39;, &#39;louvain_0.4&#39;, &#39;louvain_1.4&#39;, &#39;kmeans5&#39;, &#39;kmeans10&#39;, &#39;kmeans15&#39;, &#39;n_counts&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+    uns: &#39;dendrogram_leiden_0.6&#39;, &#39;dendrogram_louvain_0.4&#39;, &#39;dendrogram_louvain_0.6&#39;, &#39;dendrogram_louvain_1.0&#39;, &#39;hvg&#39;, &#39;kmeans10_colors&#39;, &#39;kmeans15_colors&#39;, &#39;kmeans5_colors&#39;, &#39;leiden&#39;, &#39;leiden_0.4_colors&#39;, &#39;leiden_0.6_colors&#39;, &#39;leiden_1.0_colors&#39;, &#39;leiden_1.4_colors&#39;, &#39;log1p&#39;, &#39;louvain&#39;, &#39;louvain_0.4_colors&#39;, &#39;louvain_0.6_colors&#39;, &#39;louvain_1.0_colors&#39;, &#39;louvain_1.4_colors&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;sample_colors&#39;, &#39;tsne&#39;, &#39;type_colors&#39;, &#39;umap&#39;, &#39;t-test&#39;
+    obsm: &#39;Scanorama&#39;, &#39;X_pca&#39;, &#39;X_tsne&#39;, &#39;X_umap&#39;
+    obsp: &#39;connectivities&#39;, &#39;distances&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="t-test-overestimated-variance">
+<h3>T-test overestimated_variance<a class="headerlink" href="#t-test-overestimated-variance" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;t-test_overestim_var&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;t-test_ov&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;t-test_ov&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ranking genes
+    finished: added to `.uns[&#39;t-test_ov&#39;]`
+    &#39;names&#39;, sorted np.recarray to be indexed by group ids
+    &#39;scores&#39;, sorted np.recarray to be indexed by group ids
+    &#39;logfoldchanges&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals_adj&#39;, sorted np.recarray to be indexed by group ids (0:00:01)
+</pre></div>
+</div>
+<img alt="../../_images/61aa4e6e4c97ef02ae9a1de2db2cf959fd62f06cfe7967fcb24a13881f8c7388.png" src="../../_images/61aa4e6e4c97ef02ae9a1de2db2cf959fd62f06cfe7967fcb24a13881f8c7388.png" />
+</div>
+</div>
+</section>
+<section id="wilcoxon-rank-sum">
+<h3>Wilcoxon rank-sum<a class="headerlink" href="#wilcoxon-rank-sum" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ranking genes
+    finished: added to `.uns[&#39;wilcoxon&#39;]`
+    &#39;names&#39;, sorted np.recarray to be indexed by group ids
+    &#39;scores&#39;, sorted np.recarray to be indexed by group ids
+    &#39;logfoldchanges&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals_adj&#39;, sorted np.recarray to be indexed by group ids (0:00:33)
+</pre></div>
+</div>
+<img alt="../../_images/e4bd925d53b33c85d168790d81c2a887fcdbdd0eddcbfd85f07422ba872b24dd.png" src="../../_images/e4bd925d53b33c85d168790d81c2a887fcdbdd0eddcbfd85f07422ba872b24dd.png" />
+</div>
+</div>
+</section>
+<section id="logistic-regression-logres">
+<h3>logistic regression (logres)<a class="headerlink" href="#logistic-regression-logres" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;logreg&#39;</span><span class="p">,</span><span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;logreg&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="s2">&quot;logreg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ranking genes
+    finished: added to `.uns[&#39;logreg&#39;]`
+    &#39;names&#39;, sorted np.recarray to be indexed by group ids
+    &#39;scores&#39;, sorted np.recarray to be indexed by group ids
+ (0:00:58)
+</pre></div>
+</div>
+<img alt="../../_images/b3e4acae7b5f7d981f797442a0ed7b33ae74abf0c215e9fd1a39cc70800e5e3c.png" src="../../_images/b3e4acae7b5f7d981f797442a0ed7b33ae74abf0c215e9fd1a39cc70800e5e3c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="compare-genes">
+<h2>Compare Genes<a class="headerlink" href="#compare-genes" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;leiden_1.0&#39;, &#39;leiden_0.6&#39;, &#39;leiden_0.4&#39;, &#39;leiden_1.4&#39;, &#39;louvain_1.0&#39;, &#39;louvain_0.6&#39;, &#39;louvain_0.4&#39;, &#39;louvain_1.4&#39;, &#39;kmeans5&#39;, &#39;kmeans10&#39;, &#39;kmeans15&#39;, &#39;n_counts&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+    uns: &#39;dendrogram_leiden_0.6&#39;, &#39;dendrogram_louvain_0.4&#39;, &#39;dendrogram_louvain_0.6&#39;, &#39;dendrogram_louvain_1.0&#39;, &#39;hvg&#39;, &#39;kmeans10_colors&#39;, &#39;kmeans15_colors&#39;, &#39;kmeans5_colors&#39;, &#39;leiden&#39;, &#39;leiden_0.4_colors&#39;, &#39;leiden_0.6_colors&#39;, &#39;leiden_1.0_colors&#39;, &#39;leiden_1.4_colors&#39;, &#39;log1p&#39;, &#39;louvain&#39;, &#39;louvain_0.4_colors&#39;, &#39;louvain_0.6_colors&#39;, &#39;louvain_1.0_colors&#39;, &#39;louvain_1.4_colors&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;sample_colors&#39;, &#39;tsne&#39;, &#39;type_colors&#39;, &#39;umap&#39;, &#39;t-test&#39;, &#39;logreg&#39;, &#39;wilcoxon&#39;, &#39;t-test_ov&#39;
+    obsm: &#39;Scanorama&#39;, &#39;X_pca&#39;, &#39;X_tsne&#39;, &#39;X_umap&#39;
+    obsp: &#39;connectivities&#39;, &#39;distances&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Take all significant DE genes for cluster0 with each test and compare the overlap</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#compare cluster1 genes, only stores top 100 by default</span>
+
+<span class="n">wc</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rank_genes_groups_df</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span> <span class="s1">&#39;wilcoxon&#39;</span><span class="p">,</span> <span class="n">pval_cutoff</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">log2fc_min</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rank_genes_groups_df</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;t-test&#39;</span><span class="p">,</span> <span class="n">pval_cutoff</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">log2fc_min</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span>
+<span class="n">tt_ov</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rank_genes_groups_df</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;t-test_ov&#39;</span><span class="p">,</span> <span class="n">pval_cutoff</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">log2fc_min</span><span class="o">=</span><span class="mi">0</span><span class="p">)[</span><span class="s1">&#39;names&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">matplotlib_venn</span> <span class="kn">import</span> <span class="n">venn3</span>
+
+<span class="n">venn3</span><span class="p">([</span><span class="nb">set</span><span class="p">(</span><span class="n">wc</span><span class="p">),</span><span class="nb">set</span><span class="p">(</span><span class="n">tt</span><span class="p">),</span><span class="nb">set</span><span class="p">(</span><span class="n">tt_ov</span><span class="p">)],</span> <span class="p">(</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">,</span><span class="s1">&#39;T-test&#39;</span><span class="p">,</span><span class="s1">&#39;T-test_ov&#39;</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ab598b51069482859154f71b12e04bfc39b6b21613eb22571a2f2031faf49331.png" src="../../_images/ab598b51069482859154f71b12e04bfc39b6b21613eb22571a2f2031faf49331.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Heatmap of genes </span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_heatmap</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;louvain_0.6&quot;</span><span class="p">,</span> <span class="n">show_gene_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0b2e52e83125e5672ffec1bbba6f6aaef4f08b73a3cb1a7601d12ccd8ae96352.png" src="../../_images/0b2e52e83125e5672ffec1bbba6f6aaef4f08b73a3cb1a7601d12ccd8ae96352.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_dotplot</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;louvain_0.6&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7390776d466678e3eb7ddab8d1f5c64100cb587ddc411f0137d35f7a68bf3650.png" src="../../_images/7390776d466678e3eb7ddab8d1f5c64100cb587ddc411f0137d35f7a68bf3650.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_stacked_violin</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;louvain_0.6&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9ed99cfbe5a7725cc9d04603faab1ef72e42c273cbf74c664c960d2df3dca3eb.png" src="../../_images/9ed99cfbe5a7725cc9d04603faab1ef72e42c273cbf74c664c960d2df3dca3eb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_matrixplot</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;louvain_0.6&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/91174605a860fbcac98704362aeeeaab2400380f5b914a67756f5c7cad073306.png" src="../../_images/91174605a860fbcac98704362aeeeaab2400380f5b914a67756f5c7cad073306.png" />
+</div>
+</div>
+</section>
+<section id="compare-specific-clusters">
+<h2>Compare specific clusters<a class="headerlink" href="#compare-specific-clusters" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title cluster1 vs cluster2</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="n">reference</span><span class="o">=</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1&#39;</span><span class="p">],</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ranking genes
+    finished: added to `.uns[&#39;rank_genes_groups&#39;]`
+    &#39;names&#39;, sorted np.recarray to be indexed by group ids
+    &#39;scores&#39;, sorted np.recarray to be indexed by group ids
+    &#39;logfoldchanges&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals_adj&#39;, sorted np.recarray to be indexed by group ids (0:00:04)
+</pre></div>
+</div>
+<img alt="../../_images/7114f862d00a4f9380142cbd26d396add8e6f7df6e094e6dd35fceb9b24e9992.png" src="../../_images/7114f862d00a4f9380142cbd26d396add8e6f7df6e094e6dd35fceb9b24e9992.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;leiden_1.0&#39;, &#39;leiden_0.6&#39;, &#39;leiden_0.4&#39;, &#39;leiden_1.4&#39;, &#39;louvain_1.0&#39;, &#39;louvain_0.6&#39;, &#39;louvain_0.4&#39;, &#39;louvain_1.4&#39;, &#39;kmeans5&#39;, &#39;kmeans10&#39;, &#39;kmeans15&#39;, &#39;n_counts&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+    uns: &#39;dendrogram_leiden_0.6&#39;, &#39;dendrogram_louvain_0.4&#39;, &#39;dendrogram_louvain_0.6&#39;, &#39;dendrogram_louvain_1.0&#39;, &#39;hvg&#39;, &#39;kmeans10_colors&#39;, &#39;kmeans15_colors&#39;, &#39;kmeans5_colors&#39;, &#39;leiden&#39;, &#39;leiden_0.4_colors&#39;, &#39;leiden_0.6_colors&#39;, &#39;leiden_1.0_colors&#39;, &#39;leiden_1.4_colors&#39;, &#39;log1p&#39;, &#39;louvain&#39;, &#39;louvain_0.4_colors&#39;, &#39;louvain_0.6_colors&#39;, &#39;louvain_1.0_colors&#39;, &#39;louvain_1.4_colors&#39;, &#39;neighbors&#39;, &#39;pca&#39;, &#39;sample_colors&#39;, &#39;tsne&#39;, &#39;type_colors&#39;, &#39;umap&#39;, &#39;t-test&#39;, &#39;logreg&#39;, &#39;wilcoxon&#39;, &#39;t-test_ov&#39;, &#39;rank_genes_groups&#39;
+    obsm: &#39;Scanorama&#39;, &#39;X_pca&#39;, &#39;X_tsne&#39;, &#39;X_umap&#39;
+    obsp: &#39;connectivities&#39;, &#39;distances&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_violin</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2eec6aa6d597850636dc7ab65b14b35eb759a6ee863e294f0da594ff1e62c3c3.png" src="../../_images/2eec6aa6d597850636dc7ab65b14b35eb759a6ee863e294f0da594ff1e62c3c3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the same genes as violins across all the datasets.</span>
+
+<span class="c1"># convert numpy.recarray to list</span>
+<span class="n">mynames</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;rank_genes_groups&#39;</span><span class="p">][</span><span class="s1">&#39;names&#39;</span><span class="p">][:</span><span class="mi">10</span><span class="p">]]</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">stacked_violin</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">mynames</span><span class="p">,</span> <span class="n">groupby</span> <span class="o">=</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/bdcd5e7ce83df62c26f28ba4cc6fc4cb3a361f3d89b5d18fb54c6e062b6fc5fd.png" src="../../_images/bdcd5e7ce83df62c26f28ba4cc6fc4cb3a361f3d89b5d18fb54c6e062b6fc5fd.png" />
+</div>
+</div>
+</section>
+<section id="differential-expression-across-conditions">
+<h2>Differential expression across conditions<a class="headerlink" href="#differential-expression-across-conditions" title="Permalink to this heading">#</a></h2>
+<p>The second way of computing differential expression is to answer which genes are differentially expressed within a cluster. For example, in our case we have libraries comming from patients and controls and we would like to know which genes are influenced the most in a particular cell type.</p>
+<p>For this end, we will first subset our data for the desired cell cluster, then change the cell identities to the variable of comparison (which now in our case is the “type”, e.g. Covid/Ctrl).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cl1</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;louvain_0.6&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;4&#39;</span><span class="p">,:]</span>
+<span class="n">cl1</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Covid    858
+Ctrl      54
+Name: type, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ranking genes
+    finished: added to `.uns[&#39;wilcoxon&#39;]`
+    &#39;names&#39;, sorted np.recarray to be indexed by group ids
+    &#39;scores&#39;, sorted np.recarray to be indexed by group ids
+    &#39;logfoldchanges&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals_adj&#39;, sorted np.recarray to be indexed by group ids (0:00:02)
+</pre></div>
+</div>
+<img alt="../../_images/a248ce5631c02fffb96a0f91e77da9cab2209c9ea0c3d6428d4a10409fa4f060.png" src="../../_images/a248ce5631c02fffb96a0f91e77da9cab2209c9ea0c3d6428d4a10409fa4f060.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_violin</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/16a239ae1a363fe21ff750279f38248ba139a8aef046b5020db688521c6bb117.png" src="../../_images/16a239ae1a363fe21ff750279f38248ba139a8aef046b5020db688521c6bb117.png" />
+<img alt="../../_images/fbcc9df0b65a273859a623c181c51ca5c65cffcb4a8d6a0839a8d9a6918fa463.png" src="../../_images/fbcc9df0b65a273859a623c181c51ca5c65cffcb4a8d6a0839a8d9a6918fa463.png" />
+</div>
+</div>
+<section id="between-cluster">
+<h3>between cluster<a class="headerlink" href="#between-cluster" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">genes1</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rank_genes_groups_df</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Covid&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">)[</span><span class="s1">&#39;names&#39;</span><span class="p">][:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">genes2</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rank_genes_groups_df</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Ctrl&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">)[</span><span class="s1">&#39;names&#39;</span><span class="p">][:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">genes</span> <span class="o">=</span> <span class="n">genes1</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span>  <span class="n">genes2</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> 
+<span class="n">df</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">obs_df</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">genes</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">use_raw</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;louvain_0.6&quot;</span><span class="p">,</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">value_vars</span><span class="o">=</span><span class="n">genes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-8c000021-0338-4766-b258-72d244358853">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>IFITM3</th>
+      <th>EIF1</th>
+      <th>PF4</th>
+      <th>IGKC</th>
+      <th>S100A8</th>
+      <th>MALAT1</th>
+      <th>RPS4X</th>
+      <th>MT-CO1</th>
+      <th>RPL18A</th>
+      <th>NCOA4</th>
+      <th>louvain_0.6</th>
+      <th>type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGGGTCCCATGACCCG-1-0</th>
+      <td>0.000000</td>
+      <td>3.430040</td>
+      <td>0.832491</td>
+      <td>2.727161</td>
+      <td>0.832491</td>
+      <td>6.177206</td>
+      <td>3.019721</td>
+      <td>4.874463</td>
+      <td>3.781191</td>
+      <td>0.000000</td>
+      <td>9</td>
+      <td>Covid</td>
+    </tr>
+    <tr>
+      <th>TACCCACAGCGGGTTA-1-0</th>
+      <td>1.381662</td>
+      <td>3.326245</td>
+      <td>1.174380</td>
+      <td>0.556972</td>
+      <td>5.466116</td>
+      <td>5.035670</td>
+      <td>3.118657</td>
+      <td>4.512954</td>
+      <td>3.403520</td>
+      <td>1.553268</td>
+      <td>0</td>
+      <td>Covid</td>
+    </tr>
+    <tr>
+      <th>CCCAACTTCATATGGC-1-0</th>
+      <td>0.000000</td>
+      <td>3.404340</td>
+      <td>2.370070</td>
+      <td>0.473830</td>
+      <td>5.096470</td>
+      <td>5.208613</td>
+      <td>3.500291</td>
+      <td>5.054821</td>
+      <td>3.424281</td>
+      <td>1.534025</td>
+      <td>0</td>
+      <td>Covid</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8c000021-0338-4766-b258-72d244358853')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-8c000021-0338-4766-b258-72d244358853 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-8c000021-0338-4766-b258-72d244358853');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-d632ef21-1616-4819-af04-9c700229224f">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>louvain_0.6</th>
+      <th>type</th>
+      <th>variable</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9</td>
+      <td>Covid</td>
+      <td>IFITM3</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>Covid</td>
+      <td>IFITM3</td>
+      <td>1.381662</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>Covid</td>
+      <td>IFITM3</td>
+      <td>0.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-d632ef21-1616-4819-af04-9c700229224f')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-d632ef21-1616-4819-af04-9c700229224f button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-d632ef21-1616-4819-af04-9c700229224f');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">catplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s2">&quot;louvain_0.6&quot;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s2">&quot;value&quot;</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">kind</span> <span class="o">=</span> <span class="s1">&#39;violin&#39;</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s2">&quot;variable&quot;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">df2</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">inner</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fa9747897b0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/3ba4a1208a0fcde1f89581893e2c8c9a46aaf31daf4ef7926b50345e139a0398.png" src="../../_images/3ba4a1208a0fcde1f89581893e2c8c9a46aaf31daf4ef7926b50345e139a0398.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title remove sex genes and rerun differential expression</span>
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">annot</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">queries</span><span class="o">.</span><span class="n">biomart_annotations</span><span class="p">(</span>
+        <span class="s2">&quot;hsapiens&quot;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">&quot;ensembl_gene_id&quot;</span><span class="p">,</span> <span class="s2">&quot;external_gene_name&quot;</span><span class="p">,</span> <span class="s2">&quot;start_position&quot;</span><span class="p">,</span> <span class="s2">&quot;end_position&quot;</span><span class="p">,</span> <span class="s2">&quot;chromosome_name&quot;</span><span class="p">],</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;external_gene_name&quot;</span><span class="p">)</span>
+
+<span class="n">chrY_genes</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">annot</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">annot</span><span class="o">.</span><span class="n">chromosome_name</span> <span class="o">==</span> <span class="s2">&quot;Y&quot;</span><span class="p">])</span>
+<span class="n">chrX_genes</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">annot</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="n">annot</span><span class="o">.</span><span class="n">chromosome_name</span> <span class="o">==</span> <span class="s2">&quot;X&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sex_genes</span> <span class="o">=</span> <span class="n">chrY_genes</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">chrX_genes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sex_genes</span><span class="p">))</span>
+<span class="n">all_genes</span> <span class="o">=</span> <span class="n">cl1</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_genes</span><span class="p">))</span>
+
+<span class="n">keep_genes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">all_genes</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sex_genes</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">keep_genes</span><span class="p">))</span>
+
+<span class="n">cl1</span> <span class="o">=</span> <span class="n">cl1</span><span class="p">[:,</span><span class="n">keep_genes</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>991
+33538
+32547
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ranking genes
+    finished: added to `.uns[&#39;wilcoxon&#39;]`
+    &#39;names&#39;, sorted np.recarray to be indexed by group ids
+    &#39;scores&#39;, sorted np.recarray to be indexed by group ids
+    &#39;logfoldchanges&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals&#39;, sorted np.recarray to be indexed by group ids
+    &#39;pvals_adj&#39;, sorted np.recarray to be indexed by group ids (0:00:02)
+</pre></div>
+</div>
+<img alt="../../_images/a2eb6977ae3b5e7fd2dda7d2c7bb209bdf96d02d32b33111ab5eab11da8aaf50.png" src="../../_images/a2eb6977ae3b5e7fd2dda7d2c7bb209bdf96d02d32b33111ab5eab11da8aaf50.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title save differetial expressed data</span>
+
+
+<span class="n">save_file</span> <span class="o">=</span> <span class="s1">&#39;Objects/sc_QCNFSDM_scCorrected__clustered_DGE_covid.h5ad&#39;</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="n">save_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./part1\chapter7"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter6/Clustering.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Clustering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../part2/chapter1/Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tests">Tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test">T-test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#t-test-overestimated-variance">T-test overestimated_variance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wilcoxon-rank-sum">Wilcoxon rank-sum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-logres">logistic regression (logres)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-genes">Compare Genes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-specific-clusters">Compare specific clusters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-expression-across-conditions">Differential expression across conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#between-cluster">between cluster</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Majeed Jamakhani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

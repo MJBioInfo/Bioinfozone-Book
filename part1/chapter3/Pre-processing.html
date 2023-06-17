@@ -1,0 +1,2921 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Pre-processing &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'part1/chapter3/Pre-processing';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Dimensionality Reduction" href="../chapter4/Dimensionality%20Reduction.html" />
+    <link rel="prev" title="Data" href="../chapter2/Data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Bioinfozone logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Bioinfozone logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Bioinfo</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part0/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single cell RNAseq Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter1/Set-Up.html">Set-Up System :</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../chapter2/Data.html">Data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Pre-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter4/Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter5/Data%20Integration.html">Data Integration (Batch correction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter6/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter7/Differential%20Gene%20Expression.html">Differential Gene Expression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Cell Multiomics Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part2/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter1/Introduction.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter2/SetupGCP.html">Creating New VM instance ( Like setting NEW linux machine) :</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter3/setupVNCserver.html">install VNC server</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter4/STARAlignment.html">RNAseq Alignment</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pre-processing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control">Quality Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-empty-droplet-using-drokick">Remove Empty Droplet using drokick</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-qc">Calculate QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-qc">Plot QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-joint-effect">Filtering (Joint Effect)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-using-automatic-method-mad">Filter Using Automatic Method : MAD</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-filtered-qc">Plot Filtered QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambient-rna-correction-using-scar">ambient RNA correction using scAR :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-genes">Filter Genes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-cycle-scoring">Cell Cycle Scoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doublet-detection">Doublet detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-qc-filtered-data">Save QC Filtered Data</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pre-processing">
+<h1>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this heading">#</a></h1>
+<section id="quality-control">
+<h2>Quality Control<a class="headerlink" href="#quality-control" title="Permalink to this heading">#</a></h2>
+<section id="remove-empty-droplet-using-drokick">
+<h3>Remove Empty Droplet using drokick<a class="headerlink" href="#remove-empty-droplet-using-drokick" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Dropkick run</span>
+<span class="c1"># To skip running this code cell run the following command</span>
+
+<span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+
+
+<span class="c1"># simple preprocessing of anndata object to get metrics for plot</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">dk</span><span class="o">.</span><span class="n">recipe_dropkick</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_hvgs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">X_final</span><span class="o">=</span><span class="s2">&quot;raw_counts&quot;</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===================================================</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># print(adata_empty)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+===================================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+
+<span class="n">qc_plt</span> <span class="o">=</span> <span class="n">dk</span><span class="o">.</span><span class="n">qc_summary</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can see from the total counts profile (top) that this sample has relatively low background (“empty” droplets), as indicated by the steep dropoff in counts and genes around barcode 5,000.</p>
+<p>The dropout rate distribution also looks pretty good, with a steep increase in dropout rate following the first few highly-expressed genes (MALAT1, RPS27, B2M)</p>
+<p>This tool preprocesses the data to automatically calculate thresholds on global metrics, then trains a glmnet-style logistic regression model to determine scores and labels for each barcode in the dataset describing likelihood of being a real cell (rather than empty droplet). The dropkick model is returned (adata_model), and contains scikit-learn-style attributes for further exploration. Scores and metrics are also added to the original AnnData object as part of the dk.dropkick function.</p>
+<p>The n_jobs parameter will parallelize the model training. Since the default is 5-fold cross-validation, we’ll use 5 cores to quickly train dropkick.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+
+<span class="o">%</span><span class="n">time</span> <span class="n">adata_model</span> <span class="o">=</span> <span class="n">dk</span><span class="o">.</span><span class="n">dropkick</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<p>Running dropkick interactively adds the following attributes to the input AnnData object:</p>
+<ul class="simple">
+<li><p>.obs[‘dropkick_score’]
+Probability of being a real cell
+Values closer to 0 indicate empty droplets with high ambient RNA content</p></li>
+<li><p>.obs[‘dropkick_label’]
+Binary label generated by using cutoff of 0.5 on ‘dropkick_score’
+Dropkick’s best estimate of a “good” dataset
+User is encouraged to adjust the cutoff according to whether they are more concerned with false negatives or false positives</p></li>
+<li><p>.obs[<metrics>]
+Metrics used for thresholding (metrics parameter, default [‘arcsinh_n_genes_by_counts’], are kept</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;dropkick_score&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================================&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;dropkick_label&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<p>The score_plot function displays these barcodes in a scatter plot of ambient percentage (as calculated in the qc_summary plot above) versus total genes detected for each cell. The automated thresholds on the latter heuristic are overlayed to show the initial training labels given to the dropkick model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+
+<span class="n">score_plt</span> <span class="o">=</span> <span class="n">dk</span><span class="o">.</span><span class="n">score_plot</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+
+<span class="n">dk</span><span class="o">.</span><span class="n">coef_inventory</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+
+<span class="n">coef_plt</span> <span class="o">=</span> <span class="n">dk</span><span class="o">.</span><span class="n">coef_plot</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">script</span> <span class="n">echo</span> <span class="n">skipping</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Before empty drop removal :&quot;</span><span class="p">,</span> <span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;======================================================&quot;</span><span class="p">)</span>
+
+<span class="c1"># make a copy of our AnnData object as adata_nonempty , keeping all barcodes kept by dropkick</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">dropkick_label</span><span class="o">==</span><span class="s2">&quot;True&quot;</span><span class="p">),</span> <span class="p">:]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After empty drop removal :&quot;</span><span class="p">,</span> <span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>skipping
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-qc">
+<h3>Calculate QC<a class="headerlink" href="#calculate-qc" title="Permalink to this heading">#</a></h3>
+<p>Steps :</p>
+<ul class="simple">
+<li><p>Filter Zero count cells / cell with low number of detected genes</p></li>
+<li><p>Correction of Ambient RNA</p></li>
+<li><p>Doublet Detection</p></li>
+<li><p>Normalization (Pearson Residual transformation)</p></li>
+<li><p>Feature selection</p></li>
+<li><p>Dimensionality reduction</p></li>
+</ul>
+<blockquote>
+<div><p>Note :  In order to delete low quality cells , we have to jointly considered following qc metrices (so we don’t remove much cells) :</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Count Depth (if low means small or dying cell)</p></li>
+<li><p>Few genes per cell (dying cell)</p></li>
+<li><p>High mitochondrial genes fraction per cell (Mitochondria leaked<br />
+out and cell ruptured)</p></li>
+</ul>
+<blockquote>
+<div><p>Solution : using  MAD (median absolute deviations)  automatic method</p>
+</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>         Mark cell oulier &gt;  MAD &gt;= 5 threshold
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Calculate QC Metrics </span>
+
+<span class="c1"># First Calculate QC Metrices for [ mt, ribo, hb ] and Counts related metrices</span>
+
+<span class="c1">###==================================###########</span>
+
+<span class="c1"># We calculate QC metrices for Mitochondrial fraction , ribosomal fraction and haemoglobin fraction</span>
+<span class="c1"># And we have count related metrcies like Depth count (Total count) , n_genes_by_counts  , pct_counts_mt</span>
+
+<span class="c1"># We use MAD (Median Deviation) of these metrices with threshold like nmads = 3 and represent cells as outlier </span>
+<span class="c1"># Then we use these ouliers cells to remove So we achieve filtering</span>
+
+<span class="c1">###==================================###########</span>
+
+
+
+<span class="c1"># mitochondrial genes</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">&quot;mt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;MT-&quot;</span><span class="p">)</span>
+<span class="c1"># ribosomal genes</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">&quot;ribo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;RPS&quot;</span><span class="p">,</span> <span class="s2">&quot;RPL&quot;</span><span class="p">))</span>
+<span class="c1"># hemoglobin genes.</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="p">[</span><span class="s2">&quot;hb&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">((</span><span class="s2">&quot;^HB[^(P)]&quot;</span><span class="p">))</span>
+
+
+
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-dd516a92-0831-4238-bed1-e7c78a550bf2">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gene_ids</th>
+      <th>feature_types</th>
+      <th>genome</th>
+      <th>mt</th>
+      <th>ribo</th>
+      <th>hb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MIR1302-2HG</th>
+      <td>ENSG00000243485</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>FAM138A</th>
+      <td>ENSG00000237613</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>OR4F5</th>
+      <td>ENSG00000186092</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>AL627309.1</th>
+      <td>ENSG00000238009</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>AL627309.3</th>
+      <td>ENSG00000239945</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-dd516a92-0831-4238-bed1-e7c78a550bf2')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-dd516a92-0831-4238-bed1-e7c78a550bf2 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-dd516a92-0831-4238-bed1-e7c78a550bf2');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;mt&#39;, &#39;ribo&#39;, &#39;hb&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">calculate_qc_metrics</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span> <span class="n">qc_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mt&quot;</span><span class="p">,</span> <span class="s2">&quot;ribo&quot;</span><span class="p">,</span> <span class="s2">&quot;hb&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">percent_top</span><span class="o">=</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">log1p</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;n_genes_by_counts&#39;, &#39;total_counts&#39;, &#39;pct_counts_in_top_20_genes&#39;, &#39;total_counts_mt&#39;, &#39;pct_counts_mt&#39;, &#39;total_counts_ribo&#39;, &#39;pct_counts_ribo&#39;, &#39;total_counts_hb&#39;, &#39;pct_counts_hb&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;mt&#39;, &#39;ribo&#39;, &#39;hb&#39;, &#39;n_cells_by_counts&#39;, &#39;mean_counts&#39;, &#39;pct_dropout_by_counts&#39;, &#39;total_counts&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>n_genes_by_counts in .obs is the number of genes with positive counts
+in a cell,</p></li>
+<li><p>total_counts is the total number of counts for a cell, this might also be known as library size, and</p></li>
+<li><p>pct_counts_mt is the proportion of total counts for a cell which are mitochondrial.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-037c450e-7ac5-4f3a-973c-34a63102a628">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>sample</th>
+      <th>batch</th>
+      <th>n_genes_by_counts</th>
+      <th>total_counts</th>
+      <th>pct_counts_in_top_20_genes</th>
+      <th>total_counts_mt</th>
+      <th>pct_counts_mt</th>
+      <th>total_counts_ribo</th>
+      <th>pct_counts_ribo</th>
+      <th>total_counts_hb</th>
+      <th>pct_counts_hb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGGGTCCCATGACCCG-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>2140</td>
+      <td>7698.0</td>
+      <td>24.123149</td>
+      <td>525.0</td>
+      <td>6.819953</td>
+      <td>2564.0</td>
+      <td>33.307353</td>
+      <td>2.0</td>
+      <td>0.025981</td>
+    </tr>
+    <tr>
+      <th>TACCCACAGCGGGTTA-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3391</td>
+      <td>13416.0</td>
+      <td>21.414729</td>
+      <td>952.0</td>
+      <td>7.096005</td>
+      <td>2264.0</td>
+      <td>16.875373</td>
+      <td>6.0</td>
+      <td>0.044723</td>
+    </tr>
+    <tr>
+      <th>CCCAACTTCATATGGC-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3654</td>
+      <td>16498.0</td>
+      <td>22.402715</td>
+      <td>1253.0</td>
+      <td>7.594860</td>
+      <td>2723.0</td>
+      <td>16.505031</td>
+      <td>1.0</td>
+      <td>0.006061</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-037c450e-7ac5-4f3a-973c-34a63102a628')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-037c450e-7ac5-4f3a-973c-34a63102a628 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-037c450e-7ac5-4f3a-973c-34a63102a628');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="plot-qc">
+<h3>Plot QC<a class="headerlink" href="#plot-qc" title="Permalink to this heading">#</a></h3>
+<p>Now we can Plot these calculated metrices . each dot represents cell in plot . Group by sample , so we can see for each sample how merics behaves</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;total_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_genes_by_counts&#39;</span><span class="p">,</span>  <span class="s1">&#39;pct_counts_mt&#39;</span><span class="p">,</span><span class="s1">&#39;pct_counts_ribo&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_counts_hb&#39;</span><span class="p">],</span>
+             <span class="n">jitter</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">groupby</span> <span class="o">=</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span> <span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3766b657f343cc4ea924b4d9207b185e4c6cb4127ac43a70ad3f174ffe65ff7d.png" src="../../_images/3766b657f343cc4ea924b4d9207b185e4c6cb4127ac43a70ad3f174ffe65ff7d.png" />
+</div>
+</div>
+<p>As you can see, there is quite some difference in quality for the 4 datasets, with for instance the covid_15 sample having fewer cells with many detected genes and more mitochondrial content. As the ribosomal proteins are highly expressed they will make up a larger proportion of the transcriptional landscape when fewer of the lowly expressed genes are detected. And we can plot the different QC-measures as scatter plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;total_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_genes_by_counts&#39;</span><span class="p">,</span>  <span class="s1">&#39;pct_counts_mt&#39;</span><span class="p">,</span><span class="s1">&#39;pct_counts_ribo&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_counts_hb&#39;</span><span class="p">],</span>
+             <span class="n">jitter</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">groupby</span> <span class="o">=</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span> <span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/341c0ca63db036cc86f89ba647411a664f47b7ae25657c48257039eb6c86d9f5.png" src="../../_images/341c0ca63db036cc86f89ba647411a664f47b7ae25657c48257039eb6c86d9f5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;total_counts&quot;</span><span class="p">,</span> <span class="s2">&quot;n_genes_by_counts&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pct_counts_mt&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span> <span class="kc">False</span><span class="p">,</span>   <span class="n">legend_loc</span><span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;pct counts mt&#39;}, xlabel=&#39;total_counts&#39;, ylabel=&#39;n_genes_by_counts&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/e9de70ada816ee7e81210939798826c9177f736ac2ac99de9d1781f48edbfb9a.png" src="../../_images/e9de70ada816ee7e81210939798826c9177f736ac2ac99de9d1781f48edbfb9a.png" />
+</div>
+</div>
+<p>As we can see from above plot : genes with low counts have more percentage mitochondria and some cells have less mitochondria .</p>
+</section>
+<section id="filtering-joint-effect">
+<h3>Filtering (Joint Effect)<a class="headerlink" href="#filtering-joint-effect" title="Permalink to this heading">#</a></h3>
+<p>We have to filter cells by considering joint effects by these WC metrics we have calculated in previous cells .</p>
+<p>We use Automatic method MAD : which depends on Median and Standard deviation</p>
+<p>We first calculate outliers by each od these QC effects</p>
+<section id="filter-using-automatic-method-mad">
+<h4>Filter Using Automatic Method : MAD<a class="headerlink" href="#filter-using-automatic-method-mad" title="Permalink to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Create outlier function  </span>
+
+<span class="c1"># function that takes a metric, i.e. a column in .obs and the number of MADs (nmad)</span>
+
+<span class="c1"># Function take 3 Arguments : 1) Adata object , 2) Metric colum for condition 3) nmads = 3 or 5 or ...?</span>
+
+<span class="k">def</span> <span class="nf">is_outlier</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">nmads</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span>
+    <span class="n">outlier</span> <span class="o">=</span> <span class="p">(</span><span class="n">M</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">-</span> <span class="n">nmads</span> <span class="o">*</span> <span class="n">median_abs_deviation</span><span class="p">(</span><span class="n">M</span><span class="p">))</span> <span class="o">|</span> <span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">+</span> <span class="n">nmads</span> <span class="o">*</span> <span class="n">median_abs_deviation</span><span class="p">(</span><span class="n">M</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">M</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">outlier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-eb78d131-64ca-466d-8d34-578109a3b2d3">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>sample</th>
+      <th>batch</th>
+      <th>n_genes_by_counts</th>
+      <th>total_counts</th>
+      <th>pct_counts_in_top_20_genes</th>
+      <th>total_counts_mt</th>
+      <th>pct_counts_mt</th>
+      <th>total_counts_ribo</th>
+      <th>pct_counts_ribo</th>
+      <th>total_counts_hb</th>
+      <th>pct_counts_hb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGGGTCCCATGACCCG-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>2140</td>
+      <td>7698.0</td>
+      <td>24.123149</td>
+      <td>525.0</td>
+      <td>6.819953</td>
+      <td>2564.0</td>
+      <td>33.307353</td>
+      <td>2.0</td>
+      <td>0.025981</td>
+    </tr>
+    <tr>
+      <th>TACCCACAGCGGGTTA-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3391</td>
+      <td>13416.0</td>
+      <td>21.414729</td>
+      <td>952.0</td>
+      <td>7.096005</td>
+      <td>2264.0</td>
+      <td>16.875373</td>
+      <td>6.0</td>
+      <td>0.044723</td>
+    </tr>
+    <tr>
+      <th>CCCAACTTCATATGGC-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3654</td>
+      <td>16498.0</td>
+      <td>22.402715</td>
+      <td>1253.0</td>
+      <td>7.594860</td>
+      <td>2723.0</td>
+      <td>16.505031</td>
+      <td>1.0</td>
+      <td>0.006061</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-eb78d131-64ca-466d-8d34-578109a3b2d3')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-eb78d131-64ca-466d-8d34-578109a3b2d3 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-eb78d131-64ca-466d-8d34-578109a3b2d3');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title use QC metrices to find outlier cells </span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;outlier&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">is_outlier</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;total_counts&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">is_outlier</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;n_genes_by_counts&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="o">|</span> <span class="n">is_outlier</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;pct_counts_in_top_20_genes&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">outlier</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    6898
+True     2102
+Name: outlier, dtype: int64
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-cc40293e-ebe5-41d6-ba01-95461cc084be">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>sample</th>
+      <th>batch</th>
+      <th>n_genes_by_counts</th>
+      <th>total_counts</th>
+      <th>pct_counts_in_top_20_genes</th>
+      <th>total_counts_mt</th>
+      <th>pct_counts_mt</th>
+      <th>total_counts_ribo</th>
+      <th>pct_counts_ribo</th>
+      <th>total_counts_hb</th>
+      <th>pct_counts_hb</th>
+      <th>outlier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGGGTCCCATGACCCG-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>2140</td>
+      <td>7698.0</td>
+      <td>24.123149</td>
+      <td>525.0</td>
+      <td>6.819953</td>
+      <td>2564.0</td>
+      <td>33.307353</td>
+      <td>2.0</td>
+      <td>0.025981</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>TACCCACAGCGGGTTA-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3391</td>
+      <td>13416.0</td>
+      <td>21.414729</td>
+      <td>952.0</td>
+      <td>7.096005</td>
+      <td>2264.0</td>
+      <td>16.875373</td>
+      <td>6.0</td>
+      <td>0.044723</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CCCAACTTCATATGGC-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3654</td>
+      <td>16498.0</td>
+      <td>22.402715</td>
+      <td>1253.0</td>
+      <td>7.594860</td>
+      <td>2723.0</td>
+      <td>16.505031</td>
+      <td>1.0</td>
+      <td>0.006061</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-cc40293e-ebe5-41d6-ba01-95461cc084be')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-cc40293e-ebe5-41d6-ba01-95461cc084be button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-cc40293e-ebe5-41d6-ba01-95461cc084be');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title use Mitochondrial QC metric to find outlier cells</span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;mt_outlier&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">is_outlier</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;pct_counts_mt&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span>
+    <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;pct_counts_mt&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">8</span>    <span class="c1">#cells with a percentage of mitochondrial counts exceeding 8 % are filtered out</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">mt_outlier</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False    4762
+True     4238
+Name: mt_outlier, dtype: int64
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-caaa3ccc-07dd-486d-ab59-22a1fa2558ce">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>type</th>
+      <th>sample</th>
+      <th>batch</th>
+      <th>n_genes_by_counts</th>
+      <th>total_counts</th>
+      <th>pct_counts_in_top_20_genes</th>
+      <th>total_counts_mt</th>
+      <th>pct_counts_mt</th>
+      <th>total_counts_ribo</th>
+      <th>pct_counts_ribo</th>
+      <th>total_counts_hb</th>
+      <th>pct_counts_hb</th>
+      <th>outlier</th>
+      <th>mt_outlier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGGGTCCCATGACCCG-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>2140</td>
+      <td>7698.0</td>
+      <td>24.123149</td>
+      <td>525.0</td>
+      <td>6.819953</td>
+      <td>2564.0</td>
+      <td>33.307353</td>
+      <td>2.0</td>
+      <td>0.025981</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>TACCCACAGCGGGTTA-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3391</td>
+      <td>13416.0</td>
+      <td>21.414729</td>
+      <td>952.0</td>
+      <td>7.096005</td>
+      <td>2264.0</td>
+      <td>16.875373</td>
+      <td>6.0</td>
+      <td>0.044723</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>CCCAACTTCATATGGC-1-0</th>
+      <td>Covid</td>
+      <td>covid_1</td>
+      <td>0</td>
+      <td>3654</td>
+      <td>16498.0</td>
+      <td>22.402715</td>
+      <td>1253.0</td>
+      <td>7.594860</td>
+      <td>2723.0</td>
+      <td>16.505031</td>
+      <td>1.0</td>
+      <td>0.006061</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-caaa3ccc-07dd-486d-ab59-22a1fa2558ce')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-caaa3ccc-07dd-486d-ab59-22a1fa2558ce button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-caaa3ccc-07dd-486d-ab59-22a1fa2558ce');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Filter out cells with Above QC metrices :</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of cells  Before Filtering : </span><span class="si">{</span><span class="n">adata</span><span class="o">.</span><span class="n">n_obs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[(</span><span class="o">~</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">outlier</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="o">~</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">mt_outlier</span><span class="p">)]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of cells after filtering of low quality cells: </span><span class="si">{</span><span class="n">adata</span><span class="o">.</span><span class="n">n_obs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of cells  Before Filtering : 9000
+
+Number of cells after filtering of low quality cells: 4205
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plot-filtered-qc">
+<h3>Plot Filtered QC<a class="headerlink" href="#plot-filtered-qc" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Filtered Data Plot</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;total_counts&#39;</span><span class="p">,</span> <span class="s1">&#39;n_genes_by_counts&#39;</span><span class="p">,</span>  <span class="s1">&#39;pct_counts_mt&#39;</span><span class="p">,</span><span class="s1">&#39;pct_counts_ribo&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_counts_hb&#39;</span><span class="p">],</span>
+             <span class="n">jitter</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">groupby</span> <span class="o">=</span> <span class="s1">&#39;sample&#39;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span> <span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/437ffb6cfce36b586e6565356febe4146cffa6764f4caa29244aacba8d79e649.png" src="../../_images/437ffb6cfce36b586e6565356febe4146cffa6764f4caa29244aacba8d79e649.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s2">&quot;total_counts&quot;</span><span class="p">,</span> <span class="s2">&quot;n_genes_by_counts&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;pct_counts_mt&quot;</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span> <span class="kc">False</span><span class="p">,</span>   <span class="n">legend_loc</span><span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;pct counts mt&#39;}, xlabel=&#39;total_counts&#39;, ylabel=&#39;n_genes_by_counts&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/a61a407f4c313faa72b66d45e200e34514ad6d9630b6321807b66972c1a54c11.png" src="../../_images/a61a407f4c313faa72b66d45e200e34514ad6d9630b6321807b66972c1a54c11.png" />
+</div>
+</div>
+</section>
+<section id="ambient-rna-correction-using-scar">
+<h3>ambient RNA correction using scAR :<a class="headerlink" href="#ambient-rna-correction-using-scar" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>To work with scAR we need following :</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>raw Anndata (unfitered from sequencing machine , which contain Empty droplets and cells with only free mRNA )</p></li>
+<li><p>Filtered data</p></li>
+</ul>
+<blockquote>
+<div><p>Then we estimate Ambient profile from raw and filtered data</p>
+</div></blockquote>
+<blockquote>
+<div><p>Then we use Machine learning to train data to identify Ambient RNA and then we correct count matrix with respect to Ambient profile</p>
+</div></blockquote>
+<p>setup_anndata is inspired by EmptyDrops  which assumes that cell-free droplets are sampled from a multinomial distribution.</p>
+<ol class="arabic simple">
+<li><p>It first calculates an initial ambient profile by averaging all droplets in raw_adata</p></li>
+<li><p>It tested whether droplets fit the multinomial distribution (the ambient profile as the prob parameter). The relatively high probabilities suggest cell-free droplets</p></li>
+<li><p>It re-calculates the ambient profile using the identified cell-free droplets</p></li>
+<li><p>It repeats step 2 and step 3 for iterations</p></li>
+<li><p>The final ambient profile is saved in adata.uns</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Read adata_raw</span>
+
+<span class="n">adata_raw</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">read_h5ad</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/scRNA_using_Python/Objects/adata_raw_covid.h5ad&quot;</span><span class="p">)</span>
+
+<span class="n">adata_raw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 9000 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Estimate the ambient profile</span>
+
+
+
+<span class="n">setup_anndata</span><span class="p">(</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">,</span>
+    <span class="n">raw_adata</span> <span class="o">=</span> <span class="n">adata_raw</span><span class="p">,</span>
+    <span class="n">prob</span> <span class="o">=</span> <span class="mf">0.895</span><span class="p">,</span>
+    <span class="n">kneeplot</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-28 05:45:56|INFO|setup_anndata|Randomly sample 9000 droplets from 9000 droplets.
+INFO:setup_anndata:Randomly sample 9000 droplets from 9000 droplets.
+2023-05-28 05:45:56|INFO|setup_anndata|Estimating ambient profile for [&#39;Gene Expression&#39;]
+Categories (1, object): [&#39;Gene Expression&#39;]...
+INFO:setup_anndata:Estimating ambient profile for [&#39;Gene Expression&#39;]
+Categories (1, object): [&#39;Gene Expression&#39;]...
+2023-05-28 05:46:04|INFO|setup_anndata|Iteration: 1
+INFO:setup_anndata:Iteration: 1
+2023-05-28 05:46:12|INFO|setup_anndata|Iteration: 2
+INFO:setup_anndata:Iteration: 2
+2023-05-28 05:46:20|INFO|setup_anndata|Iteration: 3
+INFO:setup_anndata:Iteration: 3
+2023-05-28 05:46:20|INFO|setup_anndata|Estimated ambient profile for Gene Expression saved in adata.uns
+INFO:setup_anndata:Estimated ambient profile for Gene Expression saved in adata.uns
+2023-05-28 05:46:20|INFO|setup_anndata|Estimated ambient profile for all features saved in adata.uns
+INFO:setup_anndata:Estimated ambient profile for all features saved in adata.uns
+</pre></div>
+</div>
+<img alt="../../_images/463c75754a79342ca5b944f1fff932d59dda3acbc7fc2f4847b93258bf4f8873.png" src="../../_images/463c75754a79342ca5b944f1fff932d59dda3acbc7fc2f4847b93258bf4f8873.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Traine Ambient Data </span>
+
+<span class="n">adata_scar</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">raw_count</span><span class="o">=</span><span class="n">adata</span><span class="p">,</span> <span class="c1"># In the case of Anndata object, scar will automatically use the estimated ambient_profile present in adata.uns.</span>
+                      <span class="n">ambient_profile</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">uns</span><span class="p">[</span><span class="s1">&#39;ambient_profile_Gene Expression&#39;</span><span class="p">],</span>
+                      <span class="n">feature_type</span><span class="o">=</span><span class="s1">&#39;mRNA&#39;</span><span class="p">,</span>
+                      <span class="n">sparsity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                      <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span> <span class="c1"># Both cpu and cuda are supported.</span>
+                     <span class="p">)</span>
+
+<span class="n">adata_scar</span><span class="o">.</span><span class="n">train</span><span class="p">(</span><span class="n">epochs</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+                    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+                    <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span>
+                   <span class="p">)</span>
+
+<span class="c1"># After training, we can infer the native true signal</span>
+<span class="n">adata_scar</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">batch_size</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>  <span class="c1"># by defaut, batch_size = None, set a batch_size if getting a memory issue</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-28 05:46:42|INFO|model|cuda will be used.
+INFO:model:cuda will be used.
+2023-05-28 05:46:46|INFO|VAE|Running VAE using the following param set:
+INFO:VAE:Running VAE using the following param set:
+2023-05-28 05:46:46|INFO|VAE|...denoised count type: mRNA
+INFO:VAE:...denoised count type: mRNA
+2023-05-28 05:46:46|INFO|VAE|...count model: binomial
+INFO:VAE:...count model: binomial
+2023-05-28 05:46:46|INFO|VAE|...num_input_feature: 33538
+INFO:VAE:...num_input_feature: 33538
+2023-05-28 05:46:46|INFO|VAE|...NN_layer1: 150
+INFO:VAE:...NN_layer1: 150
+2023-05-28 05:46:46|INFO|VAE|...NN_layer2: 100
+INFO:VAE:...NN_layer2: 100
+2023-05-28 05:46:46|INFO|VAE|...latent_space: 15
+INFO:VAE:...latent_space: 15
+2023-05-28 05:46:46|INFO|VAE|...dropout_prob: 0.00
+INFO:VAE:...dropout_prob: 0.00
+2023-05-28 05:46:46|INFO|VAE|...expected data sparsity: 1.00
+INFO:VAE:...expected data sparsity: 1.00
+2023-05-28 05:46:46|INFO|model|kld_weight: 1.00e-05
+INFO:model:kld_weight: 1.00e-05
+2023-05-28 05:46:46|INFO|model|learning rate: 1.00e-03
+INFO:model:learning rate: 1.00e-03
+2023-05-28 05:46:46|INFO|model|lr_step_size: 5
+INFO:model:lr_step_size: 5
+2023-05-28 05:46:46|INFO|model|lr_gamma: 0.97
+INFO:model:lr_gamma: 0.97
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training: 100%|██████████| 200/200 [03:38&lt;00:00,  1.09s/it, Loss=5.4521e+03]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Denoised counts :</span>
+<span class="n">denoised_count</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">adata_scar</span><span class="o">.</span><span class="n">native_counts</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">obs_names</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">denoised_count</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=================================================&quot;</span><span class="p">)</span>
+<span class="n">denoised_count</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4205, 33538)
+=================================================
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-23750bb8-abf8-41e4-bc17-dd26d42a3caa">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>MIR1302-2HG</th>
+      <th>FAM138A</th>
+      <th>OR4F5</th>
+      <th>AL627309.1</th>
+      <th>AL627309.3</th>
+      <th>AL627309.2</th>
+      <th>AL627309.4</th>
+      <th>AL732372.1</th>
+      <th>OR4F29</th>
+      <th>AC114498.1</th>
+      <th>...</th>
+      <th>AC007325.2</th>
+      <th>BX072566.1</th>
+      <th>AL354822.1</th>
+      <th>AC023491.2</th>
+      <th>AC004556.1</th>
+      <th>AC233755.2</th>
+      <th>AC233755.1</th>
+      <th>AC240274.1</th>
+      <th>AC213203.1</th>
+      <th>FAM231C</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGGGTCCCATGACCCG-1-0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>TACCCACAGCGGGTTA-1-0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>CCCAACTTCATATGGC-1-0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>ATTCCTAGTGACTGTT-1-0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>CCTAAGACAGATTAAG-1-0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 33538 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-23750bb8-abf8-41e4-bc17-dd26d42a3caa')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-23750bb8-abf8-41e4-bc17-dd26d42a3caa button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-23750bb8-abf8-41e4-bc17-dd26d42a3caa');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Add Denoised count (Ambient RNA corrected ) to adata :</span>
+
+<span class="n">adata</span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">X</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">&quot;ambient_counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adata_scar</span><span class="o">.</span><span class="n">native_counts</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">&quot;ambient_counts&quot;</span><span class="p">]</span>
+
+
+<span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 4205 × 33538
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;n_genes_by_counts&#39;, &#39;total_counts&#39;, &#39;pct_counts_in_top_20_genes&#39;, &#39;total_counts_mt&#39;, &#39;pct_counts_mt&#39;, &#39;total_counts_ribo&#39;, &#39;pct_counts_ribo&#39;, &#39;total_counts_hb&#39;, &#39;pct_counts_hb&#39;, &#39;outlier&#39;, &#39;mt_outlier&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;mt&#39;, &#39;ribo&#39;, &#39;hb&#39;, &#39;n_cells_by_counts&#39;, &#39;mean_counts&#39;, &#39;pct_dropout_by_counts&#39;, &#39;total_counts&#39;
+    uns: &#39;sample_colors&#39;, &#39;type_colors&#39;, &#39;ambient_profile_Gene Expression&#39;, &#39;ambient_profile_all&#39;
+    layers: &#39;counts&#39;, &#39;ambient_counts&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">var</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-11b6f08d-4279-4a53-a6f2-73af19cda8b5">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gene_ids</th>
+      <th>feature_types</th>
+      <th>genome</th>
+      <th>mt</th>
+      <th>ribo</th>
+      <th>hb</th>
+      <th>n_cells_by_counts</th>
+      <th>mean_counts</th>
+      <th>pct_dropout_by_counts</th>
+      <th>total_counts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MIR1302-2HG</th>
+      <td>ENSG00000243485</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>100.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>FAM138A</th>
+      <td>ENSG00000237613</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>100.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>OR4F5</th>
+      <td>ENSG00000186092</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>0</td>
+      <td>0.000000</td>
+      <td>100.000000</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>AL627309.1</th>
+      <td>ENSG00000238009</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>25</td>
+      <td>0.002778</td>
+      <td>99.722222</td>
+      <td>25.0</td>
+    </tr>
+    <tr>
+      <th>AL627309.3</th>
+      <td>ENSG00000239945</td>
+      <td>Gene Expression</td>
+      <td>GRCh38</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>1</td>
+      <td>0.000111</td>
+      <td>99.988889</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-11b6f08d-4279-4a53-a6f2-73af19cda8b5')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-11b6f08d-4279-4a53-a6f2-73af19cda8b5 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-11b6f08d-4279-4a53-a6f2-73af19cda8b5');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="filter-genes">
+<h3>Filter Genes<a class="headerlink" href="#filter-genes" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Filter genes :</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of genes: </span><span class="si">{</span><span class="n">adata</span><span class="o">.</span><span class="n">n_vars</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Min 20 cells - filters out 0 count genes</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_genes</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">min_cells</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of genes after cell filter: </span><span class="si">{</span><span class="n">adata</span><span class="o">.</span><span class="n">n_vars</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of genes: 33538
+Number of genes after cell filter: 7662
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># As we have . we can remove genes correspond to Mirochondria , Ribosomal and MALAT1</span>
+<span class="c1"># Because High level of MALAT1 and MT referes to Technical variation</span>
+
+ <span class="c1"># group genes with MALAT1 , MT and HB and remove </span>
+<span class="n">malat1</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;MALAT1&#39;</span><span class="p">)</span>
+<span class="n">mito_genes</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;MT-&#39;</span><span class="p">)</span>
+<span class="n">hb_genes</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;^HB[^(P)]&#39;</span><span class="p">)</span>
+
+<span class="n">remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mito_genes</span><span class="p">,</span> <span class="n">malat1</span><span class="p">)</span>
+<span class="n">remove</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">remove</span><span class="p">,</span> <span class="n">hb_genes</span><span class="p">)</span>
+<span class="n">keep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">invert</span><span class="p">(</span><span class="n">remove</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;before removal of genes :&quot;</span> <span class="p">,</span> <span class="n">adata</span><span class="o">.</span><span class="n">n_obs</span><span class="p">,</span> <span class="n">adata</span><span class="o">.</span><span class="n">n_vars</span><span class="p">)</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[:,</span><span class="n">keep</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After removal of genes :&quot;</span> <span class="p">,</span><span class="n">adata</span><span class="o">.</span><span class="n">n_obs</span><span class="p">,</span> <span class="n">adata</span><span class="o">.</span><span class="n">n_vars</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>before removal of genes : 4205 7662
+After removal of genes : 4205 7650
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title install pybiomart</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cell-cycle-scoring">
+<h3>Cell Cycle Scoring<a class="headerlink" href="#cell-cycle-scoring" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#@title Cell Cycle scoring : 
+
+
+!if [ ! -f data/regev_lab_cell_cycle_genes.txt ]; then curl -o data/regev_lab_cell_cycle_genes.txt https://raw.githubusercontent.com/theislab/scanpy_usage/master/180209_cell_cycle/data/regev_lab_cell_cycle_genes.txt; fi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">cell_cycle_genes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./data/regev_lab_cell_cycle_genes.txt&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_cycle_genes</span><span class="p">))</span>
+
+<span class="c1"># Split into 2 lists</span>
+<span class="n">s_genes</span> <span class="o">=</span> <span class="n">cell_cycle_genes</span><span class="p">[:</span><span class="mi">43</span><span class="p">]</span>
+<span class="n">g2m_genes</span> <span class="o">=</span> <span class="n">cell_cycle_genes</span><span class="p">[</span><span class="mi">43</span><span class="p">:]</span>
+
+<span class="n">cell_cycle_genes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cell_cycle_genes</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">adata</span><span class="o">.</span><span class="n">var_names</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cell_cycle_genes</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>97
+33
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># save normalized counts in raw slot.</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">cycle</span> <span class="o">=</span> <span class="n">adata</span>
+
+<span class="c1"># normalize to depth 10 000</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">normalize_per_cell</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">cycle</span><span class="p">,</span> <span class="n">counts_per_cell_after</span><span class="o">=</span><span class="mf">1e4</span><span class="p">)</span>
+
+<span class="c1"># logaritmize</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">cycle</span><span class="p">)</span>
+
+<span class="c1"># scale</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">scale</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">cycle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">score_genes_cell_cycle</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">cycle</span><span class="p">,</span> <span class="n">s_genes</span><span class="o">=</span><span class="n">s_genes</span><span class="p">,</span> <span class="n">g2m_genes</span><span class="o">=</span><span class="n">g2m_genes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span><span class="o">.</span><span class="n">cycle</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">phase</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>G1     1474
+G2M    1371
+S      1360
+Name: phase, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">violin</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">cycle</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;S_score&#39;</span><span class="p">,</span> <span class="s1">&#39;G2M_score&#39;</span><span class="p">],</span>
+             <span class="n">jitter</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>  <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/f30c11cecc2aab9b4e5c414dc622ed79a12c2b046613e664dc7d0d1ee83514d9.png" src="../../_images/f30c11cecc2aab9b4e5c414dc622ed79a12c2b046613e664dc7d0d1ee83514d9.png" />
+</div>
+</div>
+</section>
+<section id="doublet-detection">
+<h3>Doublet detection<a class="headerlink" href="#doublet-detection" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Doublet Detection :</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">adata</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4205, 7650)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change the layer of count  to Ambient counts </span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">&quot;ambient_counts&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Run scvi setup model</span>
+
+<span class="n">scvi</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">SCVI</span><span class="o">.</span><span class="n">setup_anndata</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">vae</span> <span class="o">=</span> <span class="n">scvi</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">SCVI</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span>
+<span class="n">vae</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pytorch_lightning.utilities.rank_zero:GPU available: True (cuda), used: True
+INFO:pytorch_lightning.utilities.rank_zero:TPU available: False, using: 0 TPU cores
+INFO:pytorch_lightning.utilities.rank_zero:IPU available: False, using: 0 IPUs
+INFO:pytorch_lightning.utilities.rank_zero:HPU available: False, using: 0 HPUs
+INFO:pytorch_lightning.accelerators.cuda:LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 400/400: 100%|██████████| 400/400 [02:27&lt;00:00,  2.70it/s, loss=3.52e+03, v_num=1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pytorch_lightning.utilities.rank_zero:`Trainer.fit` stopped: `max_epochs=400` reached.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 400/400: 100%|██████████| 400/400 [02:27&lt;00:00,  2.71it/s, loss=3.52e+03, v_num=1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Train solo model </span>
+
+<span class="n">solo</span> <span class="o">=</span> <span class="n">scvi</span><span class="o">.</span><span class="n">external</span><span class="o">.</span><span class="n">SOLO</span><span class="o">.</span><span class="n">from_scvi_model</span><span class="p">(</span><span class="n">vae</span><span class="p">)</span>
+<span class="n">solo</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Blue">INFO    </span> Creating doublets, preparing SOLO model.                                                                  
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pytorch_lightning.utilities.rank_zero:GPU available: True (cuda), used: True
+INFO:pytorch_lightning.utilities.rank_zero:TPU available: False, using: 0 TPU cores
+INFO:pytorch_lightning.utilities.rank_zero:IPU available: False, using: 0 IPUs
+INFO:pytorch_lightning.utilities.rank_zero:HPU available: False, using: 0 HPUs
+INFO:pytorch_lightning.accelerators.cuda:LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 400/400: 100%|██████████| 400/400 [02:03&lt;00:00,  3.24it/s, loss=0.339, v_num=1]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:pytorch_lightning.utilities.rank_zero:`Trainer.fit` stopped: `max_epochs=400` reached.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 400/400: 100%|██████████| 400/400 [02:03&lt;00:00,  3.23it/s, loss=0.339, v_num=1]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Predict the Doublet</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">solo</span><span class="o">.</span><span class="n">predict</span><span class="p">()</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">solo</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">soft</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-37fea22b-ac2e-4ed7-b0d1-52c7a08dc88d">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>doublet</th>
+      <th>singlet</th>
+      <th>prediction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGGGTCCCATGACCCG-1-0</th>
+      <td>-1.240547</td>
+      <td>1.317724</td>
+      <td>singlet</td>
+    </tr>
+    <tr>
+      <th>TACCCACAGCGGGTTA-1-0</th>
+      <td>0.230032</td>
+      <td>-0.015135</td>
+      <td>doublet</td>
+    </tr>
+    <tr>
+      <th>CCCAACTTCATATGGC-1-0</th>
+      <td>0.087104</td>
+      <td>0.086796</td>
+      <td>doublet</td>
+    </tr>
+    <tr>
+      <th>ATTCCTAGTGACTGTT-1-0</th>
+      <td>-1.723657</td>
+      <td>1.353531</td>
+      <td>singlet</td>
+    </tr>
+    <tr>
+      <th>CCTAAGACAGATTAAG-1-0</th>
+      <td>-1.451537</td>
+      <td>1.859437</td>
+      <td>singlet</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>GCTGCAGTCTGTCAGA-14-5</th>
+      <td>-1.007731</td>
+      <td>0.915832</td>
+      <td>singlet</td>
+    </tr>
+    <tr>
+      <th>GAGGCCTTCTCCTGCA-14-5</th>
+      <td>-0.019297</td>
+      <td>0.247610</td>
+      <td>singlet</td>
+    </tr>
+    <tr>
+      <th>CCCTAACAGTTTCTTC-14-5</th>
+      <td>-0.336324</td>
+      <td>-0.266451</td>
+      <td>singlet</td>
+    </tr>
+    <tr>
+      <th>GGGATGATCAAGCTTG-14-5</th>
+      <td>0.087399</td>
+      <td>-0.348760</td>
+      <td>doublet</td>
+    </tr>
+    <tr>
+      <th>CAATGACCACTGCATA-14-5</th>
+      <td>0.385331</td>
+      <td>-0.194242</td>
+      <td>doublet</td>
+    </tr>
+  </tbody>
+</table>
+<p>4205 rows × 3 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-37fea22b-ac2e-4ed7-b0d1-52c7a08dc88d')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-37fea22b-ac2e-4ed7-b0d1-52c7a08dc88d button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-37fea22b-ac2e-4ed7-b0d1-52c7a08dc88d');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Number of Doublets:</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">prediction</span> <span class="o">==</span> <span class="s1">&#39;doublet&#39;</span><span class="p">])</span>  <span class="c1"># pretty high number</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>669
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1">#THIS STEP IS NOT NECESSARY, just to visuallize results</span>
+<span class="n">adata_doublet</span> <span class="o">=</span> <span class="n">adata</span>
+
+<span class="n">adata_doublet</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 4205 × 7650
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;n_genes_by_counts&#39;, &#39;total_counts&#39;, &#39;pct_counts_in_top_20_genes&#39;, &#39;total_counts_mt&#39;, &#39;pct_counts_mt&#39;, &#39;total_counts_ribo&#39;, &#39;pct_counts_ribo&#39;, &#39;total_counts_hb&#39;, &#39;pct_counts_hb&#39;, &#39;outlier&#39;, &#39;mt_outlier&#39;, &#39;n_counts&#39;, &#39;S_score&#39;, &#39;G2M_score&#39;, &#39;phase&#39;, &#39;_scvi_batch&#39;, &#39;_scvi_labels&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;mt&#39;, &#39;ribo&#39;, &#39;hb&#39;, &#39;n_cells_by_counts&#39;, &#39;mean_counts&#39;, &#39;pct_dropout_by_counts&#39;, &#39;total_counts&#39;, &#39;n_cells&#39;, &#39;mean&#39;, &#39;std&#39;
+    uns: &#39;sample_colors&#39;, &#39;type_colors&#39;, &#39;ambient_profile_Gene Expression&#39;, &#39;ambient_profile_all&#39;, &#39;log1p&#39;, &#39;_scvi_uuid&#39;, &#39;_scvi_manager_uuid&#39;
+    layers: &#39;counts&#39;, &#39;ambient_counts&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata_doublet</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;prediction&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">prediction</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">normalize_total</span><span class="p">(</span><span class="n">adata_doublet</span><span class="p">,</span> <span class="n">target_sum</span> <span class="o">=</span> <span class="mf">1e4</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">adata_doublet</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span><span class="n">adata_doublet</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">adata_doublet</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata_doublet</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">leiden</span><span class="p">(</span><span class="n">adata_doublet</span><span class="p">,</span> <span class="n">resolution</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">rc_context</span><span class="p">({</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)}):</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">umap</span><span class="p">(</span><span class="n">adata_doublet</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;leiden&#39;</span><span class="p">,</span> <span class="s1">&#39;prediction&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a349d727820ce3c7f4ec6b5412c4591eb9441c1e194f31e7a786d8b46ea5fb6f.png" src="../../_images/a349d727820ce3c7f4ec6b5412c4591eb9441c1e194f31e7a786d8b46ea5fb6f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">doublet_d</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">prediction</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">doublet_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">doublet_d</span><span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;filtered&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s1">&#39;doublet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">doublet_function</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AnnData object with n_obs × n_vars = 4205 × 7650
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;n_genes_by_counts&#39;, &#39;total_counts&#39;, &#39;pct_counts_in_top_20_genes&#39;, &#39;total_counts_mt&#39;, &#39;pct_counts_mt&#39;, &#39;total_counts_ribo&#39;, &#39;pct_counts_ribo&#39;, &#39;total_counts_hb&#39;, &#39;pct_counts_hb&#39;, &#39;outlier&#39;, &#39;mt_outlier&#39;, &#39;n_counts&#39;, &#39;S_score&#39;, &#39;G2M_score&#39;, &#39;phase&#39;, &#39;_scvi_batch&#39;, &#39;_scvi_labels&#39;, &#39;prediction&#39;, &#39;leiden&#39;, &#39;doublet&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;mt&#39;, &#39;ribo&#39;, &#39;hb&#39;, &#39;n_cells_by_counts&#39;, &#39;mean_counts&#39;, &#39;pct_dropout_by_counts&#39;, &#39;total_counts&#39;, &#39;n_cells&#39;, &#39;mean&#39;, &#39;std&#39;
+    uns: &#39;sample_colors&#39;, &#39;type_colors&#39;, &#39;ambient_profile_Gene Expression&#39;, &#39;ambient_profile_all&#39;, &#39;log1p&#39;, &#39;_scvi_uuid&#39;, &#39;_scvi_manager_uuid&#39;, &#39;pca&#39;, &#39;neighbors&#39;, &#39;umap&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;prediction_colors&#39;
+    obsm: &#39;X_pca&#39;, &#39;X_umap&#39;
+    varm: &#39;PCs&#39;
+    layers: &#39;counts&#39;, &#39;ambient_counts&#39;
+    obsp: &#39;distances&#39;, &#39;connectivities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title remove predicted doublets</span>
+
+<span class="n">adata</span> <span class="o">=</span> <span class="n">adata</span><span class="p">[</span><span class="n">adata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">doublet</span> <span class="o">==</span> <span class="s1">&#39;singlet&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>View of AnnData object with n_obs × n_vars = 3536 × 7650
+    obs: &#39;type&#39;, &#39;sample&#39;, &#39;batch&#39;, &#39;n_genes_by_counts&#39;, &#39;total_counts&#39;, &#39;pct_counts_in_top_20_genes&#39;, &#39;total_counts_mt&#39;, &#39;pct_counts_mt&#39;, &#39;total_counts_ribo&#39;, &#39;pct_counts_ribo&#39;, &#39;total_counts_hb&#39;, &#39;pct_counts_hb&#39;, &#39;outlier&#39;, &#39;mt_outlier&#39;, &#39;n_counts&#39;, &#39;S_score&#39;, &#39;G2M_score&#39;, &#39;phase&#39;, &#39;_scvi_batch&#39;, &#39;_scvi_labels&#39;, &#39;prediction&#39;, &#39;leiden&#39;, &#39;doublet&#39;
+    var: &#39;gene_ids&#39;, &#39;feature_types&#39;, &#39;genome&#39;, &#39;mt&#39;, &#39;ribo&#39;, &#39;hb&#39;, &#39;n_cells_by_counts&#39;, &#39;mean_counts&#39;, &#39;pct_dropout_by_counts&#39;, &#39;total_counts&#39;, &#39;n_cells&#39;, &#39;mean&#39;, &#39;std&#39;
+    uns: &#39;sample_colors&#39;, &#39;type_colors&#39;, &#39;ambient_profile_Gene Expression&#39;, &#39;ambient_profile_all&#39;, &#39;log1p&#39;, &#39;_scvi_uuid&#39;, &#39;_scvi_manager_uuid&#39;, &#39;pca&#39;, &#39;neighbors&#39;, &#39;umap&#39;, &#39;leiden&#39;, &#39;leiden_colors&#39;, &#39;prediction_colors&#39;
+    obsm: &#39;X_pca&#39;, &#39;X_umap&#39;
+    varm: &#39;PCs&#39;
+    layers: &#39;counts&#39;, &#39;ambient_counts&#39;
+    obsp: &#39;distances&#39;, &#39;connectivities&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="save-qc-filtered-data">
+<h3>Save QC Filtered Data<a class="headerlink" href="#save-qc-filtered-data" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">save_file</span> <span class="o">=</span> <span class="s1">&#39;Objects/sc_qc_filtered_covid.h5ad&#39;</span>
+<span class="n">adata</span><span class="o">.</span><span class="n">write_h5ad</span><span class="p">(</span><span class="n">save_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./part1\chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter2/Data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter4/Dimensionality%20Reduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dimensionality Reduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-control">Quality Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remove-empty-droplet-using-drokick">Remove Empty Droplet using drokick</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-qc">Calculate QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-qc">Plot QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-joint-effect">Filtering (Joint Effect)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-using-automatic-method-mad">Filter Using Automatic Method : MAD</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-filtered-qc">Plot Filtered QC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ambient-rna-correction-using-scar">ambient RNA correction using scAR :</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-genes">Filter Genes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cell-cycle-scoring">Cell Cycle Scoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doublet-detection">Doublet detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save-qc-filtered-data">Save QC Filtered Data</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Majeed Jamakhani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
