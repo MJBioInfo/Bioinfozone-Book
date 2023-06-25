@@ -1,0 +1,3527 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>AI Concepts &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'part4/chapter2/AI-Concepts';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Practical - Machine Learning Project" href="../chapter3/Practical-Machine-Learning-Project.html" />
+    <link rel="prev" title="Python - Concept" href="../chapter1/python-concepts.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Bioinfozone logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Bioinfozone logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part0/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single cell RNAseq Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter1/Set-Up.html">Set-Up System :</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter2/Data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter3/Pre-processing.html">Pre-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter4/Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter5/Data%20Integration.html">Data Integration (Batch correction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter6/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter7/Differential%20Gene%20Expression.html">Differential Gene Expression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Cell Multiomics Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part2/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter1/Introduction.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter2/SetupGCP.html">Creating New VM instance ( Like setting NEW linux machine) :</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter3/setupVNCserver.html">install VNC server</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter4/STARAlignment.html">RNAseq Alignment</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AI Concepts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis">Principle component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-and-random-forest">Decision Trees and Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-svms">Support vector Machines (SVMs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-and-deep-learning">Neural Network and Deep learning</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ai-concepts">
+<h1>AI Concepts<a class="headerlink" href="#ai-concepts" title="Permalink to this heading">#</a></h1>
+<p>In this we are going to learn some AI concepts taking general and medical examples</p>
+<section id="principle-component-analysis">
+<h2>Principle component Analysis<a class="headerlink" href="#principle-component-analysis" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># principle component analysis is all about preserving Variance as much as we can , because variance is informative</span>
+
+<span class="c1"># Variance is how far a varible value is from mean of dataset, variables are features .. so we reduce the features by preserving variance</span>
+
+<span class="c1"># eigen matrix (which has eigen values and eigen vectors) multiplied by X raw features = to get new features</span>
+
+<span class="c1"># new features are not the subset of raw features</span>
+
+<span class="c1"># lets understand by using iris dataset</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;iris&quot;</span><span class="p">)</span>
+<span class="n">iris</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-2a1e31ff-0ce7-4992-bcd9-d2f27d2199ab">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+      <th>species</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5.1</td>
+      <td>3.5</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>4.9</td>
+      <td>3.0</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4.7</td>
+      <td>3.2</td>
+      <td>1.3</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4.6</td>
+      <td>3.1</td>
+      <td>1.5</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5.0</td>
+      <td>3.6</td>
+      <td>1.4</td>
+      <td>0.2</td>
+      <td>setosa</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-2a1e31ff-0ce7-4992-bcd9-d2f27d2199ab')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-2a1e31ff-0ce7-4992-bcd9-d2f27d2199ab button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-2a1e31ff-0ce7-4992-bcd9-d2f27d2199ab');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-29e9043a-db66-4d6c-ab14-8067acddd71b">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sepal_length</th>
+      <th>sepal_width</th>
+      <th>petal_length</th>
+      <th>petal_width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>150.000000</td>
+      <td>150.000000</td>
+      <td>150.000000</td>
+      <td>150.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>5.843333</td>
+      <td>3.057333</td>
+      <td>3.758000</td>
+      <td>1.199333</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>0.828066</td>
+      <td>0.435866</td>
+      <td>1.765298</td>
+      <td>0.762238</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.300000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>5.100000</td>
+      <td>2.800000</td>
+      <td>1.600000</td>
+      <td>0.300000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>5.800000</td>
+      <td>3.000000</td>
+      <td>4.350000</td>
+      <td>1.300000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.400000</td>
+      <td>3.300000</td>
+      <td>5.100000</td>
+      <td>1.800000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>7.900000</td>
+      <td>4.400000</td>
+      <td>6.900000</td>
+      <td>2.500000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-29e9043a-db66-4d6c-ab14-8067acddd71b')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-29e9043a-db66-4d6c-ab14-8067acddd71b button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-29e9043a-db66-4d6c-ab14-8067acddd71b');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">iris</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+
+<span class="c1"># Standardization , where mean = 0 and sd =1</span>
+<span class="n">iris_std</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">-</span><span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span> <span class="n">X</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iris_std</span><span class="p">)</span>
+
+<span class="c1"># concatenate Y</span>
+<span class="n">iris_std</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">iris_std</span><span class="p">,</span> <span class="n">Y</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iris_std</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     sepal_length  sepal_width  petal_length  petal_width
+0             5.1          3.5           1.4          0.2
+1             4.9          3.0           1.4          0.2
+2             4.7          3.2           1.3          0.2
+3             4.6          3.1           1.5          0.2
+4             5.0          3.6           1.4          0.2
+..            ...          ...           ...          ...
+145           6.7          3.0           5.2          2.3
+146           6.3          2.5           5.0          1.9
+147           6.5          3.0           5.2          2.0
+148           6.2          3.4           5.4          2.3
+149           5.9          3.0           5.1          1.8
+
+[150 rows x 4 columns]
+0         setosa
+1         setosa
+2         setosa
+3         setosa
+4         setosa
+         ...    
+145    virginica
+146    virginica
+147    virginica
+148    virginica
+149    virginica
+Name: species, Length: 150, dtype: object
+     sepal_length  sepal_width  petal_length  petal_width
+0       -0.897674     1.015602     -1.335752    -1.311052
+1       -1.139200    -0.131539     -1.335752    -1.311052
+2       -1.380727     0.327318     -1.392399    -1.311052
+3       -1.501490     0.097889     -1.279104    -1.311052
+4       -1.018437     1.245030     -1.335752    -1.311052
+..            ...          ...           ...          ...
+145      1.034539    -0.131539      0.816859     1.443994
+146      0.551486    -1.278680      0.703564     0.919223
+147      0.793012    -0.131539      0.816859     1.050416
+148      0.430722     0.786174      0.930154     1.443994
+149      0.068433    -0.131539      0.760211     0.788031
+
+[150 rows x 4 columns]
+     sepal_length  sepal_width  petal_length  petal_width    species
+0       -0.897674     1.015602     -1.335752    -1.311052     setosa
+1       -1.139200    -0.131539     -1.335752    -1.311052     setosa
+2       -1.380727     0.327318     -1.392399    -1.311052     setosa
+3       -1.501490     0.097889     -1.279104    -1.311052     setosa
+4       -1.018437     1.245030     -1.335752    -1.311052     setosa
+..            ...          ...           ...          ...        ...
+145      1.034539    -0.131539      0.816859     1.443994  virginica
+146      0.551486    -1.278680      0.703564     0.919223  virginica
+147      0.793012    -0.131539      0.816859     1.050416  virginica
+148      0.430722     0.786174      0.930154     1.443994  virginica
+149      0.068433    -0.131539      0.760211     0.788031  virginica
+
+[150 rows x 5 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">iris</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">iris_std</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       sepal_length  sepal_width  petal_length  petal_width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.057333      3.758000     1.199333
+std        0.828066     0.435866      1.765298     0.762238
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000
+       sepal_length   sepal_width  petal_length   petal_width
+count  1.500000e+02  1.500000e+02  1.500000e+02  1.500000e+02
+mean  -5.684342e-16 -7.815970e-16 -2.842171e-16 -3.789561e-16
+std    1.000000e+00  1.000000e+00  1.000000e+00  1.000000e+00
+min   -1.863780e+00 -2.425820e+00 -1.562342e+00 -1.442245e+00
+25%   -8.976739e-01 -5.903951e-01 -1.222456e+00 -1.179859e+00
+50%   -5.233076e-02 -1.315388e-01  3.353541e-01  1.320673e-01
+75%    6.722490e-01  5.567457e-01  7.602115e-01  7.880307e-01
+max    2.483699e+00  3.080455e+00  1.779869e+00  1.706379e+00
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lets see by standaridization whether we preserved the information or variance by plotting</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plots showed distribution and scatter preserved , No change , where as data standardized at center zero&quot;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">axes</span><span class="p">)</span>
+
+<span class="n">axes_0</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">iris</span><span class="p">[</span><span class="s1">&#39;petal_length&#39;</span><span class="p">],</span> <span class="n">hist</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes_0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;raw iris petal length distribution plot&quot;</span><span class="p">)</span>
+
+<span class="n">axes_1</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">iris_std</span><span class="p">[</span><span class="s1">&#39;petal_length&#39;</span><span class="p">],</span> <span class="n">hist</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">kde</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes_1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;standaridized iris petal length distribution plot&quot;</span><span class="p">)</span>
+
+<span class="n">axes_2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="s2">&quot;petal_width&quot;</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span> <span class="n">iris</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">axes_2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot; raw iris scatter plot&quot;</span><span class="p">)</span>
+
+<span class="n">axes_2</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="s2">&quot;petal_length&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="s2">&quot;petal_width&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span> <span class="n">iris_std</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span> <span class="s1">&#39;species&#39;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">axes_2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot; standardized iris scatter plot&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Plots showed distribution and scatter preserved , No change , where as data standardized at center zero
+---------------------------------------------------------------------------------------------------------
+[[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3d5bf2ae50&gt;
+  &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3d5be46790&gt;]
+ [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3d5bdfdd50&gt;
+  &lt;matplotlib.axes._subplots.AxesSubplot object at 0x7f3d5bdc3250&gt;]]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/seaborn/distributions.py:2619: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+/usr/local/lib/python3.7/dist-packages/seaborn/distributions.py:2619: FutureWarning: `distplot` is a deprecated function and will be removed in a future version. Please adapt your code to use either `displot` (a figure-level function with similar flexibility) or `histplot` (an axes-level function for histograms).
+  warnings.warn(msg, FutureWarning)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39; standardized iris scatter plot&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/4b9860dd4c3665d31251bf92d046fcd6760008c18a3a3f05658dc4bfe169732d.png" src="../../_images/4b9860dd4c3665d31251bf92d046fcd6760008c18a3a3f05658dc4bfe169732d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Now data is standardized , next we can perform</span>
+<span class="c1"># ---- preparing correlation matrix using numpy</span>
+<span class="c1">#------ finding eigen vector and eigen values using matrix linalg.eig</span>
+<span class="c1"># ----</span>
+
+<span class="n">X_std</span> <span class="o">=</span>  <span class="n">iris_std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_std</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">iris_std</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     sepal_length  sepal_width  petal_length  petal_width
+0       -0.897674     1.015602     -1.335752    -1.311052
+1       -1.139200    -0.131539     -1.335752    -1.311052
+2       -1.380727     0.327318     -1.392399    -1.311052
+3       -1.501490     0.097889     -1.279104    -1.311052
+4       -1.018437     1.245030     -1.335752    -1.311052
+..            ...          ...           ...          ...
+145      1.034539    -0.131539      0.816859     1.443994
+146      0.551486    -1.278680      0.703564     0.919223
+147      0.793012    -0.131539      0.816859     1.050416
+148      0.430722     0.786174      0.930154     1.443994
+149      0.068433    -0.131539      0.760211     0.788031
+
+[150 rows x 4 columns]
+0         setosa
+1         setosa
+2         setosa
+3         setosa
+4         setosa
+         ...    
+145    virginica
+146    virginica
+147    virginica
+148    virginica
+149    virginica
+Name: species, Length: 150, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="n">sklearn_pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">PCs</span> <span class="o">=</span> <span class="n">sklearn_pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_std</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PCs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_std</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PCs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 2)
+(150, 4)
+[[-2.25714118  0.47842383]
+ [-2.07401302 -0.67188269]
+ [-2.35633511 -0.34076642]
+ [-2.29170679 -0.59539986]
+ [-2.3818627   0.64467566]
+ [-2.06870061  1.4842053 ]
+ [-2.43586845  0.04748512]
+ [-2.22539189  0.222403  ]
+ [-2.32684533 -1.1116037 ]
+ [-2.17703491 -0.46744757]
+ [-2.15907699  1.04020587]
+ [-2.31836413  0.132634  ]
+ [-2.2110437  -0.72624318]
+ [-2.62430902 -0.95829635]
+ [-2.19139921  1.85384655]
+ [-2.25466121  2.67731523]
+ [-2.20021676  1.47865573]
+ [-2.18303613  0.48720613]
+ [-1.89223284  1.40032757]
+ [-2.33554476  1.1240836 ]
+ [-1.90793125  0.40749058]
+ [-2.19964383  0.92103587]
+ [-2.76508142  0.4568133 ]
+ [-1.81259716  0.08527285]
+ [-2.21972701  0.13679618]
+ [-1.9453293  -0.62352971]
+ [-2.04430277  0.24135499]
+ [-2.1613365   0.52538942]
+ [-2.13241965  0.312172  ]
+ [-2.25769799 -0.33660425]
+ [-2.13297647 -0.50285608]
+ [-1.82547925  0.42228039]
+ [-2.60621687  1.78758727]
+ [-2.43800983  2.1435468 ]
+ [-2.10292986 -0.45866527]
+ [-2.20043723 -0.20541922]
+ [-2.03831765  0.65934923]
+ [-2.51889339  0.59031516]
+ [-2.42152026 -0.90116107]
+ [-2.16246625  0.2679812 ]
+ [-2.27884081  0.44024054]
+ [-1.85191836 -2.32961074]
+ [-2.54511203 -0.47750102]
+ [-1.95788857  0.47074961]
+ [-2.12992356  1.13841546]
+ [-2.06283361 -0.70867859]
+ [-2.37677076  1.11668869]
+ [-2.38638171 -0.38495723]
+ [-2.22200263  0.99462767]
+ [-2.19647504  0.00918558]
+ [ 1.09810244  0.86009103]
+ [ 0.72889556  0.59262936]
+ [ 1.2368358   0.61423989]
+ [ 0.40612251 -1.7485462 ]
+ [ 1.07188379 -0.20772515]
+ [ 0.38738955 -0.59130272]
+ [ 0.74403715  0.77043827]
+ [-0.48569562 -1.846244  ]
+ [ 0.92480346  0.03211848]
+ [ 0.01138804 -1.03056578]
+ [-0.10982834 -2.64521111]
+ [ 0.43922201 -0.06308385]
+ [ 0.56023148 -1.75883213]
+ [ 0.71715934 -0.18560282]
+ [-0.03324333 -0.43753742]
+ [ 0.87248429  0.50736424]
+ [ 0.34908221 -0.19565627]
+ [ 0.1582798  -0.78945101]
+ [ 1.22100316 -1.61682728]
+ [ 0.16436725 -1.29825994]
+ [ 0.73521959  0.39524745]
+ [ 0.47469691 -0.41592689]
+ [ 1.23005729 -0.93020944]
+ [ 0.63074514 -0.41499744]
+ [ 0.70031506 -0.06320009]
+ [ 0.87135454  0.24995602]
+ [ 1.25231375 -0.07699807]
+ [ 1.35386953  0.33020546]
+ [ 0.66258066 -0.2251735 ]
+ [-0.04012419 -1.05518358]
+ [ 0.13035846 -1.55705555]
+ [ 0.02337438 -1.56722524]
+ [ 0.2407318  -0.7746612 ]
+ [ 1.05755171 -0.6317269 ]
+ [ 0.22323093 -0.28681266]
+ [ 0.42770626  0.84275892]
+ [ 1.04522645  0.52030871]
+ [ 1.04104379 -1.37837105]
+ [ 0.06935597 -0.21877043]
+ [ 0.28253073 -1.32488615]
+ [ 0.27814596 -1.11628885]
+ [ 0.62248441  0.02483981]
+ [ 0.33540673 -0.98510383]
+ [-0.36097409 -2.01249582]
+ [ 0.28762268 -0.85287312]
+ [ 0.09105561 -0.18058714]
+ [ 0.22695654 -0.38363487]
+ [ 0.57446378 -0.15435649]
+ [-0.4461723  -1.53863746]
+ [ 0.25587339 -0.59685229]
+ [ 1.83841002  0.86751506]
+ [ 1.15401555 -0.6965364 ]
+ [ 2.19790361  0.56013398]
+ [ 1.43534213 -0.0468307 ]
+ [ 1.86157577  0.2940597 ]
+ [ 2.74268509  0.79773671]
+ [ 0.36579225 -1.55628918]
+ [ 2.29475181  0.41866302]
+ [ 1.99998633 -0.70906323]
+ [ 2.25223216  1.9145963 ]
+ [ 1.35962064  0.6904434 ]
+ [ 1.59732747 -0.42029243]
+ [ 1.87761053  0.41784981]
+ [ 1.25590769 -1.15837974]
+ [ 1.46274487 -0.44079488]
+ [ 1.5847682   0.67398689]
+ [ 1.46651849  0.25476833]
+ [ 2.4182277   2.5481248 ]
+ [ 3.29964148  0.01772158]
+ [ 1.25954707 -1.70104672]
+ [ 2.03091256  0.90742744]
+ [ 0.97471535 -0.56985526]
+ [ 2.8879765   0.41225995]
+ [ 1.32878064 -0.4802025 ]
+ [ 1.6950553   1.01053648]
+ [ 1.94780139  1.00441272]
+ [ 1.17118007 -0.31533806]
+ [ 1.01754169  0.06413118]
+ [ 1.78237879 -0.18673563]
+ [ 1.85742501  0.56041329]
+ [ 2.4278203   0.25841871]
+ [ 2.29723178  2.61755442]
+ [ 1.85648383 -0.17795333]
+ [ 1.1104277  -0.29194458]
+ [ 1.19845835 -0.80860636]
+ [ 2.78942561  0.85394254]
+ [ 1.57099294  1.06501321]
+ [ 1.34179696  0.42102015]
+ [ 0.92173701  0.01716559]
+ [ 1.84586124  0.67387065]
+ [ 2.00808316  0.61183593]
+ [ 1.89543421  0.68727307]
+ [ 1.15401555 -0.6965364 ]
+ [ 2.03374499  0.86462403]
+ [ 1.99147547  1.04566567]
+ [ 1.86425786  0.38567404]
+ [ 1.55935649 -0.89369285]
+ [ 1.51609145  0.26817075]
+ [ 1.36820418  1.00787793]
+ [ 0.95744849 -0.02425043]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">iris_transform_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">PCs</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">))</span>
+<span class="n">iris_transform_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">iris_transform_df</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">iris_transform_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">ax_0</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="s2">&quot;PC1&quot;</span><span class="p">,</span> <span class="s2">&quot;PC2&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span> <span class="n">iris_transform_df</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span> <span class="s2">&quot;species&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.7/dist-packages/seaborn/_decorators.py:43: FutureWarning: Pass the following variables as keyword args: x, y. From version 0.12, the only valid positional argument will be `data`, and passing other arguments without an explicit keyword will result in an error or misinterpretation.
+  FutureWarning
+</pre></div>
+</div>
+<img alt="../../_images/ef7a66505eac46dcdfa6a0794807cf85468def4f486cd0c35f870ebc6626c962.png" src="../../_images/ef7a66505eac46dcdfa6a0794807cf85468def4f486cd0c35f870ebc6626c962.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># The art of enabling machine to form rules and find trends from data without explicitly programming them is known as Machine Learning</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/Diabetes/diabetes.txt&quot;</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-a2e7f190-6bd2-4f86-bb53-e3682f0819fd">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AGE</th>
+      <th>SEX</th>
+      <th>BMI</th>
+      <th>BP</th>
+      <th>S1</th>
+      <th>S2</th>
+      <th>S3</th>
+      <th>S4</th>
+      <th>S5</th>
+      <th>S6</th>
+      <th>Y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>59</td>
+      <td>2</td>
+      <td>32.1</td>
+      <td>101.0</td>
+      <td>157</td>
+      <td>93.2</td>
+      <td>38.0</td>
+      <td>4.0</td>
+      <td>4.8598</td>
+      <td>87</td>
+      <td>151</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>48</td>
+      <td>1</td>
+      <td>21.6</td>
+      <td>87.0</td>
+      <td>183</td>
+      <td>103.2</td>
+      <td>70.0</td>
+      <td>3.0</td>
+      <td>3.8918</td>
+      <td>69</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>72</td>
+      <td>2</td>
+      <td>30.5</td>
+      <td>93.0</td>
+      <td>156</td>
+      <td>93.6</td>
+      <td>41.0</td>
+      <td>4.0</td>
+      <td>4.6728</td>
+      <td>85</td>
+      <td>141</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>24</td>
+      <td>1</td>
+      <td>25.3</td>
+      <td>84.0</td>
+      <td>198</td>
+      <td>131.4</td>
+      <td>40.0</td>
+      <td>5.0</td>
+      <td>4.8903</td>
+      <td>89</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>50</td>
+      <td>1</td>
+      <td>23.0</td>
+      <td>101.0</td>
+      <td>192</td>
+      <td>125.4</td>
+      <td>52.0</td>
+      <td>4.0</td>
+      <td>4.2905</td>
+      <td>80</td>
+      <td>135</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-a2e7f190-6bd2-4f86-bb53-e3682f0819fd')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-a2e7f190-6bd2-4f86-bb53-e3682f0819fd button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-a2e7f190-6bd2-4f86-bb53-e3682f0819fd');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------------------------------------------------------------&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------------------------------------&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Seperate the dataset into independent and depent features</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     AGE  SEX   BMI      BP   S1     S2    S3    S4      S5   S6
+0     59    2  32.1  101.00  157   93.2  38.0  4.00  4.8598   87
+1     48    1  21.6   87.00  183  103.2  70.0  3.00  3.8918   69
+2     72    2  30.5   93.00  156   93.6  41.0  4.00  4.6728   85
+3     24    1  25.3   84.00  198  131.4  40.0  5.00  4.8903   89
+4     50    1  23.0  101.00  192  125.4  52.0  4.00  4.2905   80
+..   ...  ...   ...     ...  ...    ...   ...   ...     ...  ...
+437   60    2  28.2  112.00  185  113.8  42.0  4.00  4.9836   93
+438   47    2  24.9   75.00  225  166.0  42.0  5.00  4.4427  102
+439   60    2  24.9   99.67  162  106.6  43.0  3.77  4.1271   95
+440   36    1  30.0   95.00  201  125.2  42.0  4.79  5.1299   85
+441   36    1  19.6   71.00  250  133.2  97.0  3.00  4.5951   92
+
+[442 rows x 10 columns]
+-------------------------------------------------------------------------
+0      151
+1       75
+2      141
+3      206
+4      135
+      ... 
+437    178
+438    104
+439    132
+440    220
+441     57
+Name: Y, Length: 442, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">110</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     AGE  SEX   BMI      BP   S1     S2    S3    S4      S5   S6
+96    64    2  27.3  109.00  186  107.6  38.0  5.00  5.3083   99
+333   56    2  25.8  103.00  177  114.4  34.0  5.00  4.9628   99
+317   54    1  23.2  110.67  238  162.8  48.0  4.96  4.9127  108
+239   55    1  28.2   91.00  250  140.2  67.0  4.00  5.3660  103
+113   54    2  27.7  113.00  200  128.4  37.0  5.00  5.1533  113
+..   ...  ...   ...     ...  ...    ...   ...   ...     ...  ...
+381   29    2  18.1   73.00  158   99.0  41.0  4.00  4.4998   78
+271   59    2  27.2  107.00  158  102.0  39.0  4.00  4.4427   93
+61    37    2  26.8   79.00  157   98.0  28.0  6.00  5.0434   96
+227   67    2  23.6  111.33  189  105.4  70.0  2.70  4.2195   93
+128   34    1  20.6   87.00  185  112.2  58.0  3.00  4.3041   74
+
+[353 rows x 10 columns]
+     AGE  SEX   BMI      BP   S1     S2    S3    S4      S5   S6
+294   55    2  23.5   93.00  177  126.8  41.0  4.00  3.8286   83
+159   47    1  30.4  120.00  199  120.0  46.0  4.00  5.1059   87
+312   28    1  24.2   93.00  174  106.4  54.0  3.00  4.2195   84
+119   53    1  22.0   94.00  175   88.0  59.0  3.00  4.9416   98
+134   28    1  30.4   85.00  198  115.6  67.0  3.00  4.3438   80
+..   ...  ...   ...     ...  ...    ...   ...   ...     ...  ...
+414   71    2  27.0   93.33  269  190.2  41.0  6.56  5.2417   93
+166   33    2  20.8   84.00  125   70.2  46.0  3.00  3.7842   66
+434   53    1  26.5   97.00  193  122.4  58.0  3.00  4.1431   99
+390   51    2  32.8  112.00  202  100.6  37.0  5.00  5.7746  109
+168   49    2  31.9   94.00  234  155.8  34.0  7.00  5.3982  122
+
+[89 rows x 10 columns]
+-----------------------------------------------------
+96     150
+333    164
+317    190
+239    262
+113    297
+      ... 
+381    104
+271    127
+61     144
+227    108
+128    115
+Name: Y, Length: 353, dtype: int64
+294     55
+159    195
+312    144
+119    200
+134    103
+      ... 
+414    131
+166     70
+434     49
+390    277
+168    268
+Name: Y, Length: 89, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">L_regressor</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">L_regressor</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#---- test model on test data X_test</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">L_regressor</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prediction</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Actual values&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Predicted values&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Actual values vs predicted values&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[ 88.7257154  236.01349565 122.82671275 152.91194894 133.26299572
+ 155.10995617 108.45070799 166.16370245 206.40303033 227.12512886
+  45.58436461 257.33397866 188.25079196 143.91214004 101.58303786
+ 129.18862987 157.18468301 140.00779148 142.28184775 115.48953396
+ 129.15211612 182.9636348   52.25034904 286.86546595 242.7761079
+  46.07643676 146.37057691 125.90228716 137.64669731 102.12906943
+ 159.294184   127.19797503 120.2095064  189.73221207 121.94777703
+  87.58871142 162.09127654 214.57935651 100.0105965  265.88447661
+ 237.09032754 102.23950004 115.64512814 193.83264705 185.47519786
+ 186.85928531 281.30774621  86.98229992 220.56270381 141.45606787
+ 101.56547169 173.03077936  96.25903702 159.50774879  53.63613547
+ 208.84468478 165.93698745 124.42552414 160.59146202 248.64622776
+ 103.47508113 148.42042807 205.43430394  93.90192239 161.46649216
+  91.00134606 253.13344701  96.16425468 164.29821281 181.27263938
+  58.24275384 116.28152401 183.49639474 169.54560591 110.11920824
+ 236.24602514  59.7852014  155.27187615 287.9524243  213.84063469
+  82.59836521 259.69744698 178.24353173 107.16945725 167.34950979
+  58.7571307  135.75101228 250.65478989 223.09415657]
+294     55
+159    195
+312    144
+119    200
+134    103
+      ... 
+414    131
+166     70
+434     49
+390    277
+168    268
+Name: Y, Length: 89, dtype: int64
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Actual values vs predicted values&#39;)
+</pre></div>
+</div>
+<img alt="../../_images/ef53d8bee238a22d5b6f849c1a4a71af1ffcb8e0352f856315e5f2ff2724d59a.png" src="../../_images/ef53d8bee238a22d5b6f849c1a4a71af1ffcb8e0352f856315e5f2ff2724d59a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean absolute error : &quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prediction</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean squared error :&quot;</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">prediction</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean absolute error :  0.3300922548696817
+Mean squared error : 2228.090831059464
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Intercept and coefcient parameters</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">L_regressor</span><span class="o">.</span><span class="n">intercept_</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L_regressor</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+
+<span class="c1"># Map coeffients with features</span>
+
+<span class="n">coef_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">L_regressor</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Coeffcient&quot;</span><span class="p">])</span>
+<span class="n">coef_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-307.57104546505354
+------------------------
+[ 1.40608997e-01 -2.56128390e+01  5.08771783e+00  1.19293496e+00
+ -1.08819176e+00  8.03227722e-01  4.24108443e-02  4.53744471e+00
+  6.51304992e+01  3.71060693e-01]
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-9a234c46-87df-477b-8fd1-5280f5c94c80">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coeffcient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AGE</th>
+      <td>0.140609</td>
+    </tr>
+    <tr>
+      <th>SEX</th>
+      <td>-25.612839</td>
+    </tr>
+    <tr>
+      <th>BMI</th>
+      <td>5.087718</td>
+    </tr>
+    <tr>
+      <th>BP</th>
+      <td>1.192935</td>
+    </tr>
+    <tr>
+      <th>S1</th>
+      <td>-1.088192</td>
+    </tr>
+    <tr>
+      <th>S2</th>
+      <td>0.803228</td>
+    </tr>
+    <tr>
+      <th>S3</th>
+      <td>0.042411</td>
+    </tr>
+    <tr>
+      <th>S4</th>
+      <td>4.537445</td>
+    </tr>
+    <tr>
+      <th>S5</th>
+      <td>65.130499</td>
+    </tr>
+    <tr>
+      <th>S6</th>
+      <td>0.371061</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-9a234c46-87df-477b-8fd1-5280f5c94c80')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-9a234c46-87df-477b-8fd1-5280f5c94c80 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-9a234c46-87df-477b-8fd1-5280f5c94c80');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+</section>
+<section id="logistic-regression">
+<h2>Logistic Regression<a class="headerlink" href="#logistic-regression" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/Breast Cancer Data/Breast_cancer_data.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         id diagnosis  radius_mean  texture_mean  perimeter_mean  area_mean  \
+0    842302         M        17.99         10.38          122.80     1001.0   
+1    842517         M        20.57         17.77          132.90     1326.0   
+2  84300903         M        19.69         21.25          130.00     1203.0   
+3  84348301         M        11.42         20.38           77.58      386.1   
+4  84358402         M        20.29         14.34          135.10     1297.0   
+
+   smoothness_mean  compactness_mean  concavity_mean  concave points_mean  \
+0          0.11840           0.27760          0.3001              0.14710   
+1          0.08474           0.07864          0.0869              0.07017   
+2          0.10960           0.15990          0.1974              0.12790   
+3          0.14250           0.28390          0.2414              0.10520   
+4          0.10030           0.13280          0.1980              0.10430   
+
+   ...  texture_worst  perimeter_worst  area_worst  smoothness_worst  \
+0  ...          17.33           184.60      2019.0            0.1622   
+1  ...          23.41           158.80      1956.0            0.1238   
+2  ...          25.53           152.50      1709.0            0.1444   
+3  ...          26.50            98.87       567.7            0.2098   
+4  ...          16.67           152.20      1575.0            0.1374   
+
+   compactness_worst  concavity_worst  concave points_worst  symmetry_worst  \
+0             0.6656           0.7119                0.2654          0.4601   
+1             0.1866           0.2416                0.1860          0.2750   
+2             0.4245           0.4504                0.2430          0.3613   
+3             0.8663           0.6869                0.2575          0.6638   
+4             0.2050           0.4000                0.1625          0.2364   
+
+   fractal_dimension_worst  Unnamed: 32  
+0                  0.11890          NaN  
+1                  0.08902          NaN  
+2                  0.08758          NaN  
+3                  0.17300          NaN  
+4                  0.07678          NaN  
+
+[5 rows x 33 columns]
+------------------------------------------------------------------------------
+Index([&#39;id&#39;, &#39;diagnosis&#39;, &#39;radius_mean&#39;, &#39;texture_mean&#39;, &#39;perimeter_mean&#39;,
+       &#39;area_mean&#39;, &#39;smoothness_mean&#39;, &#39;compactness_mean&#39;, &#39;concavity_mean&#39;,
+       &#39;concave points_mean&#39;, &#39;symmetry_mean&#39;, &#39;fractal_dimension_mean&#39;,
+       &#39;radius_se&#39;, &#39;texture_se&#39;, &#39;perimeter_se&#39;, &#39;area_se&#39;, &#39;smoothness_se&#39;,
+       &#39;compactness_se&#39;, &#39;concavity_se&#39;, &#39;concave points_se&#39;, &#39;symmetry_se&#39;,
+       &#39;fractal_dimension_se&#39;, &#39;radius_worst&#39;, &#39;texture_worst&#39;,
+       &#39;perimeter_worst&#39;, &#39;area_worst&#39;, &#39;smoothness_worst&#39;,
+       &#39;compactness_worst&#39;, &#39;concavity_worst&#39;, &#39;concave points_worst&#39;,
+       &#39;symmetry_worst&#39;, &#39;fractal_dimension_worst&#39;, &#39;Unnamed: 32&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-f8ec1a0a-fa31-40db-91c2-b4f19269fa53">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+      <th>7</th>
+      <th>8</th>
+      <th>9</th>
+      <th>...</th>
+      <th>559</th>
+      <th>560</th>
+      <th>561</th>
+      <th>562</th>
+      <th>563</th>
+      <th>564</th>
+      <th>565</th>
+      <th>566</th>
+      <th>567</th>
+      <th>568</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>id</th>
+      <td>842302</td>
+      <td>842517</td>
+      <td>84300903</td>
+      <td>84348301</td>
+      <td>84358402</td>
+      <td>843786</td>
+      <td>844359</td>
+      <td>84458202</td>
+      <td>844981</td>
+      <td>84501001</td>
+      <td>...</td>
+      <td>925291</td>
+      <td>925292</td>
+      <td>925311</td>
+      <td>925622</td>
+      <td>926125</td>
+      <td>926424</td>
+      <td>926682</td>
+      <td>926954</td>
+      <td>927241</td>
+      <td>92751</td>
+    </tr>
+    <tr>
+      <th>diagnosis</th>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>B</td>
+      <td>B</td>
+      <td>B</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>radius_mean</th>
+      <td>17.99</td>
+      <td>20.57</td>
+      <td>19.69</td>
+      <td>11.42</td>
+      <td>20.29</td>
+      <td>12.45</td>
+      <td>18.25</td>
+      <td>13.71</td>
+      <td>13.0</td>
+      <td>12.46</td>
+      <td>...</td>
+      <td>11.51</td>
+      <td>14.05</td>
+      <td>11.2</td>
+      <td>15.22</td>
+      <td>20.92</td>
+      <td>21.56</td>
+      <td>20.13</td>
+      <td>16.6</td>
+      <td>20.6</td>
+      <td>7.76</td>
+    </tr>
+    <tr>
+      <th>texture_mean</th>
+      <td>10.38</td>
+      <td>17.77</td>
+      <td>21.25</td>
+      <td>20.38</td>
+      <td>14.34</td>
+      <td>15.7</td>
+      <td>19.98</td>
+      <td>20.83</td>
+      <td>21.82</td>
+      <td>24.04</td>
+      <td>...</td>
+      <td>23.93</td>
+      <td>27.15</td>
+      <td>29.37</td>
+      <td>30.62</td>
+      <td>25.09</td>
+      <td>22.39</td>
+      <td>28.25</td>
+      <td>28.08</td>
+      <td>29.33</td>
+      <td>24.54</td>
+    </tr>
+    <tr>
+      <th>perimeter_mean</th>
+      <td>122.8</td>
+      <td>132.9</td>
+      <td>130.0</td>
+      <td>77.58</td>
+      <td>135.1</td>
+      <td>82.57</td>
+      <td>119.6</td>
+      <td>90.2</td>
+      <td>87.5</td>
+      <td>83.97</td>
+      <td>...</td>
+      <td>74.52</td>
+      <td>91.38</td>
+      <td>70.67</td>
+      <td>103.4</td>
+      <td>143.0</td>
+      <td>142.0</td>
+      <td>131.2</td>
+      <td>108.3</td>
+      <td>140.1</td>
+      <td>47.92</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 569 columns</p>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f8ec1a0a-fa31-40db-91c2-b4f19269fa53')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-f8ec1a0a-fa31-40db-91c2-b4f19269fa53 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-f8ec1a0a-fa31-40db-91c2-b4f19269fa53');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can see dataset columns id and Unnamed:32 are not required , so we can drop those columns</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;Unnamed: 32&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-20-926d8a94ccd3&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># we can see dataset columns id and Unnamed:32 are not required , so we can drop those columns</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;id&quot;</span><span class="p">,</span> <span class="s2">&quot;Unnamed: 32&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>                 <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span> 
+<span class="g g-Whitespace">    </span><span class="mi">313</span>         <span class="k">return</span> <span class="n">wrapper</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/pandas/core/frame.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4911</span>             <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4912</span>             <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">,</span>
+<span class="ne">-&gt; </span><span class="mi">4913</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">4914</span>         <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4915</span> 
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/pandas/core/generic.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, axis, index, columns, level, inplace, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4148</span>         <span class="k">for</span> <span class="n">axis</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">axes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">4149</span>             <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">4150</span>                 <span class="n">obj</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">_drop_axis</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4151</span> 
+<span class="g g-Whitespace">   </span><span class="mi">4152</span>         <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/pandas/core/generic.py</span> in <span class="ni">_drop_axis</span><span class="nt">(self, labels, axis, level, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4183</span>                 <span class="n">new_axis</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4184</span>             <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">4185</span>                 <span class="n">new_axis</span> <span class="o">=</span> <span class="n">axis</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">4186</span>             <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="o">**</span><span class="p">{</span><span class="n">axis_name</span><span class="p">:</span> <span class="n">new_axis</span><span class="p">})</span>
+<span class="g g-Whitespace">   </span><span class="mi">4187</span> 
+
+<span class="nn">/usr/local/lib/python3.7/dist-packages/pandas/core/indexes/base.py</span> in <span class="ni">drop</span><span class="nt">(self, labels, errors)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6015</span>         <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">6016</span>             <span class="k">if</span> <span class="n">errors</span> <span class="o">!=</span> <span class="s2">&quot;ignore&quot;</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">6017</span>                 <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">labels</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="si">}</span><span class="s2"> not found in axis&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6018</span>             <span class="n">indexer</span> <span class="o">=</span> <span class="n">indexer</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">6019</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &quot;[&#39;id&#39; &#39;Unnamed: 32&#39;] not found in axis&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;----------------------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                         count        mean         std         min  \
+radius_mean              569.0   14.127292    3.524049    6.981000   
+texture_mean             569.0   19.289649    4.301036    9.710000   
+perimeter_mean           569.0   91.969033   24.298981   43.790000   
+area_mean                569.0  654.889104  351.914129  143.500000   
+smoothness_mean          569.0    0.096360    0.014064    0.052630   
+compactness_mean         569.0    0.104341    0.052813    0.019380   
+concavity_mean           569.0    0.088799    0.079720    0.000000   
+concave points_mean      569.0    0.048919    0.038803    0.000000   
+symmetry_mean            569.0    0.181162    0.027414    0.106000   
+fractal_dimension_mean   569.0    0.062798    0.007060    0.049960   
+radius_se                569.0    0.405172    0.277313    0.111500   
+texture_se               569.0    1.216853    0.551648    0.360200   
+perimeter_se             569.0    2.866059    2.021855    0.757000   
+area_se                  569.0   40.337079   45.491006    6.802000   
+smoothness_se            569.0    0.007041    0.003003    0.001713   
+compactness_se           569.0    0.025478    0.017908    0.002252   
+concavity_se             569.0    0.031894    0.030186    0.000000   
+concave points_se        569.0    0.011796    0.006170    0.000000   
+symmetry_se              569.0    0.020542    0.008266    0.007882   
+fractal_dimension_se     569.0    0.003795    0.002646    0.000895   
+radius_worst             569.0   16.269190    4.833242    7.930000   
+texture_worst            569.0   25.677223    6.146258   12.020000   
+perimeter_worst          569.0  107.261213   33.602542   50.410000   
+area_worst               569.0  880.583128  569.356993  185.200000   
+smoothness_worst         569.0    0.132369    0.022832    0.071170   
+compactness_worst        569.0    0.254265    0.157336    0.027290   
+concavity_worst          569.0    0.272188    0.208624    0.000000   
+concave points_worst     569.0    0.114606    0.065732    0.000000   
+symmetry_worst           569.0    0.290076    0.061867    0.156500   
+fractal_dimension_worst  569.0    0.083946    0.018061    0.055040   
+
+                                25%         50%          75%         max  
+radius_mean               11.700000   13.370000    15.780000    28.11000  
+texture_mean              16.170000   18.840000    21.800000    39.28000  
+perimeter_mean            75.170000   86.240000   104.100000   188.50000  
+area_mean                420.300000  551.100000   782.700000  2501.00000  
+smoothness_mean            0.086370    0.095870     0.105300     0.16340  
+compactness_mean           0.064920    0.092630     0.130400     0.34540  
+concavity_mean             0.029560    0.061540     0.130700     0.42680  
+concave points_mean        0.020310    0.033500     0.074000     0.20120  
+symmetry_mean              0.161900    0.179200     0.195700     0.30400  
+fractal_dimension_mean     0.057700    0.061540     0.066120     0.09744  
+radius_se                  0.232400    0.324200     0.478900     2.87300  
+texture_se                 0.833900    1.108000     1.474000     4.88500  
+perimeter_se               1.606000    2.287000     3.357000    21.98000  
+area_se                   17.850000   24.530000    45.190000   542.20000  
+smoothness_se              0.005169    0.006380     0.008146     0.03113  
+compactness_se             0.013080    0.020450     0.032450     0.13540  
+concavity_se               0.015090    0.025890     0.042050     0.39600  
+concave points_se          0.007638    0.010930     0.014710     0.05279  
+symmetry_se                0.015160    0.018730     0.023480     0.07895  
+fractal_dimension_se       0.002248    0.003187     0.004558     0.02984  
+radius_worst              13.010000   14.970000    18.790000    36.04000  
+texture_worst             21.080000   25.410000    29.720000    49.54000  
+perimeter_worst           84.110000   97.660000   125.400000   251.20000  
+area_worst               515.300000  686.500000  1084.000000  4254.00000  
+smoothness_worst           0.116600    0.131300     0.146000     0.22260  
+compactness_worst          0.147200    0.211900     0.339100     1.05800  
+concavity_worst            0.114500    0.226700     0.382900     1.25200  
+concave points_worst       0.064930    0.099930     0.161400     0.29100  
+symmetry_worst             0.250400    0.282200     0.317900     0.66380  
+fractal_dimension_worst    0.071460    0.080040     0.092080     0.20750  
+----------------------------------------------------------------------------------------------
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 569 entries, 0 to 568
+Data columns (total 31 columns):
+ #   Column                   Non-Null Count  Dtype  
+---  ------                   --------------  -----  
+ 0   diagnosis                569 non-null    object 
+ 1   radius_mean              569 non-null    float64
+ 2   texture_mean             569 non-null    float64
+ 3   perimeter_mean           569 non-null    float64
+ 4   area_mean                569 non-null    float64
+ 5   smoothness_mean          569 non-null    float64
+ 6   compactness_mean         569 non-null    float64
+ 7   concavity_mean           569 non-null    float64
+ 8   concave points_mean      569 non-null    float64
+ 9   symmetry_mean            569 non-null    float64
+ 10  fractal_dimension_mean   569 non-null    float64
+ 11  radius_se                569 non-null    float64
+ 12  texture_se               569 non-null    float64
+ 13  perimeter_se             569 non-null    float64
+ 14  area_se                  569 non-null    float64
+ 15  smoothness_se            569 non-null    float64
+ 16  compactness_se           569 non-null    float64
+ 17  concavity_se             569 non-null    float64
+ 18  concave points_se        569 non-null    float64
+ 19  symmetry_se              569 non-null    float64
+ 20  fractal_dimension_se     569 non-null    float64
+ 21  radius_worst             569 non-null    float64
+ 22  texture_worst            569 non-null    float64
+ 23  perimeter_worst          569 non-null    float64
+ 24  area_worst               569 non-null    float64
+ 25  smoothness_worst         569 non-null    float64
+ 26  compactness_worst        569 non-null    float64
+ 27  concavity_worst          569 non-null    float64
+ 28  concave points_worst     569 non-null    float64
+ 29  symmetry_worst           569 non-null    float64
+ 30  fractal_dimension_worst  569 non-null    float64
+dtypes: float64(30), object(1)
+memory usage: 137.9+ KB
+None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">diagnosis</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>B    357
+M    212
+Name: diagnosis, dtype: int64
+0      M
+1      M
+2      M
+3      M
+4      M
+      ..
+564    M
+565    M
+566    M
+567    M
+568    B
+Name: diagnosis, Length: 569, dtype: object
+  diagnosis  radius_mean  texture_mean  perimeter_mean  area_mean  \
+0         M        17.99         10.38           122.8     1001.0   
+1         M        20.57         17.77           132.9     1326.0   
+
+   smoothness_mean  compactness_mean  concavity_mean  concave points_mean  \
+0          0.11840           0.27760          0.3001              0.14710   
+1          0.08474           0.07864          0.0869              0.07017   
+
+   symmetry_mean  ...  radius_worst  texture_worst  perimeter_worst  \
+0         0.2419  ...         25.38          17.33            184.6   
+1         0.1812  ...         24.99          23.41            158.8   
+
+   area_worst  smoothness_worst  compactness_worst  concavity_worst  \
+0      2019.0            0.1622             0.6656           0.7119   
+1      1956.0            0.1238             0.1866           0.2416   
+
+   concave points_worst  symmetry_worst  fractal_dimension_worst  
+0                0.2654          0.4601                  0.11890  
+1                0.1860          0.2750                  0.08902  
+
+[2 rows x 31 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     radius_mean  texture_mean  perimeter_mean  area_mean  smoothness_mean  \
+0          17.99         10.38          122.80     1001.0          0.11840   
+1          20.57         17.77          132.90     1326.0          0.08474   
+2          19.69         21.25          130.00     1203.0          0.10960   
+3          11.42         20.38           77.58      386.1          0.14250   
+4          20.29         14.34          135.10     1297.0          0.10030   
+..           ...           ...             ...        ...              ...   
+564        21.56         22.39          142.00     1479.0          0.11100   
+565        20.13         28.25          131.20     1261.0          0.09780   
+566        16.60         28.08          108.30      858.1          0.08455   
+567        20.60         29.33          140.10     1265.0          0.11780   
+568         7.76         24.54           47.92      181.0          0.05263   
+
+     compactness_mean  concavity_mean  concave points_mean  symmetry_mean  \
+0             0.27760         0.30010              0.14710         0.2419   
+1             0.07864         0.08690              0.07017         0.1812   
+2             0.15990         0.19740              0.12790         0.2069   
+3             0.28390         0.24140              0.10520         0.2597   
+4             0.13280         0.19800              0.10430         0.1809   
+..                ...             ...                  ...            ...   
+564           0.11590         0.24390              0.13890         0.1726   
+565           0.10340         0.14400              0.09791         0.1752   
+566           0.10230         0.09251              0.05302         0.1590   
+567           0.27700         0.35140              0.15200         0.2397   
+568           0.04362         0.00000              0.00000         0.1587   
+
+     fractal_dimension_mean  ...  radius_worst  texture_worst  \
+0                   0.07871  ...        25.380          17.33   
+1                   0.05667  ...        24.990          23.41   
+2                   0.05999  ...        23.570          25.53   
+3                   0.09744  ...        14.910          26.50   
+4                   0.05883  ...        22.540          16.67   
+..                      ...  ...           ...            ...   
+564                 0.05623  ...        25.450          26.40   
+565                 0.05533  ...        23.690          38.25   
+566                 0.05648  ...        18.980          34.12   
+567                 0.07016  ...        25.740          39.42   
+568                 0.05884  ...         9.456          30.37   
+
+     perimeter_worst  area_worst  smoothness_worst  compactness_worst  \
+0             184.60      2019.0           0.16220            0.66560   
+1             158.80      1956.0           0.12380            0.18660   
+2             152.50      1709.0           0.14440            0.42450   
+3              98.87       567.7           0.20980            0.86630   
+4             152.20      1575.0           0.13740            0.20500   
+..               ...         ...               ...                ...   
+564           166.10      2027.0           0.14100            0.21130   
+565           155.00      1731.0           0.11660            0.19220   
+566           126.70      1124.0           0.11390            0.30940   
+567           184.60      1821.0           0.16500            0.86810   
+568            59.16       268.6           0.08996            0.06444   
+
+     concavity_worst  concave points_worst  symmetry_worst  \
+0             0.7119                0.2654          0.4601   
+1             0.2416                0.1860          0.2750   
+2             0.4504                0.2430          0.3613   
+3             0.6869                0.2575          0.6638   
+4             0.4000                0.1625          0.2364   
+..               ...                   ...             ...   
+564           0.4107                0.2216          0.2060   
+565           0.3215                0.1628          0.2572   
+566           0.3403                0.1418          0.2218   
+567           0.9387                0.2650          0.4087   
+568           0.0000                0.0000          0.2871   
+
+     fractal_dimension_worst  
+0                    0.11890  
+1                    0.08902  
+2                    0.08758  
+3                    0.17300  
+4                    0.07678  
+..                       ...  
+564                  0.07115  
+565                  0.06637  
+566                  0.07820  
+567                  0.12400  
+568                  0.07039  
+
+[569 rows x 30 columns]
+0      M
+1      M
+2      M
+3      M
+4      M
+      ..
+564    M
+565    M
+566    M
+567    M
+568    B
+Name: diagnosis, Length: 569, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_norm</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_norm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1.09706398 -2.07333501  1.26993369 ...  2.29607613  2.75062224
+   1.93701461]
+ [ 1.82982061 -0.35363241  1.68595471 ...  1.0870843  -0.24388967
+   0.28118999]
+ [ 1.57988811  0.45618695  1.56650313 ...  1.95500035  1.152255
+   0.20139121]
+ ...
+ [ 0.70228425  2.0455738   0.67267578 ...  0.41406869 -1.10454895
+  -0.31840916]
+ [ 1.83834103  2.33645719  1.98252415 ...  2.28998549  1.91908301
+   2.21963528]
+ [-1.80840125  1.22179204 -1.81438851 ... -1.74506282 -0.04813821
+  -0.75120669]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># split normalized data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_norm</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">101</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># initialize the classifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="n">Log_classifier</span> <span class="o">=</span>  <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">Log_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1">#----</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">Log_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># compare y_pred vs actual y_test</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-----------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39;
+ &#39;M&#39; &#39;M&#39; &#39;M&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39;
+ &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;B&#39; &#39;M&#39; &#39;M&#39;
+ &#39;B&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39; &#39;M&#39; &#39;M&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39;
+ &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;B&#39; &#39;M&#39;]
+-----------------------------------------------------------------
+107    B
+437    B
+195    B
+141    M
+319    B
+      ..
+19     B
+313    B
+139    B
+495    B
+317    M
+Name: diagnosis, Length: 114, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model evaluation</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;classification report </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[72  0]
+ [ 1 41]]
+---------------------------------------------------------------------------
+classification report 
+               precision    recall  f1-score   support
+
+           B       0.99      1.00      0.99        72
+           M       1.00      0.98      0.99        42
+
+    accuracy                           0.99       114
+   macro avg       0.99      0.99      0.99       114
+weighted avg       0.99      0.99      0.99       114
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Getting informative features by getting coeffcients</span>
+
+<span class="n">coeff_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">Log_classifier</span><span class="o">.</span><span class="n">coef_</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+<span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Coefficient&#39;</span><span class="p">])</span>
+<span class="n">coeff_df</span> <span class="o">=</span><span class="n">coeff_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Coefficient&#39;</span><span class="p">],</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">coeff_df</span>
+
+<span class="c1">#  the features “radius_se” and “texture_worst” have a major contribution to determining the malignancy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+  <div id="df-9cc5906c-d6f6-4d22-bad1-4498a042c0a7">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Coefficient</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>radius_se</th>
+      <td>1.379673</td>
+    </tr>
+    <tr>
+      <th>texture_worst</th>
+      <td>1.169080</td>
+    </tr>
+    <tr>
+      <th>concave points_mean</th>
+      <td>1.156939</td>
+    </tr>
+    <tr>
+      <th>area_se</th>
+      <td>0.984579</td>
+    </tr>
+    <tr>
+      <th>concave points_worst</th>
+      <td>0.933089</td>
+    </tr>
+    <tr>
+      <th>radius_worst</th>
+      <td>0.903471</td>
+    </tr>
+    <tr>
+      <th>smoothness_worst</th>
+      <td>0.872462</td>
+    </tr>
+    <tr>
+      <th>area_worst</th>
+      <td>0.846826</td>
+    </tr>
+    <tr>
+      <th>concavity_mean</th>
+      <td>0.807876</td>
+    </tr>
+    <tr>
+      <th>concavity_worst</th>
+      <td>0.802358</td>
+    </tr>
+    <tr>
+      <th>perimeter_se</th>
+      <td>0.637758</td>
+    </tr>
+    <tr>
+      <th>fractal_dimension_worst</th>
+      <td>0.618413</td>
+    </tr>
+    <tr>
+      <th>perimeter_worst</th>
+      <td>0.568124</td>
+    </tr>
+    <tr>
+      <th>symmetry_worst</th>
+      <td>0.562905</td>
+    </tr>
+    <tr>
+      <th>texture_mean</th>
+      <td>0.387553</td>
+    </tr>
+    <tr>
+      <th>area_mean</th>
+      <td>0.314432</td>
+    </tr>
+    <tr>
+      <th>concave points_se</th>
+      <td>0.267092</td>
+    </tr>
+    <tr>
+      <th>radius_mean</th>
+      <td>0.266278</td>
+    </tr>
+    <tr>
+      <th>perimeter_mean</th>
+      <td>0.232904</td>
+    </tr>
+    <tr>
+      <th>compactness_worst</th>
+      <td>0.052849</td>
+    </tr>
+    <tr>
+      <th>symmetry_mean</th>
+      <td>0.042495</td>
+    </tr>
+    <tr>
+      <th>smoothness_mean</th>
+      <td>-0.036783</td>
+    </tr>
+    <tr>
+      <th>symmetry_se</th>
+      <td>-0.042753</td>
+    </tr>
+    <tr>
+      <th>smoothness_se</th>
+      <td>-0.135624</td>
+    </tr>
+    <tr>
+      <th>texture_se</th>
+      <td>-0.153152</td>
+    </tr>
+    <tr>
+      <th>concavity_se</th>
+      <td>-0.224247</td>
+    </tr>
+    <tr>
+      <th>fractal_dimension_mean</th>
+      <td>-0.378132</td>
+    </tr>
+    <tr>
+      <th>compactness_mean</th>
+      <td>-0.590002</td>
+    </tr>
+    <tr>
+      <th>fractal_dimension_se</th>
+      <td>-0.697663</td>
+    </tr>
+    <tr>
+      <th>compactness_se</th>
+      <td>-0.780794</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-9cc5906c-d6f6-4d22-bad1-4498a042c0a7')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-9cc5906c-d6f6-4d22-bad1-4498a042c0a7 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-9cc5906c-d6f6-4d22-bad1-4498a042c0a7');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;radius_se&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;diagnosis&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;texture_worst&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;diagnosis&#39;</span><span class="p">,</span>
+<span class="n">data</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/7b0deb8d25875f2328051c1eed08567d14d813fb4383aefa95993bc54cb33333.png" src="../../_images/7b0deb8d25875f2328051c1eed08567d14d813fb4383aefa95993bc54cb33333.png" />
+</div>
+</div>
+</section>
+<section id="decision-trees-and-random-forest">
+<h2>Decision Trees and Random Forest<a class="headerlink" href="#decision-trees-and-random-forest" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Decision tree is based on whole dataset,</span>
+<span class="c1"># Where as Random FOrest incidently selects features to create different decsion trees</span>
+
+<span class="c1">#--- Tree Pruning --- constructing too many decision trees leads to overfitting , so for real world data we have to restrict decison tree by keeping little impurities tolerable is called tree pruining</span>
+
+<span class="c1"># Random forest trains multiple decision trees on sample data set and samples are selected randomly with replacements (Bootstrap sampling)</span>
+<span class="c1"># Random forest model ~= Ensemble Methods</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/Breast Cancer Data/Breast_cancer_data.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------------------------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         id diagnosis  radius_mean  texture_mean  perimeter_mean  area_mean  \
+0    842302         M        17.99         10.38          122.80     1001.0   
+1    842517         M        20.57         17.77          132.90     1326.0   
+2  84300903         M        19.69         21.25          130.00     1203.0   
+3  84348301         M        11.42         20.38           77.58      386.1   
+4  84358402         M        20.29         14.34          135.10     1297.0   
+
+   smoothness_mean  compactness_mean  concavity_mean  concave points_mean  \
+0          0.11840           0.27760          0.3001              0.14710   
+1          0.08474           0.07864          0.0869              0.07017   
+2          0.10960           0.15990          0.1974              0.12790   
+3          0.14250           0.28390          0.2414              0.10520   
+4          0.10030           0.13280          0.1980              0.10430   
+
+   ...  texture_worst  perimeter_worst  area_worst  smoothness_worst  \
+0  ...          17.33           184.60      2019.0            0.1622   
+1  ...          23.41           158.80      1956.0            0.1238   
+2  ...          25.53           152.50      1709.0            0.1444   
+3  ...          26.50            98.87       567.7            0.2098   
+4  ...          16.67           152.20      1575.0            0.1374   
+
+   compactness_worst  concavity_worst  concave points_worst  symmetry_worst  \
+0             0.6656           0.7119                0.2654          0.4601   
+1             0.1866           0.2416                0.1860          0.2750   
+2             0.4245           0.4504                0.2430          0.3613   
+3             0.8663           0.6869                0.2575          0.6638   
+4             0.2050           0.4000                0.1625          0.2364   
+
+   fractal_dimension_worst  Unnamed: 32  
+0                  0.11890          NaN  
+1                  0.08902          NaN  
+2                  0.08758          NaN  
+3                  0.17300          NaN  
+4                  0.07678          NaN  
+
+[5 rows x 33 columns]
+------------------------------------------------------------------------------
+Index([&#39;id&#39;, &#39;diagnosis&#39;, &#39;radius_mean&#39;, &#39;texture_mean&#39;, &#39;perimeter_mean&#39;,
+       &#39;area_mean&#39;, &#39;smoothness_mean&#39;, &#39;compactness_mean&#39;, &#39;concavity_mean&#39;,
+       &#39;concave points_mean&#39;, &#39;symmetry_mean&#39;, &#39;fractal_dimension_mean&#39;,
+       &#39;radius_se&#39;, &#39;texture_se&#39;, &#39;perimeter_se&#39;, &#39;area_se&#39;, &#39;smoothness_se&#39;,
+       &#39;compactness_se&#39;, &#39;concavity_se&#39;, &#39;concave points_se&#39;, &#39;symmetry_se&#39;,
+       &#39;fractal_dimension_se&#39;, &#39;radius_worst&#39;, &#39;texture_worst&#39;,
+       &#39;perimeter_worst&#39;, &#39;area_worst&#39;, &#39;smoothness_worst&#39;,
+       &#39;compactness_worst&#39;, &#39;concavity_worst&#39;, &#39;concave points_worst&#39;,
+       &#39;symmetry_worst&#39;, &#39;fractal_dimension_worst&#39;, &#39;Unnamed: 32&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># dataset = dataset.drop([&quot;id&quot;, &#39;Unnamed: 32&#39;], axis=1)</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;diagnosis&#39;, &#39;radius_mean&#39;, &#39;texture_mean&#39;, &#39;perimeter_mean&#39;,
+       &#39;area_mean&#39;, &#39;smoothness_mean&#39;, &#39;compactness_mean&#39;, &#39;concavity_mean&#39;,
+       &#39;concave points_mean&#39;, &#39;symmetry_mean&#39;, &#39;fractal_dimension_mean&#39;,
+       &#39;radius_se&#39;, &#39;texture_se&#39;, &#39;perimeter_se&#39;, &#39;area_se&#39;, &#39;smoothness_se&#39;,
+       &#39;compactness_se&#39;, &#39;concavity_se&#39;, &#39;concave points_se&#39;, &#39;symmetry_se&#39;,
+       &#39;fractal_dimension_se&#39;, &#39;radius_worst&#39;, &#39;texture_worst&#39;,
+       &#39;perimeter_worst&#39;, &#39;area_worst&#39;, &#39;smoothness_worst&#39;,
+       &#39;compactness_worst&#39;, &#39;concavity_worst&#39;, &#39;concave points_worst&#39;,
+       &#39;symmetry_worst&#39;, &#39;fractal_dimension_worst&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#--- Train test split</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">:]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;:=========================:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Decision tree call and train on data</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">()</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DecisionTreeClassifier()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># prediction and evaluation</span>
+
+<span class="n">preds</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># Evaluation</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">preds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           B       0.94      0.88      0.91       105
+           M       0.82      0.91      0.86        66
+
+    accuracy                           0.89       171
+   macro avg       0.88      0.89      0.88       171
+weighted avg       0.89      0.89      0.89       171
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># random forest from ensemble methods</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="n">rfc_classifier</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+
+<span class="n">rfc_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="n">rfc_pred</span> <span class="o">=</span> <span class="n">rfc_classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rfc_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           B       0.99      0.96      0.98       105
+           M       0.94      0.98      0.96        66
+
+    accuracy                           0.97       171
+   macro avg       0.97      0.97      0.97       171
+weighted avg       0.97      0.97      0.97       171
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Cross validation and prediction</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">cross_validator</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">scoring</span> <span class="o">=</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span><span class="n">return_estimator</span> <span class="o">=</span> <span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cross_validator</span><span class="p">[</span><span class="s1">&#39;test_score&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.93859649 0.94736842 0.99122807 0.97368421 0.98230088]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># so highest value from above is best model .</span>
+<span class="c1"># here best model is 0.00122807</span>
+
+<span class="n">best_model</span> <span class="o">=</span> <span class="n">cross_validator</span><span class="p">[</span><span class="s2">&quot;estimator&quot;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">best_model</span>
+
+<span class="n">rfc_best_pred</span> <span class="o">=</span> <span class="n">best_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">rfc_best_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           B       1.00      0.99      1.00       105
+           M       0.99      1.00      0.99        66
+
+    accuracy                           0.99       171
+   macro avg       0.99      1.00      0.99       171
+weighted avg       0.99      0.99      0.99       171
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="support-vector-machines-svms">
+<h2>Support vector Machines (SVMs)<a class="headerlink" href="#support-vector-machines-svms" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Support vector machines are linear classifier , they make linear decision boundaries</span>
+<span class="c1"># SVMs goal is to find the Hyperplane or decision boundaries , which best fit and seperates n dimensional into classes .</span>
+<span class="c1"># if suppose one dimensional data is not having linear seperable (as of real world data), then we use kernel trick to ass another feature (dimension) there by separating points or data</span>
+<span class="c1"># Radiab basis function (RBF ) is an example</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#--- Wheat seed Dataset</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;/content/drive/MyDrive/Wheat_seed_dataset/wheat_seeds.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 199 entries, 0 to 198
+Data columns (total 8 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   Area             199 non-null    float64
+ 1   Perimeter        199 non-null    float64
+ 2   Compactness      199 non-null    float64
+ 3   Kernel.Length    199 non-null    float64
+ 4   Kernel.Width     199 non-null    float64
+ 5   Asymmetry.Coeff  199 non-null    float64
+ 6   Kernel.Groove    199 non-null    float64
+ 7   Type             199 non-null    int64  
+dtypes: float64(7), int64(1)
+memory usage: 12.6 KB
+None
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-a0df9f85-cc21-42c0-8775-01d01abe83de">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Area</th>
+      <th>Perimeter</th>
+      <th>Compactness</th>
+      <th>Kernel.Length</th>
+      <th>Kernel.Width</th>
+      <th>Asymmetry.Coeff</th>
+      <th>Kernel.Groove</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>15.26</td>
+      <td>14.84</td>
+      <td>0.8710</td>
+      <td>5.763</td>
+      <td>3.312</td>
+      <td>2.221</td>
+      <td>5.220</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>14.88</td>
+      <td>14.57</td>
+      <td>0.8811</td>
+      <td>5.554</td>
+      <td>3.333</td>
+      <td>1.018</td>
+      <td>4.956</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>14.29</td>
+      <td>14.09</td>
+      <td>0.9050</td>
+      <td>5.291</td>
+      <td>3.337</td>
+      <td>2.699</td>
+      <td>4.825</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>13.84</td>
+      <td>13.94</td>
+      <td>0.8955</td>
+      <td>5.324</td>
+      <td>3.379</td>
+      <td>2.259</td>
+      <td>4.805</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>16.14</td>
+      <td>14.99</td>
+      <td>0.9034</td>
+      <td>5.658</td>
+      <td>3.562</td>
+      <td>1.355</td>
+      <td>5.175</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-a0df9f85-cc21-42c0-8775-01d01abe83de')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+        
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+      
+  <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-a0df9f85-cc21-42c0-8775-01d01abe83de button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-a0df9f85-cc21-42c0-8775-01d01abe83de');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+  </div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;Type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2    68
+1    66
+3    65
+Name: Type, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Area               0
+Perimeter          0
+Compactness        0
+Kernel.Length      0
+Kernel.Width       0
+Asymmetry.Coeff    0
+Kernel.Groove      0
+Type               0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split data Train Test split</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">y</span><span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span>  <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      Area  Perimeter  Compactness  Kernel.Length  Kernel.Width  \
+0    15.26      14.84       0.8710          5.763         3.312   
+1    14.88      14.57       0.8811          5.554         3.333   
+2    14.29      14.09       0.9050          5.291         3.337   
+3    13.84      13.94       0.8955          5.324         3.379   
+4    16.14      14.99       0.9034          5.658         3.562   
+..     ...        ...          ...            ...           ...   
+194  12.19      13.20       0.8783          5.137         2.981   
+195  11.23      12.88       0.8511          5.140         2.795   
+196  13.20      13.66       0.8883          5.236         3.232   
+197  11.84      13.21       0.8521          5.175         2.836   
+198  12.30      13.34       0.8684          5.243         2.974   
+
+     Asymmetry.Coeff  Kernel.Groove  
+0              2.221          5.220  
+1              1.018          4.956  
+2              2.699          4.825  
+3              2.259          4.805  
+4              1.355          5.175  
+..               ...            ...  
+194            3.631          4.870  
+195            4.325          5.003  
+196            8.315          5.056  
+197            3.598          5.044  
+198            5.637          5.063  
+
+[199 rows x 7 columns]
+0      1
+1      1
+2      1
+3      1
+4      1
+      ..
+194    3
+195    3
+196    3
+197    3
+198    3
+Name: Type, Length: 199, dtype: int64
+      Area  Perimeter  Compactness  Kernel.Length  Kernel.Width  \
+24   16.19      15.16       0.8849          5.833         3.421   
+43   13.80      14.04       0.8794          5.376         3.155   
+101  18.83      16.29       0.8917          6.037         3.786   
+142  12.70      13.71       0.8491          5.386         2.911   
+21   15.88      14.90       0.8988          5.618         3.507   
+..     ...        ...          ...            ...           ...   
+113  18.89      16.23       0.9008          6.227         3.769   
+64   14.01      14.29       0.8625          5.609         3.158   
+15   13.99      13.83       0.9183          5.119         3.383   
+125  18.30      15.89       0.9108          5.979         3.755   
+9    15.26      14.85       0.8696          5.714         3.242   
+
+     Asymmetry.Coeff  Kernel.Groove  
+24            0.9030          5.307  
+43            1.5600          4.961  
+101           2.5530          5.879  
+142           3.2600          5.316  
+21            0.7651          5.091  
+..               ...            ...  
+113           3.6390          5.966  
+64            2.2170          5.132  
+15            5.2340          4.781  
+125           2.8370          5.962  
+9             4.5430          5.314  
+
+[149 rows x 7 columns]
+      Area  Perimeter  Compactness  Kernel.Length  Kernel.Width  \
+59   12.36      13.19       0.8923          5.076         3.042   
+5    14.38      14.21       0.8951          5.386         3.312   
+20   14.11      14.26       0.8722          5.520         3.168   
+124  17.55      15.66       0.8991          5.791         3.690   
+52   14.52      14.60       0.8557          5.741         3.113   
+19   14.16      14.40       0.8584          5.658         3.129   
+161  12.15      13.45       0.8443          5.417         2.837   
+55   14.92      14.43       0.9006          5.384         3.412   
+69   19.11      16.26       0.9081          6.154         3.930   
+2    14.29      14.09       0.9050          5.291         3.337   
+98   19.46      16.50       0.8985          6.113         3.892   
+10   14.03      14.16       0.8796          5.438         3.201   
+75   17.12      15.55       0.8892          5.850         3.566   
+134  13.07      13.92       0.8480          5.472         2.994   
+193  12.37      13.47       0.8567          5.204         2.960   
+63   14.34      14.37       0.8726          5.630         3.190   
+110  19.06      16.45       0.8854          6.416         3.719   
+78   20.20      16.89       0.8894          6.285         3.864   
+178  10.91      12.80       0.8372          5.088         2.675   
+114  20.03      16.90       0.8811          6.493         3.857   
+149  11.19      13.05       0.8253          5.250         2.675   
+129  15.56      14.89       0.8823          5.776         3.408   
+61   12.78      13.57       0.8716          5.262         3.026   
+87   18.76      16.20       0.8984          6.172         3.796   
+102  17.63      15.86       0.8800          6.033         3.573   
+120  18.75      16.18       0.8999          6.111         3.869   
+168  10.74      12.73       0.8329          5.145         2.642   
+1    14.88      14.57       0.8811          5.554         3.333   
+47   14.86      14.67       0.8676          5.678         3.258   
+171  11.41      12.95       0.8560          5.090         2.775   
+185  12.11      13.27       0.8639          5.236         2.975   
+39   13.50      13.85       0.8852          5.351         3.158   
+76   16.53      15.34       0.8823          5.875         3.467   
+91   16.87      15.65       0.8648          6.139         3.463   
+35   17.08      15.38       0.9079          5.832         3.683   
+121  18.65      16.41       0.8698          6.285         3.594   
+169  11.48      13.05       0.8473          5.180         2.758   
+162  11.35      13.12       0.8291          5.176         2.668   
+46   14.79      14.52       0.8819          5.545         3.291   
+173  12.19      13.36       0.8579          5.240         2.909   
+189  12.62      13.67       0.8481          5.410         2.911   
+7    16.63      15.46       0.8747          6.053         3.465   
+26   12.74      13.67       0.8564          5.395         2.956   
+148  11.36      13.05       0.8382          5.175         2.755   
+58   11.23      12.63       0.8840          4.902         2.879   
+72   17.32      15.91       0.8599          6.064         3.403   
+103  19.94      16.92       0.8752          6.675         3.763   
+198  12.30      13.34       0.8684          5.243         2.974   
+56   15.38      14.77       0.8857          5.662         3.419   
+184  10.82      12.83       0.8256          5.180         2.630   
+
+     Asymmetry.Coeff  Kernel.Groove  
+59             3.220          4.605  
+5              2.462          4.956  
+20             2.688          5.219  
+124            5.366          5.661  
+52             1.481          5.487  
+19             3.072          5.176  
+161            3.638          5.338  
+55             1.142          5.088  
+69             2.936          6.079  
+2              2.699          4.825  
+98             4.308          6.009  
+10             1.717          5.001  
+75             2.858          5.746  
+134            5.304          5.395  
+193            3.919          5.001  
+63             1.313          5.150  
+110            2.248          6.163  
+78             5.173          6.187  
+178            4.179          4.956  
+114            3.063          6.320  
+149            5.813          5.219  
+129            4.972          5.847  
+61             1.176          4.782  
+87             3.120          6.053  
+102            3.747          5.929  
+120            4.188          5.992  
+168            4.702          4.963  
+1              1.018          4.956  
+47             2.129          5.351  
+171            4.957          4.825  
+185            4.132          5.012  
+39             2.249          5.176  
+76             5.532          5.880  
+91             3.696          5.967  
+35             2.956          5.484  
+121            4.391          6.102  
+169            5.876          5.002  
+162            4.337          5.132  
+46             2.704          5.111  
+173            4.857          5.158  
+189            3.306          5.231  
+7              2.040          5.877  
+26             2.504          4.869  
+148            4.048          5.263  
+58             2.269          4.703  
+72             3.824          5.922  
+103            3.252          6.550  
+198            5.637          5.063  
+56             1.999          5.222  
+184            4.853          5.089  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Training SVM classifier and Tuning hyperparameters using GridsearchCV</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+
+<span class="c1">#--- define parameters set using dictionary</span>
+
+<span class="n">param</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;C&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span> <span class="p">,</span> <span class="s2">&quot;gamma&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="s2">&quot;kernel&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;rbf&quot;</span><span class="p">]}</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="o">=</span> <span class="n">param</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># best grid search param</span>
+
+<span class="n">best_param</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">best_param</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;C&#39;: 100, &#39;gamma&#39;: 0.1, &#39;kernel&#39;: &#39;rbf&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grid_prediction</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">grid_prediction</span>
+
+
+<span class="c1"># report</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">grid_prediction</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===============================&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">grid_prediction</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[18  1  0]
+ [ 0 16  0]
+ [ 0  0 15]]
+===============================
+              precision    recall  f1-score   support
+
+           1       1.00      0.95      0.97        19
+           2       0.94      1.00      0.97        16
+           3       1.00      1.00      1.00        15
+
+    accuracy                           0.98        50
+   macro avg       0.98      0.98      0.98        50
+weighted avg       0.98      0.98      0.98        50
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="neural-network-and-deep-learning">
+<h2>Neural Network and Deep learning<a class="headerlink" href="#neural-network-and-deep-learning" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./part4\chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter1/python-concepts.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Python - Concept</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../chapter3/Practical-Machine-Learning-Project.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Practical - Machine Learning Project</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principle-component-analysis">Principle component Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees-and-random-forest">Decision Trees and Random Forest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-machines-svms">Support vector Machines (SVMs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-network-and-deep-learning">Neural Network and Deep learning</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Majeed Jamakhani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
