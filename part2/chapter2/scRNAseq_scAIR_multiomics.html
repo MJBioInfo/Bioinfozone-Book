@@ -1,0 +1,2550 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Single cell AIR and RNA multiomics Analysis &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'part2/chapter2/scRNAseq_scAIR_multiomics';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction" href="../../part3/chapter1/Introduction.html" />
+    <link rel="prev" title="Introduction" href="../chapter1/Introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Bioinfozone logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Bioinfozone logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part0/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single cell RNAseq Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter1/Set-Up.html">Set-Up System :</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter2/Data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter3/Pre-processing.html">Pre-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter4/Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter5/Data%20Integration.html">Data Integration (Batch correction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter6/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter7/Differential%20Gene%20Expression.html">Differential Gene Expression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Cell Multiomics Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter1/Introduction.html">Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>Single cell AIR and RNA multiomics Analysis</strong></a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter1/Introduction.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter2/SetupGCP.html">Creating New VM instance ( Like setting NEW linux machine) :</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter3/setupVNCserver.html">install VNC server</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter4/STARAlignment.html">RNAseq Alignment</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter2/AI-Concepts.html">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Single cell AIR and RNA multiomics Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Single cell AIR and RNA multiomics Analysis</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#theory">Theory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clonotype-analysis">Clonotype - Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#air-transcriptomics">AIR + Transcriptomics</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-i">Example-I</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-annotation">CLuster Annotation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-data-preprocessing">IR data -preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-chain-indices">Creating chain indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcr-qc">TCR QC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-clonotypes-and-clonotype-clusters">IR clonotypes and clonotype-clusters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-specific-clonotype-cluster">Extract Specific Clonotype cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clonal-expansion">CLonal Expansion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergent-evolution">Convergent evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vj-vdj-gene-usage-or-percentage-of-genes-present-in-clonotype">VJ , VDJ Gene Usage or Percentage of genes present in clonotype</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectratype-plot">Spectratype - plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gex-ir">GEX + IR</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-gene-expression">Differential Gene expression</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="single-cell-air-and-rna-multiomics-analysis">
+<h1><strong>Single cell AIR and RNA multiomics Analysis</strong><a class="headerlink" href="#single-cell-air-and-rna-multiomics-analysis" title="Permalink to this heading">#</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    -By Dr. Majeed Jamakhani
+</pre></div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="theory">
+<h1>Theory<a class="headerlink" href="#theory" title="Permalink to this heading">#</a></h1>
+<p><strong>AIR(Advance Immune cell Receptor):</strong></p>
+<p>AIR key for recognition of antigens and toxis by immune cells</p>
+<p>Types:</p>
+<ul class="simple">
+<li><p>Pattern recognition receptors (PRRs): Pathogen-associated molecular patterns (PAMPS)</p></li>
+<li><p>Killer activator/inhibitor receptors (KARs/KIRs): Host cells abnormalities</p></li>
+<li><p>Complement receptors: Complement proteins</p></li>
+<li><p>Fc receptors: Epitope-antibody complex</p></li>
+<li><p>Cytokine receptors: Cytokines</p></li>
+<li><p>B-cell receptor (BCRs): Epitopes</p></li>
+<li><p>T-cell recpetors (TCRs): Linear epitopes bound to the Major Histocompatibility Complex (MHC)</p></li>
+</ul>
+<blockquote>
+<div><p>Thymus and Bone-marrow called T- and B-cells</p>
+</div></blockquote>
+<p><strong>TCR and BCR :</strong></p>
+<p>TCR and BCR interacts with antigens in different ways</p>
+<ul class="simple">
+<li><p>BCR direct recognize soluble or membrane bound antigens</p></li>
+<li><p>TCR indirectly recognize , using MHC (surface proteins) molecules</p></li>
+</ul>
+<p><strong>Functions</strong>
+once activated perform many functions</p>
+<ul class="simple">
+<li><p>fighting</p></li>
+<li><p>regulating response</p></li>
+<li><p>memory by proliferation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.image</span> <span class="k">as</span> <span class="nn">mpimg</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span> <span class="p">,</span><span class="mi">8</span>
+
+<span class="c1"># Image(&quot;207px-Jupyter_logo.svg.png&quot;)</span>
+
+<span class="n">image1_url</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/Data/scAIR_data/tcellbcell.jpg&quot;</span>
+
+<span class="n">image2_url</span><span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/Data/scAIR_data/B-Cell-Activation-1024x372.jpg&quot;</span>
+
+<span class="n">image3_url</span> <span class="o">=</span> <span class="s2">&quot;/content/drive/MyDrive/Data/scAIR_data/maxresdefault.jpg&quot;</span>
+
+<span class="c1"># read images</span>
+<span class="n">img_A</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image1_url</span><span class="p">)</span>
+<span class="n">img_B</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image2_url</span> <span class="p">)</span>
+<span class="n">img_C</span> <span class="o">=</span> <span class="n">mpimg</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">image3_url</span> <span class="p">)</span>
+
+<span class="c1"># display images</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_A</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_B</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.image.AxesImage at 0x7ca7dff20340&gt;
+</pre></div>
+</div>
+<img alt="../../_images/e5cb8c0d71ff247baf4429f1bb43c0e935bbc59714459de0eef168ce78f775fe.png" src="../../_images/e5cb8c0d71ff247baf4429f1bb43c0e935bbc59714459de0eef168ce78f775fe.png" />
+</div>
+</div>
+<p>The AIR is a protein complex consisting of two chains. Depending on the T cell type, these chains are either called α- and β- or γ- and δ-chain. Similarly, the BCR chains are called heavy and light chain (subtypes: κ and λ). While the α-, γ-, κ-, and λ-chains are formed by their respective V- and J-genes, the remaining chains additionally include their D-gene. For simplicity, we will therefore refer to VJ and VDJ chains</p>
+<p>The collection of all receptors forms the AIR repertoire of an individual.</p>
+<p>10^20 TCR</p>
+<p>10^18 BCR</p>
+<p>The sequence diversity is introduced by the V(D)J recombination mechanism:</p>
+<p>Combinatorial diversity is introduced by the combination of different V-, (D-,) and J-genes in addition to the combination of different VJ and VDJ chains.</p>
+<p>Junctional diversity is achieved by insertion of nucleotides at the gene interfaces.</p>
+<p><strong>CDR3 :</strong></p>
+<p>importance of CDR3:</p>
+<p>In the resulting AIRs, three regions of high variability - the Complementary Determining Regions (CDRs) 1-3 - were detected per chain, where the AIR interacts with its target. The CDR1 and CDR2 are encoded by the V-gene. However, the CDR3 spans over the intersection of V-, (D-,) and J-genes and is therefore the most diverse element of the AIR. Therefore, it is often assumed that the specificity of an AIR is determined mainly by its CDR3 region of the more diverse VDJ chain</p>
+<p><strong>Sequencing of TCR BCR chains:</strong></p>
+<ul class="simple">
+<li><p>TCR BCR cells isolated by FACS or microfudic</p></li>
+<li><p>chains are sequenced = computational reconstruction of different chains based on single cell RNA seq</p></li>
+<li><p>TCR chains sequenced by  - TRAPeS, TraCer</p></li>
+<li><p>BCR chains sequenced by -  BALDR, BraCer</p></li>
+</ul>
+<p>Disadvantage :    prone to ignore recombinatorial products and alternative splicing products of VDJ region</p>
+<p>RAGE-seq helps in this</p>
+<p><strong>Advantages of AIR :</strong></p>
+<blockquote>
+<div><p>AIR sequence determines the specificity of the individual B- and T-cell</p>
+</div></blockquote>
+<p>VDJ-sequencing provides us with the nucleotide and thereby also the protein sequence of the AIR paired for both chains, from which the V-, (D-,) J-, and C-gene is determined in addition to the CDR3 sequence</p>
+<section id="clonotype-analysis">
+<h2>Clonotype - Analysis<a class="headerlink" href="#clonotype-analysis" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>TCR or BCR undergo clonal expansion (same cells , many numbers)</p>
+</div></blockquote>
+<blockquote>
+<div><p>This clonal expansion creates - abundance and diversity</p>
+</div></blockquote>
+<blockquote>
+<div><p>Due to clonal expansion Native T cells become mature or effector T cells</p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>clonal competition:</strong> 2 or more clones in expansion competing for same space</p></li>
+<li><p><strong>clonal dominance:</strong> one single clone in more number compare to rest of clonal cells</p></li>
+</ul>
+<p><strong>Diversity:</strong> Number of different clonotype  in a given space</p>
+<p><strong>Abundance:</strong> Number of cells in one clonotype</p>
+<p><strong>Pieces of evidence for immunodominant clonotype</strong></p>
+<p><strong>Gene segment Usage:</strong>
+During recombination of VDJ genes different segment utilized to form clonotype, this is called Gene segment frequency</p>
+<p><strong>Length of CDR3:</strong> region is different</p>
+<p><strong>Clonotype</strong></p>
+<ul class="simple">
+<li><p>Detecting identical sequences of VJ CDR3 and VDJ CDR3</p></li>
+<li><p>By Measuring distance between sequences</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">ir_dist</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>CLonotype-Network</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span>
+    <span class="n">adata</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;patient_id&quot;</span><span class="p">,</span>
+    <span class="n">base_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span>
+    <span class="n">legend_fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="p">)</span>
+
+</pre></div>
+</div>
+<p><strong>Public Clonotype:</strong> More samples shared same clonotype are called Public clonotype . Useful for general response \ disease</p>
+<p><strong>Private Clonotype:</strong> Samples have different clonotype . Usefule for precision medicne</p>
+</section>
+<section id="air-transcriptomics">
+<h2>AIR + Transcriptomics<a class="headerlink" href="#air-transcriptomics" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>Transcriptome tells cells current state .</p>
+</div></blockquote>
+<blockquote>
+<div><p>AIR tells cell’s specificity and fate upon infection and vaccination</p>
+</div></blockquote>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-i">
+<h1>Example-I<a class="headerlink" href="#example-i" title="Permalink to this heading">#</a></h1>
+<p>In this we are going to analyse scTCR-RNAseq data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Install Libraries</span>
+<span class="o">%%</span><span class="n">bash</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">muon</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scanpy</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="n">scirpy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Load Libraries</span>
+
+<span class="kn">import</span> <span class="nn">muon</span> <span class="k">as</span> <span class="nn">mu</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">scanpy</span> <span class="k">as</span> <span class="nn">sc</span>
+<span class="kn">import</span> <span class="nn">scirpy</span> <span class="k">as</span> <span class="nn">ir</span>
+<span class="kn">from</span> <span class="nn">cycler</span> <span class="kn">import</span> <span class="n">cycler</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span> <span class="k">as</span> <span class="n">mpl_cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="n">sc</span><span class="o">.</span><span class="n">set_figure_params</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">verbosity</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># verbosity: errors (0), warnings (1), info (2), hints (3)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>scirpy supports many formats to load IR data either by -  cellranger 10X , TraCer, AIRR</p>
+<p>Data we are using already comes with scirpy package . we can load data as below</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">wu2020_3k</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Reading raw data</span>
+
+<span class="n">mdata</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">wu2020_3k</span><span class="p">()</span>
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 30727
+  2 modalities
+    gex:	3000 x 30727
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      obsm:	&#x27;airr&#x27;</pre></div></div>
+</div>
+<blockquote>
+<div><p>As we can see dataset consist of 2 modality data -</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>gex : Gene expression data</p></li>
+<li><p>airr: Immune Receptor data</p></li>
+</ul>
+<blockquote>
+<div><p>We are going to combine both modalities so we can perform Multiomics analysis</p>
+</div></blockquote>
+<section id="data-preprocessing">
+<h3>Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permalink to this heading">#</a></h3>
+<p>Data preprocessing of individual modalities are necessary and have to use best practices</p>
+<blockquote>
+<div><p>GEX data needs to be done using best preprocessing steps. But here we only use default preprocessing and UMAP coordinates from paper, as we are mainly focusing on TCR, BCR</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 30727
+  2 modalities
+    gex:	3000 x 30727
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      obsm:	&#x27;airr&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look how raw matrix looks</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="s2">&quot;counts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span>
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 30727
+  2 modalities
+    gex:	3000 x 30727
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;
+      layers:	&#x27;counts&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      obsm:	&#x27;airr&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># See whether matrix is Normalized or not</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;========================================&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;========================================&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>========================================
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+========================================
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;========================================&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>========================================
+[[0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ ...
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]
+ [0. 0. 0. ... 0. 0. 0.]]
+</pre></div>
+</div>
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 30727
+  2 modalities
+    gex:	3000 x 30727
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;
+      layers:	&#x27;counts&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      obsm:	&#x27;airr&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Data QC analysis</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_genes</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">],</span>  <span class="n">min_cells</span><span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_cells</span><span class="p">(</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span> <span class="p">,</span> <span class="n">min_genes</span><span class="o">=</span> <span class="mi">200</span> <span class="p">)</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">normalize_per_cell</span><span class="p">(</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span> <span class="p">)</span>
+
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">highly_variable_genes</span><span class="p">(</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">],</span> <span class="n">flavor</span><span class="o">=</span> <span class="s2">&quot;cell_ranger&quot;</span><span class="p">,</span> <span class="n">n_top_genes</span><span class="o">=</span> <span class="mi">5000</span> <span class="p">)</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">pca</span><span class="p">(</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">],</span>  <span class="n">svd_solver</span><span class="o">=</span><span class="s2">&quot;arpack&quot;</span><span class="p">)</span>
+
+<span class="n">sc</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">])</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>filtered out 20119 genes that are detected in less than 20 cells
+filtered out 10 cells that have less than 200 genes expressed
+normalizing by total count per cell
+    finished (0:00:00): normalized adata.X and added    &#39;n_counts&#39;, counts per cell before normalization (adata.obs)
+If you pass `n_top_genes`, all cutoffs are ignored.
+extracting highly variable genes
+    finished (0:00:00)
+computing PCA
+    on highly variable genes
+    with n_comps=50
+    finished (0:00:01)
+computing neighbors
+    using &#39;X_pca&#39; with n_pcs = 50
+    finished (0:00:03)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;========================================&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">X</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>========================================
+[[0.        0.        0.        ... 1.5817864 0.        2.166453 ]
+ [0.        0.        0.        ... 0.8507153 0.        0.       ]
+ [0.        0.        0.        ... 0.5422586 0.        1.3557187]
+ ...
+ [0.        0.        0.        ... 0.        0.9799224 1.4652208]
+ [0.        0.        0.        ... 1.2008302 0.        1.500585 ]
+ [0.        0.        0.        ... 2.617367  1.3140849 2.9033525]]
+</pre></div>
+</div>
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 30727
+  2 modalities
+    gex:	2990 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      obsm:	&#x27;airr&#x27;</pre></div></div>
+</div>
+</section>
+<section id="cluster-annotation">
+<h3>CLuster Annotation<a class="headerlink" href="#cluster-annotation" title="Permalink to this heading">#</a></h3>
+<p>Author already provided UMAP coordinates and annotation , so we use them here</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_umap&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">obsm</span><span class="p">[</span><span class="s2">&quot;X_umap_orig&quot;</span><span class="p">]</span>
+
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;nan&quot;</span><span class="p">:</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;3.1-MT&quot;</span><span class="p">:</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4.1-Trm&quot;</span><span class="p">:</span> <span class="s2">&quot;CD4_Trm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4.2-RPL32&quot;</span><span class="p">:</span> <span class="s2">&quot;CD4_RPL32&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4.3-TCF7&quot;</span><span class="p">:</span> <span class="s2">&quot;CD4_TCF7&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4.4-FOS&quot;</span><span class="p">:</span> <span class="s2">&quot;CD4_FOSS&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4.5-IL6ST&quot;</span><span class="p">:</span> <span class="s2">&quot;CD4_IL6ST&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4.6a-Treg&quot;</span><span class="p">:</span> <span class="s2">&quot;CD4_Treg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;4.6b-Treg&quot;</span><span class="p">:</span> <span class="s2">&quot;CD4_Treg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.1-Teff&quot;</span><span class="p">:</span> <span class="s2">&quot;CD8_Teff&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.2-Tem&quot;</span><span class="p">:</span> <span class="s2">&quot;CD8_Tem&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.3a-Trm&quot;</span><span class="p">:</span> <span class="s2">&quot;CD8_Trm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.3b-Trm&quot;</span><span class="p">:</span> <span class="s2">&quot;CD8_Trm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.3c-Trm&quot;</span><span class="p">:</span> <span class="s2">&quot;CD8_Trm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.4-Chrom&quot;</span><span class="p">:</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.5-Mitosis&quot;</span><span class="p">:</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;8.6-KLRB1&quot;</span><span class="p">:</span> <span class="s2">&quot;other&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;cluster&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;cluster_orig&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 30727
+  2 modalities
+    gex:	2990 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      obsm:	&#x27;airr&#x27;</pre></div></div>
+</div>
+<blockquote>
+<div><p>When there is multimodal mudata, we need to update mudata in order to take effect of chanages we made for mudata modalities</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>see how Var (features = 30727 ) changes to high;y variable feature set (features = 10608)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 10608
+  2 modalities
+    gex:	2990 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      obsm:	&#x27;airr&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title plot UMAO with sample, patient, cluster and T cell Markers</span>
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">basis</span><span class="o">=</span> <span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;gex:cluster&quot;</span><span class="p">,</span> <span class="s2">&quot;gex:sample&quot;</span><span class="p">,</span> <span class="s2">&quot;gex:patient&quot;</span><span class="p">],</span>
+    <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span>
+<span class="p">)</span>
+
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">basis</span><span class="o">=</span><span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;CD8A&quot;</span><span class="p">,</span> <span class="s2">&quot;CD4&quot;</span><span class="p">,</span> <span class="s2">&quot;FOXP3&quot;</span><span class="p">],</span>
+    <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">wspace</span><span class="o">=</span><span class="mf">0.7</span>
+<span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+</pre></div>
+</div>
+<img alt="../../_images/4be1f191e175da39c9ff2a31e61b41c4981a91f7bb44355b0833304e896d6ad7.png" src="../../_images/4be1f191e175da39c9ff2a31e61b41c4981a91f7bb44355b0833304e896d6ad7.png" />
+<img alt="../../_images/b2bd2fb6f959d3579a87cc007e994f5e0d221a02b8dfbe883194223c5895eff7.png" src="../../_images/b2bd2fb6f959d3579a87cc007e994f5e0d221a02b8dfbe883194223c5895eff7.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ir-data-preprocessing">
+<h2>IR data -preprocessing<a class="headerlink" href="#ir-data-preprocessing" title="Permalink to this heading">#</a></h2>
+<section id="creating-chain-indices">
+<h3>Creating chain indices<a class="headerlink" href="#creating-chain-indices" title="Permalink to this heading">#</a></h3>
+<p>First step is creating chain indices for recptor data</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">index_chains</span><span class="p">(</span><span class="n">mdata</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">index_chains</span><span class="p">(</span><span class="n">mdata</span><span class="p">)</span>
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "e530fc74fbad4f4182f4bfe648c5dd52", "version_major": 2, "version_minor": 0}</script><div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 10608
+  2 modalities
+    gex:	2990 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;, &#x27;gex:sample_colors&#x27;, &#x27;gex:patient_colors&#x27;, &#x27;gex:cluster_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;
+      uns:	&#x27;chain_indices&#x27;
+      obsm:	&#x27;airr&#x27;, &#x27;chain_indices&#x27;</pre></div></div>
+</div>
+</section>
+<section id="tcr-qc">
+<h3>TCR QC<a class="headerlink" href="#tcr-qc" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>Cells with TCRs have 2 chains (one pair) Alpha and Beta chains.</p>
+</div></blockquote>
+<blockquote>
+<div><p>Some times some cells have more than one pair (like 3, 4 , 5 ..etc chains)</p>
+</div></blockquote>
+<blockquote>
+<div><p>We need to identify this and remove or hide from further downstream analysis</p>
+</div></blockquote>
+<p>We use summary of IR chains, receptor type (TCR or BCR) and subtype information</p>
+<p>chain pairing has:</p>
+<ul class="simple">
+<li><p>orphan chain - single alpha or single beta</p></li>
+<li><p>extra chain-  In addition to pair , it has extra chain (VJ or VDJ)</p></li>
+<li><p>Multichain more than 2 pairs</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">chain_qc</span><span class="p">()</span>  
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title IR QC</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">chain_qc</span><span class="p">(</span><span class="n">mdata</span><span class="p">)</span>
+
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stored result in `mdata.obs[&quot;airr:receptor_type&quot;]`.
+Stored result in `mdata.obs[&quot;airr:receptor_subtype&quot;]`.
+Stored result in `mdata.obs[&quot;airr:chain_pairing&quot;]`.
+</pre></div>
+</div>
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 10608
+  2 modalities
+    gex:	2990 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;, &#x27;gex:sample_colors&#x27;, &#x27;gex:patient_colors&#x27;, &#x27;gex:cluster_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;, &#x27;receptor_type&#x27;, &#x27;receptor_subtype&#x27;, &#x27;chain_pairing&#x27;
+      uns:	&#x27;chain_indices&#x27;
+      obsm:	&#x27;airr&#x27;, &#x27;chain_indices&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+  <div id="df-b3cab482-254a-46e3-a424-96aef43a6374">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>cluster_orig</th>
+      <th>patient</th>
+      <th>sample</th>
+      <th>source</th>
+      <th>n_genes</th>
+      <th>n_counts</th>
+      <th>cluster</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>LN1_GTAGGCCAGCGTAGTG-1</th>
+      <td>4.4-FOS</td>
+      <td>Lung1</td>
+      <td>LN1</td>
+      <td>NAT</td>
+      <td>582</td>
+      <td>1188.0</td>
+      <td>CD4_FOSS</td>
+    </tr>
+    <tr>
+      <th>RN2_AGAGCGACAGATTGCT-1</th>
+      <td>4.4-FOS</td>
+      <td>Renal2</td>
+      <td>RN2</td>
+      <td>NAT</td>
+      <td>739</td>
+      <td>1711.0</td>
+      <td>CD4_FOSS</td>
+    </tr>
+    <tr>
+      <th>LN1_GTCATTTCAATGAAAC-1</th>
+      <td>8.2-Tem</td>
+      <td>Lung1</td>
+      <td>LN1</td>
+      <td>NAT</td>
+      <td>1257</td>
+      <td>3188.0</td>
+      <td>CD8_Tem</td>
+    </tr>
+    <tr>
+      <th>LN2_GACACGCAGGTAGCTG-2</th>
+      <td>8.6-KLRB1</td>
+      <td>Lung2</td>
+      <td>LN2</td>
+      <td>NAT</td>
+      <td>1833</td>
+      <td>5505.0</td>
+      <td>other</td>
+    </tr>
+    <tr>
+      <th>LN2_GCACTCTCAGGGATTG-2</th>
+      <td>4.4-FOS</td>
+      <td>Lung2</td>
+      <td>LN2</td>
+      <td>NAT</td>
+      <td>2066</td>
+      <td>6846.0</td>
+      <td>CD4_FOSS</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-b3cab482-254a-46e3-a424-96aef43a6374')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+
+
+    <div id="df-1ce6ced6-39d1-48ef-a7d1-4ea35265b004">
+      <button class="colab-df-quickchart" onclick="quickchart('df-1ce6ced6-39d1-48ef-a7d1-4ea35265b004')"
+              title="Suggest charts."
+              style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+    </div>
+
+<style>
+  .colab-df-quickchart {
+    background-color: #E8F0FE;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: #1967D2;
+    height: 32px;
+    padding: 0 0 0 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: #E2EBFA;
+    box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: #174EA6;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+    background-color: #3B4455;
+    fill: #D2E3FC;
+  }
+
+  [theme=dark] .colab-df-quickchart:hover {
+    background-color: #434B5C;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+    fill: #FFFFFF;
+  }
+</style>
+
+    <script>
+      async function quickchart(key) {
+        const containerElement = document.querySelector('#' + key);
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      }
+    </script>
+
+      <script>
+
+function displayQuickchartButton(domScope) {
+  let quickchartButtonEl =
+    domScope.querySelector('#df-1ce6ced6-39d1-48ef-a7d1-4ea35265b004 button.colab-df-quickchart');
+  quickchartButtonEl.style.display =
+    google.colab.kernel.accessAllowed ? 'block' : 'none';
+}
+
+        displayQuickchartButton(document);
+      </script>
+      <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-b3cab482-254a-46e3-a424-96aef43a6374 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-b3cab482-254a-46e3-a424-96aef43a6374');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;airr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+  <div id="df-8888c0ee-bf22-4758-a506-f6739e7b968c">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>high_confidence</th>
+      <th>is_cell</th>
+      <th>clonotype_orig</th>
+      <th>receptor_type</th>
+      <th>receptor_subtype</th>
+      <th>chain_pairing</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>LN1_GTAGGCCAGCGTAGTG-1</th>
+      <td>True</td>
+      <td>True</td>
+      <td>lung1.tn.C223</td>
+      <td>TCR</td>
+      <td>TRA+TRB</td>
+      <td>orphan VDJ</td>
+    </tr>
+    <tr>
+      <th>RN2_AGAGCGACAGATTGCT-1</th>
+      <td>True</td>
+      <td>True</td>
+      <td>renal2.tnb.C1362</td>
+      <td>TCR</td>
+      <td>TRA+TRB</td>
+      <td>single pair</td>
+    </tr>
+    <tr>
+      <th>LN1_GTCATTTCAATGAAAC-1</th>
+      <td>True</td>
+      <td>True</td>
+      <td>lung1.tn.C25</td>
+      <td>TCR</td>
+      <td>TRA+TRB</td>
+      <td>single pair</td>
+    </tr>
+    <tr>
+      <th>LN2_GACACGCAGGTAGCTG-2</th>
+      <td>True</td>
+      <td>True</td>
+      <td>lung2.tn.C2452</td>
+      <td>TCR</td>
+      <td>TRA+TRB</td>
+      <td>orphan VDJ</td>
+    </tr>
+    <tr>
+      <th>LN2_GCACTCTCAGGGATTG-2</th>
+      <td>True</td>
+      <td>True</td>
+      <td>lung2.tn.C5631</td>
+      <td>TCR</td>
+      <td>TRA+TRB</td>
+      <td>single pair</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-8888c0ee-bf22-4758-a506-f6739e7b968c')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+
+
+    <div id="df-7a6d933e-b65d-48ed-81ef-e160bf3d3bea">
+      <button class="colab-df-quickchart" onclick="quickchart('df-7a6d933e-b65d-48ed-81ef-e160bf3d3bea')"
+              title="Suggest charts."
+              style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+    </div>
+
+<style>
+  .colab-df-quickchart {
+    background-color: #E8F0FE;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: #1967D2;
+    height: 32px;
+    padding: 0 0 0 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: #E2EBFA;
+    box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: #174EA6;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+    background-color: #3B4455;
+    fill: #D2E3FC;
+  }
+
+  [theme=dark] .colab-df-quickchart:hover {
+    background-color: #434B5C;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+    fill: #FFFFFF;
+  }
+</style>
+
+    <script>
+      async function quickchart(key) {
+        const containerElement = document.querySelector('#' + key);
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      }
+    </script>
+
+      <script>
+
+function displayQuickchartButton(domScope) {
+  let quickchartButtonEl =
+    domScope.querySelector('#df-7a6d933e-b65d-48ed-81ef-e160bf3d3bea button.colab-df-quickchart');
+  quickchartButtonEl.style.display =
+    google.colab.kernel.accessAllowed ? 'block' : 'none';
+}
+
+        displayQuickchartButton(document);
+      </script>
+      <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-8888c0ee-bf22-4758-a506-f6739e7b968c button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-8888c0ee-bf22-4758-a506-f6739e7b968c');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;airr:receptor_subtype&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;gex:source&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Number of cells in airr:receptor_subtype by gex:source&#39;}, xlabel=&#39;airr:receptor_subtype&#39;, ylabel=&#39;Number of cells&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/6b0af92b6cbb3b45661ab2843119d3bb4b4b00551ab8c93f2fe4ab1470e79009.png" src="../../_images/6b0af92b6cbb3b45661ab2843119d3bb4b4b00551ab8c93f2fe4ab1470e79009.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;airr:chain_pairing&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;gex:source&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Number of cells in airr:chain_pairing by gex:source&#39;}, xlabel=&#39;airr:chain_pairing&#39;, ylabel=&#39;Number of cells&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/f49694753a8c1bf517d1b59e6413011c1c9f164d737cbc2b4af44e2cc694d3b6.png" src="../../_images/f49694753a8c1bf517d1b59e6413011c1c9f164d737cbc2b4af44e2cc694d3b6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Percentage of Productive TCRs</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="s2">&quot;Fraction of cells with more than one pair of TCRs: </span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+            <span class="n">mdata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;airr:chain_pairing&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
+                <span class="p">[</span><span class="s2">&quot;extra VJ&quot;</span><span class="p">,</span> <span class="s2">&quot;extra VDJ&quot;</span><span class="p">,</span> <span class="s2">&quot;two full chains&quot;</span><span class="p">,</span> <span class="s2">&quot;multichain&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="o">/</span> <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;airr&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">n_obs</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fraction of cells with more than one pair of TCRs: 0.07
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 10608
+  2 modalities
+    gex:	2990 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;, &#x27;gex:sample_colors&#x27;, &#x27;gex:patient_colors&#x27;, &#x27;gex:cluster_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;, &#x27;receptor_type&#x27;, &#x27;receptor_subtype&#x27;, &#x27;chain_pairing&#x27;
+      uns:	&#x27;chain_indices&#x27;
+      obsm:	&#x27;airr&#x27;, &#x27;chain_indices&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Multichain -cells visualize</span>
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">basis</span><span class="o">=</span><span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span> <span class="s2">&quot;gex:cluster&quot;</span><span class="p">,</span> <span class="s2">&quot;gex:source&quot;</span><span class="p">,</span> <span class="s2">&quot;airr:chain_pairing&quot;</span><span class="p">],</span>
+    <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">wspace</span><span class="o">=</span><span class="mf">0.7</span>
+<span class="p">)</span>
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">basis</span><span class="o">=</span><span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;airr:chain_pairing&quot;</span><span class="p">],</span>
+    <span class="n">groups</span><span class="o">=</span><span class="s2">&quot;multichain&quot;</span><span class="p">,</span>
+    <span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">wspace</span><span class="o">=</span><span class="mf">0.7</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+</pre></div>
+</div>
+<img alt="../../_images/17c4d6d1c5b7ed6fc27ac7fd5767aec46daf45ce04a3a268146759a797d4b6b1.png" src="../../_images/17c4d6d1c5b7ed6fc27ac7fd5767aec46daf45ce04a3a268146759a797d4b6b1.png" />
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+</pre></div>
+</div>
+<img alt="../../_images/d89b75d0979320e673d04b6872fb285b45de74698264d7a9ecabcd539f9dfe64.png" src="../../_images/d89b75d0979320e673d04b6872fb285b45de74698264d7a9ecabcd539f9dfe64.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 3000 × 10608
+  2 modalities
+    gex:	2990 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;, &#x27;gex:sample_colors&#x27;, &#x27;gex:patient_colors&#x27;, &#x27;gex:cluster_colors&#x27;, &#x27;gex:source_colors&#x27;, &#x27;airr:chain_pairing_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	3000 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;, &#x27;receptor_type&#x27;, &#x27;receptor_subtype&#x27;, &#x27;chain_pairing&#x27;
+      uns:	&#x27;chain_indices&#x27;
+      obsm:	&#x27;airr&#x27;, &#x27;chain_indices&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Filter IR data without multichain and don&#39;t have one chain</span>
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_obs</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="s2">&quot;airr:chain_pairing&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">!=</span> <span class="s2">&quot;multichain&quot;</span><span class="p">)</span>
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">filter_obs</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="s2">&quot;airr:chain_pairing&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;orphan VDJ&quot;</span><span class="p">,</span> <span class="s2">&quot;orphan VJ&quot;</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 1845 × 10608
+  2 modalities
+    gex:	1844 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;, &#x27;gex:sample_colors&#x27;, &#x27;gex:patient_colors&#x27;, &#x27;gex:cluster_colors&#x27;, &#x27;gex:source_colors&#x27;, &#x27;airr:chain_pairing_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	1845 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;, &#x27;receptor_type&#x27;, &#x27;receptor_subtype&#x27;, &#x27;chain_pairing&#x27;
+      uns:	&#x27;chain_indices&#x27;
+      obsm:	&#x27;airr&#x27;, &#x27;chain_indices&#x27;</pre></div></div>
+</div>
+<blockquote>
+<div><p>As we can see cells reduced from
+3000 to 1844</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;airr:chain_pairing&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;gex:source&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ee586e1c2c10d8f531149f5d4558b2d062e0d7f9c2c6a39740b744bd71421557.png" src="../../_images/ee586e1c2c10d8f531149f5d4558b2d062e0d7f9c2c6a39740b744bd71421557.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="ir-clonotypes-and-clonotype-clusters">
+<h2>IR clonotypes and clonotype-clusters<a class="headerlink" href="#ir-clonotypes-and-clonotype-clusters" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>scirpy.pp.ir_dist() == Compute sequence-based distance matrices for all VJ and VDJ sequences.</p></li>
+<li><p>scirpy.tl.define_clonotypes() == Define clonotypes by nucleotide sequence identity.</p></li>
+<li><p>scirpy.tl.define_clonotype_clusters()==
+Cluster cells by the similarity of their CDR3-sequences.</p></li>
+<li><p>scirpy.tl.clonotype_network() == Compute layout of the clonotype network.</p></li>
+<li><p>scirpy.pl.clonotype_network() == Plot clonotype network colored by different parameters.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Based on Nucleotide clonotypes</span>
+<span class="c1"># using default parameters, `ir_dist` will compute nucleotide sequence identity</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">ir_dist</span><span class="p">(</span><span class="n">mdata</span> <span class="p">)</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">define_clonotypes</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">receptor_arms</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">dual_ir</span> <span class="o">=</span> <span class="s2">&quot;primary_only&quot;</span><span class="p">)</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">min_cells</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing sequence x sequence distance matrix for VJ sequences.
+Computing sequence x sequence distance matrix for VDJ sequences.
+Initializing lookup tables. 
+Computing clonotype x clonotype distances.
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b924ca1d1c3f40cd9eb02ae12f348f58", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stored result in `mdata.obs[&quot;airr:clone_id&quot;]`.
+Stored result in `mdata.obs[&quot;airr:clone_id_size&quot;]`.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#To visualize the network we first call scirpy.tl.clonotype_network() to compute the layout.</span>
+<span class="c1"># We can then visualize it using scirpy.pl.clonotype_network()</span>
+<span class="c1">#</span>
+
+
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">min_cells</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;gex:source&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gex:source
+Blood    107
+NAT      755
+Tumor    982
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gex:source&quot;</span><span class="p">,</span> <span class="n">base_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/ee983ee4663f5d5f3391128de6d8ce3d235738e90fd20529dde070ead3c11a43.png" src="../../_images/ee983ee4663f5d5f3391128de6d8ce3d235738e90fd20529dde070ead3c11a43.png" />
+</div>
+</div>
+<p>Above plot shows IR clonotypes</p>
+<blockquote>
+<div><p>clonotypes are cells with identical CDR3 sequences</p>
+</div></blockquote>
+<blockquote>
+<div><p>Size shows number of cells</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1">#@title Based on aminoacids- clonotypes</span>
+<span class="c1"># using default parameters, `ir_dist` will compute nucleotide sequence identity</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">pp</span><span class="o">.</span><span class="n">ir_dist</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span>
+    <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span>
+    <span class="n">cutoff</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">define_clonotype_clusters</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">,</span> <span class="n">receptor_arms</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">dual_ir</span><span class="o">=</span><span class="s2">&quot;any&quot;</span>
+<span class="p">)</span>
+
+
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">min_cells</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;aa&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;alignment&quot;</span><span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing sequence x sequence distance matrix for VJ sequences.
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "43e56afeb4af41c58c52e945ed6be207", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing sequence x sequence distance matrix for VDJ sequences.
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "54b099f5b6b14ecea35de4611510e9ff", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initializing lookup tables. 
+Computing clonotype x clonotype distances.
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "2b0dda7a8df840058815dd0797d2093d", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stored result in `mdata.obs[&quot;airr:cc_aa_alignment&quot;]`.
+Stored result in `mdata.obs[&quot;airr:cc_aa_alignment_size&quot;]`.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mdata</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><pre>MuData object with n_obs × n_vars = 1845 × 10608
+  2 modalities
+    gex:	1844 x 10608
+      obs:	&#x27;cluster_orig&#x27;, &#x27;patient&#x27;, &#x27;sample&#x27;, &#x27;source&#x27;, &#x27;n_genes&#x27;, &#x27;n_counts&#x27;, &#x27;cluster&#x27;
+      var:	&#x27;n_cells&#x27;, &#x27;highly_variable&#x27;, &#x27;means&#x27;, &#x27;dispersions&#x27;, &#x27;dispersions_norm&#x27;
+      uns:	&#x27;cluster_orig_colors&#x27;, &#x27;log1p&#x27;, &#x27;hvg&#x27;, &#x27;pca&#x27;, &#x27;neighbors&#x27;, &#x27;gex:sample_colors&#x27;, &#x27;gex:patient_colors&#x27;, &#x27;gex:cluster_colors&#x27;, &#x27;gex:source_colors&#x27;, &#x27;airr:chain_pairing_colors&#x27;
+      obsm:	&#x27;X_umap_orig&#x27;, &#x27;X_pca&#x27;, &#x27;X_umap&#x27;
+      varm:	&#x27;PCs&#x27;
+      layers:	&#x27;counts&#x27;
+      obsp:	&#x27;distances&#x27;, &#x27;connectivities&#x27;
+    airr:	1845 x 0
+      obs:	&#x27;high_confidence&#x27;, &#x27;is_cell&#x27;, &#x27;clonotype_orig&#x27;, &#x27;receptor_type&#x27;, &#x27;receptor_subtype&#x27;, &#x27;chain_pairing&#x27;, &#x27;clone_id&#x27;, &#x27;clone_id_size&#x27;, &#x27;cc_aa_alignment&#x27;, &#x27;cc_aa_alignment_size&#x27;
+      uns:	&#x27;chain_indices&#x27;, &#x27;ir_dist_nt_identity&#x27;, &#x27;clone_id&#x27;, &#x27;clonotype_network&#x27;, &#x27;ir_dist_aa_alignment&#x27;, &#x27;cc_aa_alignment&#x27;
+      obsm:	&#x27;airr&#x27;, &#x27;chain_indices&#x27;, &#x27;X_clonotype_network&#x27;</pre></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gex:patient&quot;</span><span class="p">,</span> <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span> <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="n">base_size</span><span class="o">=</span><span class="mi">20</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/0df8423e913fa658daf5051e8a3b4f5ad752b46441b864d143741fae4bed75b0.png" src="../../_images/0df8423e913fa658daf5051e8a3b4f5ad752b46441b864d143741fae4bed75b0.png" />
+</div>
+</div>
+<blockquote>
+<div><p>Aboe figure shows there are clonotypes and some clonotypes has many identical cells based on VJ and VDJ distance</p>
+</div></blockquote>
+<blockquote>
+<div><p>101 &amp; 68  clonotypes are same color -  are private clonotype (single patient only)</p>
+</div></blockquote>
+<blockquote>
+<div><p>159 clonotype is -  public (many patient in single clonotype)</p>
+</div></blockquote>
+<section id="extract-specific-clonotype-cluster">
+<h3>Extract Specific Clonotype cluster<a class="headerlink" href="#extract-specific-clonotype-cluster" title="Permalink to this heading">#</a></h3>
+<p>We can now extract information (e.g. CDR3-sequences) from a specific clonotype cluster by subsetting MuData</p>
+<p>extraction by function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">airr_context</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">junction</span> <span class="p">,</span> <span class="p">[</span><span class="nb">list</span> <span class="n">of</span> <span class="n">chains</span><span class="p">])</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">with</span> <span class="n">ir</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">airr_context</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="s2">&quot;junction_aa&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;VJ_1&quot;</span><span class="p">,</span> <span class="s2">&quot;VDJ_1&quot;</span><span class="p">,</span> <span class="s2">&quot;VJ_2&quot;</span><span class="p">,</span> <span class="s2">&quot;VDJ_2&quot;</span><span class="p">]):</span>
+    <span class="n">cdr3_ct_159</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="c1"># TODO astype(str) is required due to a bug in pandas ignoring `dropna=False`. It seems fixed in pandas 2.x</span>
+        <span class="n">mdata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="s2">&quot;airr:cc_aa_alignment&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;159&quot;</span><span class="p">]</span>
+        <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;VJ_1_junction_aa&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;VDJ_1_junction_aa&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;VJ_2_junction_aa&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;VDJ_2_junction_aa&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;airr:receptor_subtype&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;n_cells&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="n">cdr3_ct_159</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+  <div id="df-64632419-05fd-40db-9556-6b2d70e933a9">
+    <div class="colab-df-container">
+      <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>VJ_1_junction_aa</th>
+      <th>VDJ_1_junction_aa</th>
+      <th>VJ_2_junction_aa</th>
+      <th>VDJ_2_junction_aa</th>
+      <th>airr:receptor_subtype</th>
+      <th>n_cells</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>CAGKAGNTGKLIF</td>
+      <td>CASSYQGSTEAFF</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>TRA+TRB</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CAGKSGNTGKLIF</td>
+      <td>CASSYQGATEAFF</td>
+      <td>CATDPRRSTGNQFYF</td>
+      <td>nan</td>
+      <td>TRA+TRB</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CAGKSGNTGKLIF</td>
+      <td>CASSYQGATEAFF</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>TRA+TRB</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>CATDPRRSTGNQFYF</td>
+      <td>CASSYQGATEAFF</td>
+      <td>CAGKSGNTGKLIF</td>
+      <td>nan</td>
+      <td>TRA+TRB</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>CATDPRRSTGNQFYF</td>
+      <td>CASSYQGATEAFF</td>
+      <td>nan</td>
+      <td>nan</td>
+      <td>TRA+TRB</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+      <button class="colab-df-convert" onclick="convertToInteractive('df-64632419-05fd-40db-9556-6b2d70e933a9')"
+              title="Convert this dataframe to an interactive table."
+              style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M0 0h24v24H0V0z" fill="none"/>
+    <path d="M18.56 5.44l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94zm-11 1L8.5 8.5l.94-2.06 2.06-.94-2.06-.94L8.5 2.5l-.94 2.06-2.06.94zm10 10l.94 2.06.94-2.06 2.06-.94-2.06-.94-.94-2.06-.94 2.06-2.06.94z"/><path d="M17.41 7.96l-1.37-1.37c-.4-.4-.92-.59-1.43-.59-.52 0-1.04.2-1.43.59L10.3 9.45l-7.72 7.72c-.78.78-.78 2.05 0 2.83L4 21.41c.39.39.9.59 1.41.59.51 0 1.02-.2 1.41-.59l7.78-7.78 2.81-2.81c.8-.78.8-2.07 0-2.86zM5.41 20L4 18.59l7.72-7.72 1.47 1.35L5.41 20z"/>
+  </svg>
+      </button>
+
+
+
+    <div id="df-2a5b05ce-fbd8-4559-8174-12e0577d74b0">
+      <button class="colab-df-quickchart" onclick="quickchart('df-2a5b05ce-fbd8-4559-8174-12e0577d74b0')"
+              title="Suggest charts."
+              style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+    </div>
+
+<style>
+  .colab-df-quickchart {
+    background-color: #E8F0FE;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: #1967D2;
+    height: 32px;
+    padding: 0 0 0 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: #E2EBFA;
+    box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: #174EA6;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+    background-color: #3B4455;
+    fill: #D2E3FC;
+  }
+
+  [theme=dark] .colab-df-quickchart:hover {
+    background-color: #434B5C;
+    box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+    fill: #FFFFFF;
+  }
+</style>
+
+    <script>
+      async function quickchart(key) {
+        const containerElement = document.querySelector('#' + key);
+        const charts = await google.colab.kernel.invokeFunction(
+            'suggestCharts', [key], {});
+      }
+    </script>
+
+      <script>
+
+function displayQuickchartButton(domScope) {
+  let quickchartButtonEl =
+    domScope.querySelector('#df-2a5b05ce-fbd8-4559-8174-12e0577d74b0 button.colab-df-quickchart');
+  quickchartButtonEl.style.display =
+    google.colab.kernel.accessAllowed ? 'block' : 'none';
+}
+
+        displayQuickchartButton(document);
+      </script>
+      <style>
+    .colab-df-container {
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+      <script>
+        const buttonEl =
+          document.querySelector('#df-64632419-05fd-40db-9556-6b2d70e933a9 button.colab-df-convert');
+        buttonEl.style.display =
+          google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+        async function convertToInteractive(key) {
+          const element = document.querySelector('#df-64632419-05fd-40db-9556-6b2d70e933a9');
+          const dataTable =
+            await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                     [key], {});
+          if (!dataTable) return;
+
+          const docLinkHtml = 'Like what you see? Visit the ' +
+            '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+            + ' to learn more about interactive tables.';
+          element.innerHTML = '';
+          dataTable['output_type'] = 'display_data';
+          await google.colab.output.renderOutput(dataTable, element);
+          const docLink = document.createElement('div');
+          docLink.innerHTML = docLinkHtml;
+          element.appendChild(docLink);
+        }
+      </script>
+    </div>
+  </div>
+</div></div>
+</div>
+</section>
+<section id="clonal-expansion">
+<h3>CLonal Expansion<a class="headerlink" href="#clonal-expansion" title="Permalink to this heading">#</a></h3>
+<p>Clonal expansion refers to expansion types :</p>
+<ul class="simple">
+<li><p>Singleton</p></li>
+<li><p>2 cells clonotype</p></li>
+<li><p>more than 2 cells clonotype</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">mdata</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">mdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stored result in `mdata.obs[&quot;airr:clonal_expansion&quot;]`.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;airr:clonal_expansion&quot;</span><span class="p">,</span> <span class="s2">&quot;airr:clone_id_size&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+</pre></div>
+</div>
+<img alt="../../_images/7e892d06129b2fcd5b8b6ff702121852bd253b95e4370a44db536317dc00b2fa.png" src="../../_images/7e892d06129b2fcd5b8b6ff702121852bd253b95e4370a44db536317dc00b2fa.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonal_expansion</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;clone_id&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;gex:cluster&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/b8f2fec80c8e2c855bf86249721a21914d7899d90387d916486f0490aa2c7bc6.png" src="../../_images/b8f2fec80c8e2c855bf86249721a21914d7899d90387d916486f0490aa2c7bc6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Alpha diversity</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">alpha_diversity</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;normalized_shannon_entropy&quot;</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;gex:cluster&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Alpha diversity of clone_id by gex:cluster&#39;}, ylabel=&#39;Normalized Shannon Entropy&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/25ce75ed6e23ae81b94d4ee8fb56f4143e73a0ecff8b1ed00e0fd8b16205a4ea.png" src="../../_images/25ce75ed6e23ae81b94d4ee8fb56f4143e73a0ecff8b1ed00e0fd8b16205a4ea.png" />
+</div>
+</div>
+<p>CD8 effector T cells have lowest alpha diversity</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Clonotype Abundance</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span> <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;airr:clone_id&quot;</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;gex:cluster&quot;</span><span class="p">,</span> <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="s2">&quot;gex:sample&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Fraction of gex:cluster in each airr:clone_id&#39;}, xlabel=&#39;airr:clone_id&#39;, ylabel=&#39;Fraction of cells in gex:sample&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/ab566961fae6b7e6207b592b00d8f6b77bbda5ec762e25fcce8764a9ea656df9.png" src="../../_images/ab566961fae6b7e6207b592b00d8f6b77bbda5ec762e25fcce8764a9ea656df9.png" />
+</div>
+</div>
+</section>
+<section id="convergent-evolution">
+<h3>Convergent evolution<a class="headerlink" href="#convergent-evolution" title="Permalink to this heading">#</a></h3>
+<p>Clonotype which recognize same antigen evolved from different clones</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_convergence</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">key_coarse</span><span class="o">=</span><span class="s2">&quot;cc_aa_alignment&quot;</span><span class="p">,</span> <span class="n">key_fine</span><span class="o">=</span><span class="s2">&quot;clone_id&quot;</span><span class="p">)</span>
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;airr:is_convergent&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stored result in `mdata.obs[&quot;airr:is_convergent&quot;]`.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+</pre></div>
+</div>
+<img alt="../../_images/51e1176b7ad607fba6cec788fa079e3d7d172e814af3fe8d94fa94104a768fcd.png" src="../../_images/51e1176b7ad607fba6cec788fa079e3d7d172e814af3fe8d94fa94104a768fcd.png" />
+</div>
+</div>
+</section>
+<section id="vj-vdj-gene-usage-or-percentage-of-genes-present-in-clonotype">
+<h3>VJ , VDJ Gene Usage or Percentage of genes present in clonotype<a class="headerlink" href="#vj-vdj-gene-usage-or-percentage-of-genes-present-in-clonotype" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">with</span> <span class="n">ir</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">airr_context</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="s2">&quot;v_call&quot;</span><span class="p">):</span>
+    <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+        <span class="n">mdata</span><span class="p">,</span>
+        <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;VJ_1_v_call&quot;</span><span class="p">,</span>
+        <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;gex:cluster&quot;</span><span class="p">,</span>
+        <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">max_cols</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ce4d722d840d007bd1982e1b8193da6630ff52369ae8424cba2842242123a9c0.png" src="../../_images/ce4d722d840d007bd1982e1b8193da6630ff52369ae8424cba2842242123a9c0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">with</span> <span class="n">ir</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">airr_context</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="s2">&quot;v_call&quot;</span><span class="p">):</span>
+    <span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">group_abundance</span><span class="p">(</span>
+        <span class="n">mdata</span><span class="p">[</span>
+            <span class="n">mdata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;VDJ_1_v_call&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span>
+                <span class="p">[</span><span class="s2">&quot;TRBV20-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-2&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV28&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV5-1&quot;</span><span class="p">,</span> <span class="s2">&quot;TRBV7-9&quot;</span><span class="p">]</span>
+            <span class="p">),</span>
+            <span class="p">:,</span>
+        <span class="p">],</span>
+        <span class="n">groupby</span><span class="o">=</span><span class="s2">&quot;gex:cluster&quot;</span><span class="p">,</span>
+        <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;VDJ_1_v_call&quot;</span><span class="p">,</span>
+        <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/49db450ad5d75dd3bafe7f229f10bbdc48b6474960d1d33fbc5a26a915b8609f.png" src="../../_images/49db450ad5d75dd3bafe7f229f10bbdc48b6474960d1d33fbc5a26a915b8609f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">vdj_usage</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">full_combination</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">max_segments</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_ribbons</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">)},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/c9dd64ea74790da71dc8e317344ec3ec86240fbc9adf1c46e945f73f44349bdd.png" src="../../_images/c9dd64ea74790da71dc8e317344ec3ec86240fbc9adf1c46e945f73f44349bdd.png" />
+</div>
+</div>
+</section>
+<section id="spectratype-plot">
+<h3>Spectratype - plot<a class="headerlink" href="#spectratype-plot" title="Permalink to this heading">#</a></h3>
+<p>spectratype() plots give us information about the length distribution of CDR3 regions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gex:cluster&quot;</span><span class="p">,</span> <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">})</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Spectratype of junction_aa by gex:cluster&#39;}, xlabel=&#39;junction_aa length&#39;, ylabel=&#39;Number of cells&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/eba8c0e3dba50214e58a5eca8b8c7066c5b379dcb1faccb80cb44339fd1700c8.png" src="../../_images/eba8c0e3dba50214e58a5eca8b8c7066c5b379dcb1faccb80cb44339fd1700c8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">spectratype</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gex:cluster&quot;</span><span class="p">,</span>
+    <span class="n">viztype</span><span class="o">=</span><span class="s2">&quot;curve&quot;</span><span class="p">,</span>
+    <span class="n">curve_layout</span><span class="o">=</span><span class="s2">&quot;shifted&quot;</span><span class="p">,</span>
+    <span class="n">fig_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;dpi&quot;</span><span class="p">:</span> <span class="mi">120</span><span class="p">},</span>
+    <span class="n">kde_kws</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;kde_norm&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/scirpy/pl/base.py:263: UserWarning: FixedFormatter should only be used together with FixedLocator
+  ax.set_yticklabels(order)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: title={&#39;center&#39;: &#39;Spectratype of junction_aa by gex:cluster&#39;}, xlabel=&#39;junction_aa length&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/eaf858e96cf46ae0e3deaa5f639c9066a83e12784a4381b451265e4cd6de941c.png" src="../../_images/eaf858e96cf46ae0e3deaa5f639c9066a83e12784a4381b451265e4cd6de941c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="gex-ir">
+<h2>GEX + IR<a class="headerlink" href="#gex-ir" title="Permalink to this heading">#</a></h2>
+<p>Leveraging the opportunity offered by close integeration with scanpy, transcriptomics-based data can be utilized alongside immune receptor data.</p>
+<p>The clonotype modularity score represents the log2 fold change of the number of edges in the cell-cell neighborhood graph compared to the random background model. Clonotypes (or clonotype clusters) with a high modularity score consist of cells that have a similar molecular phenotype.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Clonotype modularity</span>
+
+<span class="n">ir</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">clonotype_modularity</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">target_col</span><span class="o">=</span><span class="s2">&quot;airr:cc_aa_alignment&quot;</span><span class="p">)</span>
+
+<span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;airr:clonotype_modularity&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Initalizing clonotype subgraphs...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5853bad4deeb4b3e9df21c08611a8f64", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computing background distributions...
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f56ad735993f43f78a783faf34c0e86b", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Stored result in `mdata.obs[&quot;airr:clonotype_modularity&quot;]`.
+Stored result in `mdata.obs[&quot;airr:clonotype_modularity_fdr&quot;]`.
+</pre></div>
+</div>
+<img alt="../../_images/0dcc8680f0c0ad792ceee88ac5e5d6b4aede98b859eaa87738bc0d7aa322e5d6.png" src="../../_images/0dcc8680f0c0ad792ceee88ac5e5d6b4aede98b859eaa87738bc0d7aa322e5d6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_network</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;clonotype_modularity&quot;</span><span class="p">,</span>
+    <span class="n">label_fontsize</span><span class="o">=</span><span class="mi">9</span><span class="p">,</span>
+    <span class="n">panel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span>
+    <span class="n">base_size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../../_images/2898fb12e16d9e8f8e74ee46c5fd943bf44b4c35033525173810db939da8859d.png" src="../../_images/2898fb12e16d9e8f8e74ee46c5fd943bf44b4c35033525173810db939da8859d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ir</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">clonotype_modularity</span><span class="p">(</span><span class="n">mdata</span><span class="p">,</span> <span class="n">base_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;modularity score&#39;, ylabel=&#39;-log10(FDR)&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/29af53d5c99dbd4b9c7c4a6b5c83de863938b69c54d2bb4243fa80b5cbf4d786.png" src="../../_images/29af53d5c99dbd4b9c7c4a6b5c83de863938b69c54d2bb4243fa80b5cbf4d786.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">clonotypes_top_modularity</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="o">.</span><span class="n">obs</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;airr:cc_aa_alignment&quot;</span><span class="p">)[</span><span class="s2">&quot;airr:clonotype_modularity&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">)</span>
+
+
+<span class="n">test_ad</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">,</span>
+    <span class="n">basis</span><span class="o">=</span><span class="s2">&quot;gex:umap&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;airr:cc_aa_alignment&quot;</span><span class="p">,</span>
+    <span class="n">groups</span><span class="o">=</span><span class="n">clonotypes_top_modularity</span><span class="p">,</span>
+    <span class="n">palette</span><span class="o">=</span><span class="n">cycler</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">mpl_cm</span><span class="o">.</span><span class="n">Dark2_r</span><span class="o">.</span><span class="n">colors</span><span class="p">),</span>
+<span class="p">)</span>
+
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/scanpy/plotting/_tools/scatterplots.py:392: UserWarning: No data for colormapping provided via &#39;c&#39;. Parameters &#39;cmap&#39; will be ignored
+  cax = scatter(
+</pre></div>
+</div>
+<img alt="../../_images/a43fc3bb6a114192642780e51691bad0297b200fb3bec37f2d2f1e39bbca0929.png" src="../../_images/a43fc3bb6a114192642780e51691bad0297b200fb3bec37f2d2f1e39bbca0929.png" />
+</div>
+</div>
+<section id="differential-gene-expression">
+<h3>Differential Gene expression<a class="headerlink" href="#differential-gene-expression" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Since sc.tl.rank_genes_group does not support MuData, we need to temporarily add</span>
+<span class="c1"># the AIRR columns to the gene expression AnnData object</span>
+<span class="k">with</span> <span class="n">ir</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">obs_context</span><span class="p">(</span>
+    <span class="n">mdata</span><span class="p">[</span><span class="s2">&quot;gex&quot;</span><span class="p">],</span> <span class="p">{</span><span class="s2">&quot;cc_aa_alignment&quot;</span><span class="p">:</span> <span class="n">mdata</span><span class="o">.</span><span class="n">obs</span><span class="p">[</span><span class="s2">&quot;airr:cc_aa_alignment&quot;</span><span class="p">]}</span>
+<span class="p">)</span> <span class="k">as</span> <span class="n">tmp_ad</span><span class="p">:</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span>
+        <span class="n">tmp_ad</span><span class="p">,</span>
+        <span class="s2">&quot;cc_aa_alignment&quot;</span><span class="p">,</span>
+        <span class="n">groups</span><span class="o">=</span><span class="n">clonotypes_top_modularity</span><span class="p">,</span>
+        <span class="n">reference</span><span class="o">=</span><span class="s2">&quot;rest&quot;</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;wilcoxon&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">ct</span><span class="p">,</span> <span class="n">ax</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">clonotypes_top_modularity</span><span class="p">,</span> <span class="n">axs</span><span class="p">):</span>
+        <span class="n">sc</span><span class="o">.</span><span class="n">pl</span><span class="o">.</span><span class="n">rank_genes_groups_violin</span><span class="p">(</span>
+            <span class="n">tmp_ad</span><span class="p">,</span> <span class="n">groups</span><span class="o">=</span><span class="p">[</span><span class="n">ct</span><span class="p">],</span> <span class="n">n_genes</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">strip</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ranking genes
+    finished (0:00:01)
+</pre></div>
+</div>
+<img alt="../../_images/406ef7a76a0d0bd0fe84feb2e9eef8f4d82516a98f1dc7d0d31132b0b17ec5ec.png" src="../../_images/406ef7a76a0d0bd0fe84feb2e9eef8f4d82516a98f1dc7d0d31132b0b17ec5ec.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./part2\chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter1/Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../part3/chapter1/Introduction.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>Single cell AIR and RNA multiomics Analysis</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#theory">Theory</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clonotype-analysis">Clonotype - Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#air-transcriptomics">AIR + Transcriptomics</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-i">Example-I</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing">Data Preprocessing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cluster-annotation">CLuster Annotation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-data-preprocessing">IR data -preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-chain-indices">Creating chain indices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tcr-qc">TCR QC</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ir-clonotypes-and-clonotype-clusters">IR clonotypes and clonotype-clusters</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extract-specific-clonotype-cluster">Extract Specific Clonotype cluster</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clonal-expansion">CLonal Expansion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convergent-evolution">Convergent evolution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vj-vdj-gene-usage-or-percentage-of-genes-present-in-clonotype">VJ , VDJ Gene Usage or Percentage of genes present in clonotype</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spectratype-plot">Spectratype - plot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gex-ir">GEX + IR</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-gene-expression">Differential Gene expression</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Majeed Jamakhani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
