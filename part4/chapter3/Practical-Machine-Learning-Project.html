@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Practical - Machine Learning Project &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -64,9 +63,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'part4/chapter3/Practical-Machine-Learning-Project';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Gene counts" href="../../part5/chapter2/genecount.html" />
     <link rel="prev" title="AI Concepts" href="../chapter2/AI-Concepts.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -194,6 +194,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../chapter2/AI-Concepts.html">AI Concepts</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Practical - Machine Learning Project</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter2/genecount.html">Gene counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter3/DGE.html">Differential Gene Expression :</a></li>
+
+</ul>
 
     </div>
 </nav></div>
@@ -318,10 +324,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="practical-machine-learning-project">
-<h1>Practical - Machine Learning Project<a class="headerlink" href="#practical-machine-learning-project" title="Permalink to this heading">#</a></h1>
+<h1>Practical - Machine Learning Project<a class="headerlink" href="#practical-machine-learning-project" title="Permalink to this headline">#</a></h1>
 <p>In this we are going to apply different machine learning models on medical cancer dataset</p>
 <section id="import-libraries">
-<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Import Libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># import Libararies</span>
@@ -365,7 +371,7 @@ document.write(`
 </div>
 </section>
 <section id="data-upload">
-<h2>Data upload<a class="headerlink" href="#data-upload" title="Permalink to this heading">#</a></h2>
+<h2>Data upload<a class="headerlink" href="#data-upload" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data upload</span>
@@ -625,7 +631,7 @@ document.write(`
 </div>
 </section>
 <section id="eda">
-<h2>EDA<a class="headerlink" href="#eda" title="Permalink to this heading">#</a></h2>
+<h2>EDA<a class="headerlink" href="#eda" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">meso_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
@@ -1383,7 +1389,7 @@ Deprecated in NumPy 1.20; for more details and guidance: https://numpy.org/devdo
 </div>
 <p>Model Building</p>
 <section id="split-the-data">
-<h3>Split the data<a class="headerlink" href="#split-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Split the data<a class="headerlink" href="#split-the-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data</span>
@@ -1589,7 +1595,7 @@ test data : [[-0.70490425  0.83979947 -0.62144122 ... -1.21378847 -1.04418513
 </section>
 </section>
 <section id="pca">
-<h2>PCA<a class="headerlink" href="#pca" title="Permalink to this heading">#</a></h2>
+<h2>PCA<a class="headerlink" href="#pca" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># PCA to visualize data</span>
@@ -1612,9 +1618,9 @@ test data : [[-0.70490425  0.83979947 -0.62144122 ... -1.21378847 -1.04418513
 </div>
 </section>
 <section id="model-building-training">
-<h2>Model Building &amp; Training<a class="headerlink" href="#model-building-training" title="Permalink to this heading">#</a></h2>
+<h2>Model Building &amp; Training<a class="headerlink" href="#model-building-training" title="Permalink to this headline">#</a></h2>
 <section id="knn-model">
-<h3>KNN model<a class="headerlink" href="#knn-model" title="Permalink to this heading">#</a></h3>
+<h3>KNN model<a class="headerlink" href="#knn-model" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Choose n-neigbour for KNN model</span>
@@ -1643,7 +1649,7 @@ test data : [[-0.70490425  0.83979947 -0.62144122 ... -1.21378847 -1.04418513
 </div>
 </section>
 <section id="different-model-selection">
-<h3>Different model selection<a class="headerlink" href="#different-model-selection" title="Permalink to this heading">#</a></h3>
+<h3>Different model selection<a class="headerlink" href="#different-model-selection" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Models</span>
@@ -1694,7 +1700,7 @@ test data : [[-0.70490425  0.83979947 -0.62144122 ... -1.21378847 -1.04418513
 </div>
 </section>
 <section id="artificial-neural-network">
-<h3>Artificial Neural Network<a class="headerlink" href="#artificial-neural-network" title="Permalink to this heading">#</a></h3>
+<h3>Artificial Neural Network<a class="headerlink" href="#artificial-neural-network" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#ANN</span>
@@ -1767,7 +1773,7 @@ test data : [[-0.70490425  0.83979947 -0.62144122 ... -1.21378847 -1.04418513
 </section>
 </section>
 <section id="prediction">
-<h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h2>
+<h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lr_pred</span><span class="p">)</span>
@@ -1887,7 +1893,7 @@ test data : [[-0.70490425  0.83979947 -0.62144122 ... -1.21378847 -1.04418513
 </div>
 </section>
 <section id="plotting-results">
-<h2>Plotting Results<a class="headerlink" href="#plotting-results" title="Permalink to this heading">#</a></h2>
+<h2>Plotting Results<a class="headerlink" href="#plotting-results" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span> <span class="n">result</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span> <span class="o">=-</span><span class="mi">90</span><span class="p">)</span>
@@ -1937,6 +1943,15 @@ test data : [[-0.70490425  0.83979947 -0.62144122 ... -1.21378847 -1.04418513
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">AI Concepts</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../../part5/chapter2/genecount.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gene counts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   

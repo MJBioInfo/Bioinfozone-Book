@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Pre-processing &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Dimensionality Reduction" href="../chapter4/Dimensionality%20Reduction.html" />
     <link rel="prev" title="Data" href="../chapter2/Data.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -191,8 +190,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/Data_science_in_Medicine.html">Python - Concept</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter2/AI-Concepts.html">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter2/genecount.html">Gene counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter3/DGE.html">Differential Gene Expression :</a></li>
 
 </ul>
 
@@ -320,11 +325,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pre-processing">
-<h1>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this heading">#</a></h1>
+<h1>Pre-processing<a class="headerlink" href="#pre-processing" title="Permalink to this headline">#</a></h1>
 <section id="quality-control">
-<h2>Quality Control<a class="headerlink" href="#quality-control" title="Permalink to this heading">#</a></h2>
+<h2>Quality Control<a class="headerlink" href="#quality-control" title="Permalink to this headline">#</a></h2>
 <section id="remove-empty-droplet-using-drokick">
-<h3>Remove Empty Droplet using drokick<a class="headerlink" href="#remove-empty-droplet-using-drokick" title="Permalink to this heading">#</a></h3>
+<h3>Remove Empty Droplet using drokick<a class="headerlink" href="#remove-empty-droplet-using-drokick" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
@@ -530,7 +535,7 @@ Metrics used for thresholding (metrics parameter, default [‘arcsinh_n_genes_by
 </div>
 </section>
 <section id="calculate-qc">
-<h3>Calculate QC<a class="headerlink" href="#calculate-qc" title="Permalink to this heading">#</a></h3>
+<h3>Calculate QC<a class="headerlink" href="#calculate-qc" title="Permalink to this headline">#</a></h3>
 <p>Steps :</p>
 <ul class="simple">
 <li><p>Filter Zero count cells / cell with low number of detected genes</p></li>
@@ -956,7 +961,7 @@ in a cell,</p></li>
 </div>
 </section>
 <section id="plot-qc">
-<h3>Plot QC<a class="headerlink" href="#plot-qc" title="Permalink to this heading">#</a></h3>
+<h3>Plot QC<a class="headerlink" href="#plot-qc" title="Permalink to this headline">#</a></h3>
 <p>Now we can Plot these calculated metrices . each dot represents cell in plot . Group by sample , so we can see for each sample how merics behaves</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -997,12 +1002,12 @@ in a cell,</p></li>
 <p>As we can see from above plot : genes with low counts have more percentage mitochondria and some cells have less mitochondria .</p>
 </section>
 <section id="filtering-joint-effect">
-<h3>Filtering (Joint Effect)<a class="headerlink" href="#filtering-joint-effect" title="Permalink to this heading">#</a></h3>
+<h3>Filtering (Joint Effect)<a class="headerlink" href="#filtering-joint-effect" title="Permalink to this headline">#</a></h3>
 <p>We have to filter cells by considering joint effects by these WC metrics we have calculated in previous cells .</p>
 <p>We use Automatic method MAD : which depends on Median and Standard deviation</p>
 <p>We first calculate outliers by each od these QC effects</p>
 <section id="filter-using-automatic-method-mad">
-<h4>Filter Using Automatic Method : MAD<a class="headerlink" href="#filter-using-automatic-method-mad" title="Permalink to this heading">#</a></h4>
+<h4>Filter Using Automatic Method : MAD<a class="headerlink" href="#filter-using-automatic-method-mad" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Create outlier function  </span>
@@ -1591,7 +1596,7 @@ Number of cells after filtering of low quality cells: 4205
 </section>
 </section>
 <section id="plot-filtered-qc">
-<h3>Plot Filtered QC<a class="headerlink" href="#plot-filtered-qc" title="Permalink to this heading">#</a></h3>
+<h3>Plot Filtered QC<a class="headerlink" href="#plot-filtered-qc" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Filtered Data Plot</span>
@@ -1620,7 +1625,7 @@ Number of cells after filtering of low quality cells: 4205
 </div>
 </section>
 <section id="ambient-rna-correction-using-scar">
-<h3>ambient RNA correction using scAR :<a class="headerlink" href="#ambient-rna-correction-using-scar" title="Permalink to this heading">#</a></h3>
+<h3>ambient RNA correction using scAR :<a class="headerlink" href="#ambient-rna-correction-using-scar" title="Permalink to this headline">#</a></h3>
 <blockquote>
 <div><p>To work with scAR we need following :</p>
 </div></blockquote>
@@ -2230,7 +2235,7 @@ INFO:model:lr_gamma: 0.97
 </div>
 </section>
 <section id="filter-genes">
-<h3>Filter Genes<a class="headerlink" href="#filter-genes" title="Permalink to this heading">#</a></h3>
+<h3>Filter Genes<a class="headerlink" href="#filter-genes" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Filter genes :</span>
@@ -2290,7 +2295,7 @@ After removal of genes : 4205 7650
 </div>
 </section>
 <section id="cell-cycle-scoring">
-<h3>Cell Cycle Scoring<a class="headerlink" href="#cell-cycle-scoring" title="Permalink to this heading">#</a></h3>
+<h3>Cell Cycle Scoring<a class="headerlink" href="#cell-cycle-scoring" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#@title Cell Cycle scoring : 
@@ -2376,7 +2381,7 @@ Name: phase, dtype: int64
 </div>
 </section>
 <section id="doublet-detection">
-<h3>Doublet detection<a class="headerlink" href="#doublet-detection" title="Permalink to this heading">#</a></h3>
+<h3>Doublet detection<a class="headerlink" href="#doublet-detection" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Doublet Detection :</span>
@@ -2775,7 +2780,7 @@ INFO:pytorch_lightning.accelerators.cuda:LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [
 </div>
 </section>
 <section id="save-qc-filtered-data">
-<h3>Save QC Filtered Data<a class="headerlink" href="#save-qc-filtered-data" title="Permalink to this heading">#</a></h3>
+<h3>Save QC Filtered Data<a class="headerlink" href="#save-qc-filtered-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">save_file</span> <span class="o">=</span> <span class="s1">&#39;Objects/sc_qc_filtered_covid.h5ad&#39;</span>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Set-Up System : &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Data" href="../chapter2/Data.html" />
     <link rel="prev" title="Introduction" href="../../part0/chapter1/Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -191,8 +190,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/Data_science_in_Medicine.html">Python - Concept</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter2/AI-Concepts.html">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter2/genecount.html">Gene counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter3/DGE.html">Differential Gene Expression :</a></li>
 
 </ul>
 
@@ -315,9 +320,9 @@ document.write(`
                   
   <p>#Set-Up</p>
 <section id="set-up-system">
-<h1>Set-Up System :<a class="headerlink" href="#set-up-system" title="Permalink to this heading">#</a></h1>
+<h1>Set-Up System :<a class="headerlink" href="#set-up-system" title="Permalink to this headline">#</a></h1>
 <section id="check-ram-usage-high-or-low">
-<h2>Check RAM Usage (High or Low)<a class="headerlink" href="#check-ram-usage-high-or-low" title="Permalink to this heading">#</a></h2>
+<h2>Check RAM Usage (High or Low)<a class="headerlink" href="#check-ram-usage-high-or-low" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Check High RAM using or not ?</span>
@@ -347,7 +352,7 @@ You are using a high-RAM runtime!
 </div>
 </section>
 <section id="check-gpu-is-running-or-not">
-<h2>Check GPU is Running or Not<a class="headerlink" href="#check-gpu-is-running-or-not" title="Permalink to this heading">#</a></h2>
+<h2>Check GPU is Running or Not<a class="headerlink" href="#check-gpu-is-running-or-not" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#@title Check GPU
@@ -550,7 +555,7 @@ Successfully installed MarkupSafe-2.1.2 cffi-1.15.1 jinja2-3.1.2 pycparser-2.21 
 </section>
 </section>
 <section id="set-up-working-directory">
-<h1>Set-Up Working Directory<a class="headerlink" href="#set-up-working-directory" title="Permalink to this heading">#</a></h1>
+<h1>Set-Up Working Directory<a class="headerlink" href="#set-up-working-directory" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#@title Working Directory :
@@ -611,7 +616,7 @@ create_and_set_working_directory(project_folder)
 </div>
 </section>
 <section id="install-python-libraries">
-<h1>Install python Libraries :<a class="headerlink" href="#install-python-libraries" title="Permalink to this heading">#</a></h1>
+<h1>Install python Libraries :<a class="headerlink" href="#install-python-libraries" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>#@title Install Libraries :
@@ -735,7 +740,7 @@ Successfully installed bbknn-1.5.1
 </div>
 </section>
 <section id="install-r-libraries">
-<h1>Install R Libraries :<a class="headerlink" href="#install-r-libraries" title="Permalink to this heading">#</a></h1>
+<h1>Install R Libraries :<a class="headerlink" href="#install-r-libraries" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="n">R</span>
@@ -773,7 +778,7 @@ BiocManager::install(biopckgs)
 </div>
 </section>
 <section id="load-libraries">
-<h1>Load Libraries :<a class="headerlink" href="#load-libraries" title="Permalink to this heading">#</a></h1>
+<h1>Load Libraries :<a class="headerlink" href="#load-libraries" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Load Libraries :</span>

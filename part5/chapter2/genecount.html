@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>install VNC server &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
+    <title>Gene counts &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
   
   
   
@@ -60,11 +60,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'part3/chapter3/setupVNCserver';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'part5/chapter2/genecount';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="RNAseq Alignment" href="../chapter4/STARAlignment.html" />
-    <link rel="prev" title="Creating New VM instance ( Like setting NEW linux machine) :" href="../chapter2/SetupGCP.html" />
+    <link rel="next" title="Differential Gene Expression :" href="../chapter3/DGE.html" />
+    <link rel="prev" title="Practical - Machine Learning Project" href="../../part4/chapter3/Practical-Machine-Learning-Project.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -170,18 +170,18 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../part2/chapter1/Introduction.html">Introduction</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Computing</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../chapter1/Introduction.html">Introduction</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter1/Introduction.html">Introduction</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../chapter2/SetupGCP.html">Creating New VM instance ( Like setting NEW linux machine) :</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter2/SetupGCP.html">Creating New VM instance ( Like setting NEW linux machine) :</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">install VNC server</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter3/setupVNCserver.html">install VNC server</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="../chapter4/STARAlignment.html">RNAseq Alignment</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter4/STARAlignment.html">RNAseq Alignment</a></li>
 
 
 
@@ -195,9 +195,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter2/genecount.html">Gene counts</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter3/DGE.html">Differential Gene Expression :</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Gene counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../chapter3/DGE.html">Differential Gene Expression :</a></li>
 
 </ul>
 
@@ -274,9 +274,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -287,24 +285,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>install VNC server</h1>
+    <h1>Gene counts</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">install VNC server</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#install-realvnc-viwer-in-windows-machine">install realvnc viwer in windows machine</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-firewall-in-vm-machine-so-we-can-allow-port-or-external-ip">setup firewall in VM machine , so we can allow port or external IP</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#on-your-vm-start-the-vnc-server-with-this-command">On your VM, start the VNC server with this command:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#check-whether-external-ip-working-by-typing">check whether external IP working by typing</a></li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -314,63 +299,78 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <p>You may also wish to have graphical user interface (GUI) desktop for your server instead of a command-line only ssh terminal interface. To do this, you must install a VNCserver</p>
-<section class="tex2jax_ignore mathjax_ignore" id="install-vnc-server">
-<h1>install VNC server<a class="headerlink" href="#install-vnc-server" title="Permalink to this headline">#</a></h1>
-<p>Download setup to the storage bucket we created</p>
-<p>Download the setup files here: <a class="github reference external" href="https://github.com/developerpiru/cloudservers/blob/master/VNC-setup.tar.gz">developerpiru/cloudservers</a></p>
-<p>open SSH</p>
-<p>you can see downloaded vnc server file in mount folder</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">mountfolder</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">where</span><span class="o">/</span><span class="n">you</span><span class="o">/</span><span class="n">saved</span><span class="o">/</span><span class="n">the</span><span class="o">/</span><span class="n">file</span>
+  <section id="gene-counts">
+<h1>Gene counts<a class="headerlink" href="#gene-counts" title="Permalink to this headline">#</a></h1>
+<p>In this we are understanding how read ocunt is perfomed using HTseq-count and featurecounts</p>
+<p>We need following to efficiently calculate counts :</p>
+<ul class="simple">
+<li><p>Aligned file (BAM file)</p></li>
+<li><p>Annotation file (ref.gtf)</p></li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>HTseq :</p></li>
+</ol>
+<blockquote>
+<div><p>htseq-count [options] &lt;alignment_files&gt; &lt;gff_file &gt;</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">htseq</span><span class="o">-</span><span class="n">count</span> <span class="o">-</span><span class="n">f</span> <span class="n">bam</span> \
+            <span class="o">-</span><span class="n">r</span> <span class="n">pos</span> \
+            <span class="o">-</span><span class="n">s</span> <span class="n">no</span> \
+            <span class="o">-</span><span class="n">t</span> <span class="n">gene</span> \
+            <span class="o">-</span><span class="n">i</span> <span class="n">gene_id</span> \
+            <span class="o">--</span><span class="n">mode</span> <span class="n">union</span> \
+            <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">aligned</span><span class="o">.</span><span class="n">bam</span> \
+            <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">annotation</span><span class="o">.</span><span class="n">gtf</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">count_output</span><span class="o">.</span><span class="n">txt</span>
 
-<span class="n">tar</span> <span class="o">-</span><span class="n">xzvf</span> <span class="n">VNC</span><span class="o">-</span><span class="n">setup</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
-
-<span class="n">cd</span> <span class="n">VNC</span><span class="o">-</span><span class="n">setup</span>
-
-<span class="n">bash</span> <span class="n">vnc</span><span class="o">-</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span>
-
-</pre></div>
-</div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="install-realvnc-viwer-in-windows-machine">
-<h1>install realvnc viwer in windows machine<a class="headerlink" href="#install-realvnc-viwer-in-windows-machine" title="Permalink to this headline">#</a></h1>
-<p>by creating account in realvnc we download and signin to realvnc</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="setup-firewall-in-vm-machine-so-we-can-allow-port-or-external-ip">
-<h1>setup firewall in VM machine , so we can allow port or external IP<a class="headerlink" href="#setup-firewall-in-vm-machine-so-we-can-allow-port-or-external-ip" title="Permalink to this headline">#</a></h1>
-<p>Firewall normally wont allow vnc
-so it is necessary to create firewall rule to allow TCP 5901</p>
-<p>search firewall rule in cloud account .
-create firewall rule and fill details . more important are Name (vnc-server) , tags (vnc-server) and TCP : 5901
-server IP4  =  0.0.0.0/0</p>
-<p>and allow
-save firewall</p>
-<p>Go to VM machine instance</p>
-<p>fill network tags = vnc-server</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="on-your-vm-start-the-vnc-server-with-this-command">
-<h1>On your VM, start the VNC server with this command:<a class="headerlink" href="#on-your-vm-start-the-vnc-server-with-this-command" title="Permalink to this headline">#</a></h1>
-<p>vncserver -geometry 1200x1050
-Note: the -geometry 1200x1050 flag is optional and you can customize it to any resolution you prefer</p>
-<p>Open your VNC client (PuTTY or VNC Viewer) and enter the external IP address (not its local IP!) of your remote computer followed by the :5901 port. For example: 192.0.2.0:5901. You can find the external IP address of your VM by looking at your VM instances list.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">tightvncserver</span>
-
-<span class="n">sudo</span> <span class="n">reboot</span> 
 
 </pre></div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="check-whether-external-ip-working-by-typing">
-<h1>check whether external IP working by typing<a class="headerlink" href="#check-whether-external-ip-working-by-typing" title="Permalink to this headline">#</a></h1>
-<p>nc externalIPAddress 5901</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nc</span> <span class="mf">192.0.2.0</span><span class="p">:</span><span class="mi">5901</span> 
+<p>Explanation of parameters:</p>
+<ul class="simple">
+<li><p>-f bam: Specifies the input format as BAM.</p></li>
+<li><p>-r pos: Strand-specific counting based on read alignment positions.</p></li>
+<li><p>-s no: Indicates that the data is not strand-specific.</p></li>
+<li><p>-t gene: Specifies the feature type to count (e.g., “gene”).</p></li>
+<li><p>-i gene_id: Specifies the attribute used as the feature identifier (e.g., “gene_id”).</p></li>
+<li><p>/path/to/aligned.bam: Path to the aligned BAM file.</p></li>
+<li><p>/path/to/annotation.gtf: Path to the GTF annotation file.</p></li>
+<li><p>/path/to/count_output.txt: Redirects the output to the specified text file.</p></li>
+<li><p>–mode union: Specifies that overlapping features will be counted together (union mode).</p></li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic simple" start="2">
+<li><p>Featurecounts :</p></li>
+</ol>
+<p>why use featurecounts ?</p>
+<blockquote>
+<div><p>For single end both featurecounts and HTseq-count are same. but for paired-end reads featurecounts is advanced :  For example, if two genes were found to both overlap with a reads pair fragment but one gene was found to overlap with only one read and the other with both reads from that fragment, featureCounts will assign that fragment to the gene overlapping with both reads. However, htseq-count will take this fragment as ambiguous and will not assign it to any gene.</p>
+</div></blockquote>
+<blockquote>
+<div><p>In HTseq-count , if in union mode : if read is overlap on 2 genes then it will not be counted (ambigous)</p>
+<p>In HTseq-count , if in intersect mode :  if read partialy match gene and overhang outside gene , then it will not be counted</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">featureCounts</span> <span class="o">-</span><span class="n">T</span> <span class="mi">8</span> \
+              <span class="o">-</span><span class="n">s</span> <span class="mi">2</span> \
+              <span class="o">-</span><span class="n">t</span> <span class="n">gene</span> \
+              <span class="o">-</span><span class="n">g</span> <span class="n">gene_id</span> \
+              <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">annotation</span><span class="o">.</span><span class="n">gtf</span> \
+              <span class="o">-</span><span class="n">o</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">count_output</span><span class="o">.</span><span class="n">txt</span> \
+              <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">aligned</span><span class="o">.</span><span class="n">bam</span>
+
 
 </pre></div>
 </div>
-<p>It has to show
-RFS 3:00 time</p>
+<ul class="simple">
+<li><p>-T 8: Number of threads to use during counting.</p></li>
+<li><p>-s 2: Specifies strand-specific counting. Use 0 for unstranded data, 1 for strand-specific data with the first read on<br />
+the  sense strand, and 2 for strand-specific data with the first read on the antisense strand.</p></li>
+<li><p>-t gene: Specifies the feature type to count (e.g., “gene”).</p></li>
+<li><p>-g gene_id: Specifies the attribute used as the feature identifier (e.g., “gene_id”).</p></li>
+<li><p>-a /path/to/annotation.gtf: Path to the GTF annotation file.</p></li>
+<li><p>-o /path/to/count_output.txt: Path to the output text file where counts will be saved.</p></li>
+<li><p>/path/to/aligned.bam: Path to the aligned BAM file.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -386,7 +386,7 @@ RFS 3:00 time</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./part3\chapter3"
+            path: "./part5\chapter2"
         },
         predefinedOutput: true
     }
@@ -405,20 +405,20 @@ RFS 3:00 time</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../chapter2/SetupGCP.html"
+       href="../../part4/chapter3/Practical-Machine-Learning-Project.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Creating New VM instance ( Like setting NEW linux machine) :</p>
+        <p class="prev-next-title">Practical - Machine Learning Project</p>
       </div>
     </a>
     <a class="right-next"
-       href="../chapter4/STARAlignment.html"
+       href="../chapter3/DGE.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">RNAseq Alignment</p>
+        <p class="prev-next-title">Differential Gene Expression :</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -431,25 +431,6 @@ RFS 3:00 time</p>
             </div>
             
             
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">install VNC server</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#install-realvnc-viwer-in-windows-machine">install realvnc viwer in windows machine</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-firewall-in-vm-machine-so-we-can-allow-port-or-external-ip">setup firewall in VM machine , so we can allow port or external IP</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#on-your-vm-start-the-vnc-server-with-this-command">On your VM, start the VNC server with this command:</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#check-whether-external-ip-working-by-typing">check whether external IP working by typing</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

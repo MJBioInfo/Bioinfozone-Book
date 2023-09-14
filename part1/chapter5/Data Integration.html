@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Data Integration (Batch correction) &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Clustering" href="../chapter6/Clustering.html" />
     <link rel="prev" title="Dimensionality Reduction" href="../chapter4/Dimensionality%20Reduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -191,8 +190,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/Data_science_in_Medicine.html">Python - Concept</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter2/AI-Concepts.html">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter2/genecount.html">Gene counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter3/DGE.html">Differential Gene Expression :</a></li>
 
 </ul>
 
@@ -311,7 +316,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-integration-batch-correction">
-<h1>Data Integration (Batch correction)<a class="headerlink" href="#data-integration-batch-correction" title="Permalink to this heading">#</a></h1>
+<h1>Data Integration (Batch correction)<a class="headerlink" href="#data-integration-batch-correction" title="Permalink to this headline">#</a></h1>
 <p>Batch effects are changes in gene expression due to batches arise by different handling conditions such as , library depth, machines, Days, Stress management during extraction, even samples etc.</p>
 <p>But selecting batch and label key is important . according to requirement of keeping batch</p>
 <p>general, one can say that Harmony and Seurat consistently perform well for simple batch correction tasks, and scVI, scGen, scANVI, and Scanorama perform well for more complex data integration tasks.</p>
@@ -323,7 +328,7 @@ document.write(`
 <li><p>We also use Filted DM data as adata</p></li>
 </ul>
 <section id="check-batch-correction-needed">
-<h2>Check Batch correction Needed ?<a class="headerlink" href="#check-batch-correction-needed" title="Permalink to this heading">#</a></h2>
+<h2>Check Batch correction Needed ?<a class="headerlink" href="#check-batch-correction-needed" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Load DM reduced filtered data:</span>
@@ -674,7 +679,7 @@ Name: feature_types, dtype: int64
 <p>We need batch correction according to sample batch</p>
 </section>
 <section id="batch-correction">
-<h2>Batch Correction<a class="headerlink" href="#batch-correction" title="Permalink to this heading">#</a></h2>
+<h2>Batch Correction<a class="headerlink" href="#batch-correction" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title Feature selection wrt Batch :</span>
@@ -999,7 +1004,7 @@ Name: highly_variable_nbatches, dtype: int64
 </div>
 </div>
 <section id="scvi-data-integration-batch-correction">
-<h3>scvi Data integration (Batch correction)<a class="headerlink" href="#scvi-data-integration-batch-correction" title="Permalink to this heading">#</a></h3>
+<h3>scvi Data integration (Batch correction)<a class="headerlink" href="#scvi-data-integration-batch-correction" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata_scvi</span> <span class="o">=</span> <span class="n">adata_hvg</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1221,7 +1226,7 @@ INFO:pytorch_lightning.accelerators.cuda:LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [
 <p>Much Better . But we didn’t get corrected metrix</p>
 </section>
 <section id="bbknn-integration">
-<h3>BBKNN Integration<a class="headerlink" href="#bbknn-integration" title="Permalink to this heading">#</a></h3>
+<h3>BBKNN Integration<a class="headerlink" href="#bbknn-integration" title="Permalink to this headline">#</a></h3>
 <p>An important parameter for BBKNN is the number of neighbors per batch. A suggested heuristic for this is to use 25 if there are more than 100,000 cells or the default of 3 if there are fewer than 100,000.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1281,7 +1286,7 @@ INFO:pytorch_lightning.accelerators.cuda:LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [
 <p>Much Better</p>
 </section>
 <section id="scanoama">
-<h3>scanoama<a class="headerlink" href="#scanoama" title="Permalink to this heading">#</a></h3>
+<h3>scanoama<a class="headerlink" href="#scanoama" title="Permalink to this headline">#</a></h3>
 <p>To run Scanorama, you need to install python-annoy (already included in conda environment) and scanorama with pip. We can run scanorama to get a corrected matrix with the correct function, or to just get the data projected onto a new common dimension with the function integrate. Or both with the correct_scanpy and setting return_dimred=True. For now, run with just integration.</p>
 <p>First we need to create individual AnnData objects from each of the datasets.</p>
 <div class="cell docutils container">

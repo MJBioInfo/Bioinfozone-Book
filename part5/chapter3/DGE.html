@@ -1,0 +1,735 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Differential Gene Expression : &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'part5/chapter3/DGE';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Gene counts" href="../chapter2/genecount.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/Bioinfozone logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/Bioinfozone logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part0/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single cell RNAseq Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter1/Set-Up.html">Set-Up System :</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter2/Data.html">Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter3/Pre-processing.html">Pre-processing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter4/Dimensionality%20Reduction.html">Dimensionality Reduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter5/Data%20Integration.html">Data Integration (Batch correction)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter6/Clustering.html">Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/chapter7/Differential%20Gene%20Expression.html">Differential Gene Expression</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Single Cell Multiomics Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part2/chapter1/Introduction.html">Introduction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Cloud Computing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter1/Introduction.html">Introduction</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter2/SetupGCP.html">Creating New VM instance ( Like setting NEW linux machine) :</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter3/setupVNCserver.html">install VNC server</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../part3/chapter4/STARAlignment.html">RNAseq Alignment</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter2/AI-Concepts.html">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../chapter2/genecount.html">Gene counts</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Differential Gene Expression :</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Differential Gene Expression :</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Differential Gene Expression :</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#suppose-if-we-have-counts-data-as-like-below">Suppose if we have Counts data as like below  .</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="differential-gene-expression">
+<h1>Differential Gene Expression :<a class="headerlink" href="#differential-gene-expression" title="Permalink to this headline">#</a></h1>
+<blockquote>
+<div><p>Main goal of differential expression tools is : Idntifying differential gene expression between conditions by reducing effect of unwanted variance (like variance by expremental conditions, systemic biases , batches etc..).</p>
+</div></blockquote>
+<p>Lmma, edgeR, and DESeq2 are all popular R packages in R programming for the analysis of differential gene expression from RNA-seq data. They all serve a similar purpose, but they have differences in terms of their underlying statistical methods, assumptions, and use cases. The choice of which one to use depends on your specific research context and data characteristics.</p>
+<hr class="docutils" />
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Advantages</p></th>
+<th class="head"><p>Use Cases and Data Characteristics</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>limma</p></td>
+<td><p>- Robust with small sample sizes</p></td>
+<td><p>- Small sample sizes<br>- Stable variances</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Efficient statistical methodology</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Works well with limited replicates</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>———–</p></td>
+<td><p>———————————————–</p></td>
+<td><p>—————————————————————–</p></td>
+</tr>
+<tr class="row-even"><td><p>edgeR</p></td>
+<td><p>- Accommodates complex experimental designs</p></td>
+<td><p>- Moderate to large sample sizes<br>- Complex experimental</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Robust dispersion estimation</p></td>
+<td><p>designs<br>- Moderate to high biological variability</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Suitable for both small and large datasets</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>———–</p></td>
+<td><p>———————————————–</p></td>
+<td><p>—————————————————————–</p></td>
+</tr>
+<tr class="row-even"><td><p>DESeq2</p></td>
+<td><p>- Rigorous normalization</p></td>
+<td><p>- Larger number of replicates<br>- Subtle changes in expression</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>- Detects subtle expression changes</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>- Suitable for larger-scale studies</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<hr class="docutils" />
+<p>Here’s a high-level overview of how DESeq2 works:</p>
+<ol class="arabic simple">
+<li><p>Normalization: RNA-seq data can have systematic biases due to various factors, such as differences in library size and gene length. DESeq2 applies a method called “size factor normalization” to account for these differences. This step ensures that the read counts for each gene are adjusted to a common scale, allowing valid comparisons between samples.</p></li>
+<li><p>Statistical Modeling: DESeq2 uses a negative binomial distribution to model the variability in the count data. It estimates the dispersion parameter, which describes how the variance of the counts changes with the mean. This modeling approach is well-suited for count data, as it accounts for the inherent overdispersion often observed in RNA-seq data.</p></li>
+<li><p>Differential Expression Analysis: DESeq2 performs hypothesis testing to identify genes that are differentially expressed between experimental conditions. It calculates a “log2 fold change” for each gene, which represents how much the expression of the gene changes between the conditions. It also computes a p-value to quantify the significance of the observed differences.</p></li>
+<li><p>Multiple Testing Correction: Since you’re usually testing thousands of genes simultaneously, there’s a risk of observing false positives (genes that appear differentially expressed due to chance). DESeq2 applies multiple testing correction methods, such as the Benjamini-Hochberg procedure, to control the false discovery rate (FDR) and maintain a reasonable balance between true positives and false positives.</p></li>
+<li><p>Results Interpretation: DESeq2 generates various outputs, including tables of differentially expressed genes, their fold changes, p-values, and adjusted p-values. Researchers typically focus on genes with significant changes (adjusted p-value &lt; 0.05 or a chosen threshold) and substantial fold changes (e.g., greater than 2-fold or -2-fold) for further analysis and interpretation.</p></li>
+</ol>
+<hr class="docutils" />
+<blockquote>
+<div><p>Library Correction and Library composition Normalization</p>
+</div></blockquote>
+<p>some some cases like only gene expressed in one type normal but not in other . then we have to Normalize by Library composition</p>
+</section>
+<section id="suppose-if-we-have-counts-data-as-like-below">
+<h1>Suppose if we have Counts data as like below  .<a class="headerlink" href="#suppose-if-we-have-counts-data-as-like-below" title="Permalink to this headline">#</a></h1>
+<p>Original Count Values Table:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gene</p></th>
+<th class="head"><p>Cancer_1</p></th>
+<th class="head"><p>Cancer_2</p></th>
+<th class="head"><p>Normal_1</p></th>
+<th class="head"><p>Normal_2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gene1</p></td>
+<td><p>0</p></td>
+<td><p>15</p></td>
+<td><p>7</p></td>
+<td><p>9</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gene2</p></td>
+<td><p>8</p></td>
+<td><p>7</p></td>
+<td><p>20</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-even"><td><p>Gene3</p></td>
+<td><p>5</p></td>
+<td><p>3</p></td>
+<td><p>6</p></td>
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p>First we log transofrmed the data . In order to detect ouliers and Library composition and helps to remove from further downstream effect .</p>
+<hr class="docutils" />
+<p>Log2-Transformed Values Table:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gene</p></th>
+<th class="head"><p>log_Cancer_1</p></th>
+<th class="head"><p>log_Cancer_2</p></th>
+<th class="head"><p>log_Normal_1</p></th>
+<th class="head"><p>log_Normal_2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gene1</p></td>
+<td><p>-Inf</p></td>
+<td><p>3.906890596</p></td>
+<td><p>2.807354922</p></td>
+<td><p>3.169925001</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gene2</p></td>
+<td><p>3.000000000</p></td>
+<td><p>2.807354922</p></td>
+<td><p>4.321928095</p></td>
+<td><p>4.169925001</p></td>
+</tr>
+<tr class="row-even"><td><p>Gene3</p></td>
+<td><p>2.321928095</p></td>
+<td><p>1.584962501</p></td>
+<td><p>2.584962501</p></td>
+<td><p>2.321928095</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p>Gene 1 is case of  - Library COmposition , we remove them in further normalization technique, to preserve cell type effect.</p>
+<p>Average of each gene calculated (Which is called Geometric Mean as below)</p>
+<hr class="docutils" />
+<p>Log2-Transformed Values Table with Geometric Mean (Corrected):</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gene</p></th>
+<th class="head"><p>log_Cancer_1</p></th>
+<th class="head"><p>log_Cancer_2</p></th>
+<th class="head"><p>log_Normal_1</p></th>
+<th class="head"><p>log_Normal_2</p></th>
+<th class="head"><p>Geometric Mean</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gene2</p></td>
+<td><p>3.000000000</p></td>
+<td><p>2.807354922</p></td>
+<td><p>4.321928095</p></td>
+<td><p>4.169925001</p></td>
+<td><p>3.325056021</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gene3</p></td>
+<td><p>2.321928095</p></td>
+<td><p>1.584962501</p></td>
+<td><p>2.584962501</p></td>
+<td><p>2.321928095</p></td>
+<td><p>2.203186297</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p>We get Library Composition Correction Table</p>
+<hr class="docutils" />
+<p>Library Composition Correction Table:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gene</p></th>
+<th class="head"><p>log_Cancer_1</p></th>
+<th class="head"><p>log_Cancer_2</p></th>
+<th class="head"><p>log_Normal_1</p></th>
+<th class="head"><p>log_Normal_2</p></th>
+<th class="head"><p>Geometric Mean</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gene2</p></td>
+<td><p>3.000000000</p></td>
+<td><p>2.807354922</p></td>
+<td><p>4.321928095</p></td>
+<td><p>4.169925001</p></td>
+<td><p>3.325056021</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gene3</p></td>
+<td><p>2.321928095</p></td>
+<td><p>1.584962501</p></td>
+<td><p>2.584962501</p></td>
+<td><p>2.321928095</p></td>
+<td><p>2.203186297</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p>We devide each count with Median</p>
+<hr class="docutils" />
+<p>Devide each count with  with Median Row:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gene</p></th>
+<th class="head"><p>log_Cancer_1</p></th>
+<th class="head"><p>log_Cancer_2</p></th>
+<th class="head"><p>log_Normal_1</p></th>
+<th class="head"><p>log_Normal_2</p></th>
+<th class="head"><p>Geometric Mean</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Gene2</p></td>
+<td><p>0.902227576</p></td>
+<td><p>0.843225108</p></td>
+<td><p>1.296601193</p></td>
+<td><p>1.252445295</p></td>
+<td><p>1.000000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Gene3</p></td>
+<td><p>1.054735087</p></td>
+<td><p>0.719199912</p></td>
+<td><p>1.173406967</p></td>
+<td><p>1.056871709</p></td>
+<td><p>1.000000000</p></td>
+</tr>
+<tr class="row-even"><td><p>Median</p></td>
+<td><p>0.978481332</p></td>
+<td><p>0.781212510</p></td>
+<td><p>1.235004080</p></td>
+<td><p>1.154658502</p></td>
+<td><p>1.000000000</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p>We take Median value for each sample as below</p>
+<hr class="docutils" />
+<p>Size Factors Table:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Measurement</p></th>
+<th class="head"><p>log_Cancer_1</p></th>
+<th class="head"><p>log_Cancer_2</p></th>
+<th class="head"><p>log_Normal_1</p></th>
+<th class="head"><p>log_Normal_2</p></th>
+<th class="head"><p>Geometric Mean</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Median</p></td>
+<td><p>0.978481332</p></td>
+<td><p>0.781212510</p></td>
+<td><p>1.235004080</p></td>
+<td><p>1.154658502</p></td>
+<td><p>1.000000000</p></td>
+</tr>
+<tr class="row-odd"><td><p>Size Factor</p></td>
+<td><p>2.657449966</p></td>
+<td><p>2.182818389</p></td>
+<td><p>3.444949732</p></td>
+<td><p>3.176176431</p></td>
+<td><p>1.000000000</p></td>
+</tr>
+</tbody>
+</table>
+<p>Devide orginal counts value with Size factors to get Normalized counts table</p>
+<hr class="docutils" />
+<pre>
+
+
+<div style="display: flex; justify-content: space-between;">
+    <div style="width: 48%;">
+        Original Count Values Table:
+
+        | Gene  | Cancer_1 | Cancer_2 | Normal_1 | Normal_2 |
+        |-------|----------|----------|----------|----------|
+        | Gene1 | 0        | 15       | 7        | 9        |
+        | Gene2 | 8        | 7        | 20       | 18       |
+        | Gene3 | 5        | 3        | 6        | 5        |
+    </div>
+    
+    <div style="width: 48%;">
+        Normalized Counts Table:
+
+        | Gene  | Cancer_1 | Cancer_2 | Normal_1 | Normal_2 |
+        |-------|----------|----------|----------|----------|
+        | Gene1 | 0.000000 | 6.705593 | 2.098512 | 2.828428 |
+        | Gene2 | 3.010626 | 3.210221 | 5.799378 | 5.670599 |
+        | Gene3 | 1.882102 | 1.373534 | 1.744955 | 1.575154 |
+    </div>
+</div>
+
+
+</pre>
+<hr class="docutils" />
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./part5\chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../chapter2/genecount.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Gene counts</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Differential Gene Expression :</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#suppose-if-we-have-counts-data-as-like-below">Suppose if we have Counts data as like below  .</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr. Majeed Jamakhani
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

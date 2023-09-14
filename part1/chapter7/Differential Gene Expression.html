@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Differential Gene Expression &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Introduction" href="../../part2/chapter1/Introduction.html" />
     <link rel="prev" title="Clustering" href="../chapter6/Clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -191,8 +190,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/Data_science_in_Medicine.html">Python - Concept</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter2/AI-Concepts.html">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter2/genecount.html">Gene counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter3/DGE.html">Differential Gene Expression :</a></li>
 
 </ul>
 
@@ -317,7 +322,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="differential-gene-expression">
-<h1>Differential Gene Expression<a class="headerlink" href="#differential-gene-expression" title="Permalink to this heading">#</a></h1>
+<h1>Differential Gene Expression<a class="headerlink" href="#differential-gene-expression" title="Permalink to this headline">#</a></h1>
 <p>In single cell, differential expresison can have multiple functionalities such as of identifying marker genes for cell populations, as well as differentially regulated genes across conditions (healthy vs control). We will also exercise on how to account the batch information in your test.</p>
 <p>Differential expression is performed with the function rank_genes_group. The default method to compute differential expression is the t-test_overestim_var. Other implemented methods are: logreg, t-test and wilcoxon.</p>
 <p>By default, the .raw attribute of AnnData is used in case it has been initialized, it can be changed by setting use_raw=False.</p>
@@ -469,9 +474,9 @@ WARNING: adata.X seems to be already log-transformed.
 </div>
 </div>
 <section id="tests">
-<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this heading">#</a></h2>
+<h2>Tests<a class="headerlink" href="#tests" title="Permalink to this headline">#</a></h2>
 <section id="t-test">
-<h3>T-test<a class="headerlink" href="#t-test" title="Permalink to this heading">#</a></h3>
+<h3>T-test<a class="headerlink" href="#t-test" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;t-test&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;t-test&quot;</span><span class="p">)</span>
@@ -511,7 +516,7 @@ WARNING: adata.X seems to be already log-transformed.
 </div>
 </section>
 <section id="t-test-overestimated-variance">
-<h3>T-test overestimated_variance<a class="headerlink" href="#t-test-overestimated-variance" title="Permalink to this heading">#</a></h3>
+<h3>T-test overestimated_variance<a class="headerlink" href="#t-test-overestimated-variance" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;t-test_overestim_var&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;t-test_ov&quot;</span><span class="p">)</span>
@@ -534,7 +539,7 @@ WARNING: adata.X seems to be already log-transformed.
 </div>
 </section>
 <section id="wilcoxon-rank-sum">
-<h3>Wilcoxon rank-sum<a class="headerlink" href="#wilcoxon-rank-sum" title="Permalink to this heading">#</a></h3>
+<h3>Wilcoxon rank-sum<a class="headerlink" href="#wilcoxon-rank-sum" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc</span><span class="o">.</span><span class="n">tl</span><span class="o">.</span><span class="n">rank_genes_groups</span><span class="p">(</span><span class="n">adata</span><span class="p">,</span> <span class="s1">&#39;louvain_0.6&#39;</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">,</span> <span class="n">key_added</span> <span class="o">=</span> <span class="s2">&quot;wilcoxon&quot;</span><span class="p">)</span>
@@ -557,7 +562,7 @@ WARNING: adata.X seems to be already log-transformed.
 </div>
 </section>
 <section id="logistic-regression-logres">
-<h3>logistic regression (logres)<a class="headerlink" href="#logistic-regression-logres" title="Permalink to this heading">#</a></h3>
+<h3>logistic regression (logres)<a class="headerlink" href="#logistic-regression-logres" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -580,7 +585,7 @@ WARNING: adata.X seems to be already log-transformed.
 </section>
 </section>
 <section id="compare-genes">
-<h2>Compare Genes<a class="headerlink" href="#compare-genes" title="Permalink to this heading">#</a></h2>
+<h2>Compare Genes<a class="headerlink" href="#compare-genes" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adata</span>
@@ -661,7 +666,7 @@ WARNING: adata.X seems to be already log-transformed.
 </div>
 </section>
 <section id="compare-specific-clusters">
-<h2>Compare specific clusters<a class="headerlink" href="#compare-specific-clusters" title="Permalink to this heading">#</a></h2>
+<h2>Compare specific clusters<a class="headerlink" href="#compare-specific-clusters" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#@title cluster1 vs cluster2</span>
@@ -727,7 +732,7 @@ WARNING: adata.X seems to be already log-transformed.
 </div>
 </section>
 <section id="differential-expression-across-conditions">
-<h2>Differential expression across conditions<a class="headerlink" href="#differential-expression-across-conditions" title="Permalink to this heading">#</a></h2>
+<h2>Differential expression across conditions<a class="headerlink" href="#differential-expression-across-conditions" title="Permalink to this headline">#</a></h2>
 <p>The second way of computing differential expression is to answer which genes are differentially expressed within a cluster. For example, in our case we have libraries comming from patients and controls and we would like to know which genes are influenced the most in a particular cell type.</p>
 <p>For this end, we will first subset our data for the desired cell cluster, then change the cell identities to the variable of comparison (which now in our case is the “type”, e.g. Covid/Ctrl).</p>
 <div class="cell docutils container">
@@ -777,7 +782,7 @@ Name: type, dtype: int64
 </div>
 </div>
 <section id="between-cluster">
-<h3>between cluster<a class="headerlink" href="#between-cluster" title="Permalink to this heading">#</a></h3>
+<h3>between cluster<a class="headerlink" href="#between-cluster" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">genes1</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">get</span><span class="o">.</span><span class="n">rank_genes_groups_df</span><span class="p">(</span><span class="n">cl1</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Covid&#39;</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="s1">&#39;wilcoxon&#39;</span><span class="p">)[</span><span class="s1">&#39;names&#39;</span><span class="p">][:</span><span class="mi">5</span><span class="p">]</span>

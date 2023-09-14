@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Introduction &#8212; Bioinfozone - Easy way to learn Bioinformatics</title>
   
@@ -44,7 +44,6 @@
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Creating New VM instance ( Like setting NEW linux machine) :" href="../chapter2/SetupGCP.html" />
     <link rel="prev" title="Introduction" href="../../part2/chapter1/Introduction.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -191,8 +190,14 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">DataScience in Medicine</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/Data_science_in_Medicine.html">Python - Concept</a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter1/python-concepts.html">Python - Concept</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter2/AI-Concepts.html">AI Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part4/chapter3/Practical-Machine-Learning-Project.html">Practical - Machine Learning Project</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">NGS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter2/genecount.html">Gene counts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part5/chapter3/DGE.html">Differential Gene Expression :</a></li>
 
 </ul>
 
@@ -314,14 +319,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h1>
 <p>There are many cloud computing platforms available to work on Next Generation Sequemcing analysis like Amazon’s AWS , Google cloud computing, Microsoft Azure.</p>
 <p>In this chapter we are going to explain how to use Google cloud platform to analyse Next generation sequencing .</p>
 <p>Here we are going to get read counts data from RawReads / FastQ data .</p>
 <p>Suppose if you wanted to do RNAseq analysis you need high performing computers (More cores, Threads, high RAM).
 if you don’t have access to such high performing computers then there is an option for Google cloud for a reasonable price (with Free trail)</p>
 <section id="google-cloud-computing-gcp">
-<h2>Google Cloud Computing (GCP)<a class="headerlink" href="#google-cloud-computing-gcp" title="Permalink to this heading">#</a></h2>
+<h2>Google Cloud Computing (GCP)<a class="headerlink" href="#google-cloud-computing-gcp" title="Permalink to this headline">#</a></h2>
 <p>In Google cloud we are using free trail , which Gives $300 / 3 months credit , which is sufficient to do some Data analysis , including high RAM sequence analysis.</p>
 <p>We are showing here RNA sequence Alignment using STAR , which runs on High RAM Machines ( More than 32 GB )</p>
 <p>Below are steps to achive RNAseq alignment using GCP ; Briefly :</p>
@@ -336,12 +341,12 @@ if you don’t have access to such high performing computers then there is an op
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="setup-gcp">
-<h1>Setup GCP<a class="headerlink" href="#setup-gcp" title="Permalink to this heading">#</a></h1>
+<h1>Setup GCP<a class="headerlink" href="#setup-gcp" title="Permalink to this headline">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="rna-seq-analysis">
-<h1>RNA seq Analysis<a class="headerlink" href="#rna-seq-analysis" title="Permalink to this heading">#</a></h1>
+<h1>RNA seq Analysis<a class="headerlink" href="#rna-seq-analysis" title="Permalink to this headline">#</a></h1>
 <section id="alignment">
-<h2>Alignment<a class="headerlink" href="#alignment" title="Permalink to this heading">#</a></h2>
+<h2>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">#</a></h2>
 </section>
 </section>
 
